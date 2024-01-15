@@ -1,34 +1,41 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import { useContext } from 'react';
 import Navbar from './components/navbar/Navbar';
 import { Paths } from './enums/Paths';
-import { MenuScreen, RestaurantListScreen } from './screens/restaurantScreens';
-import { AboutUsScreen, SignInScreen, SignUpScreen } from './screens/homeScreens';
-import { AuthContext } from './context/AuthContext';
+import { AboutUsScreen, SignInScreen, SignUpScreen } from "./screens/homeScreens";
+import { AuthContext } from "./context/AuthContext";
+import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
+import { MSContainer } from "./components";
 
 const App = () => {
-  const { isLogIn } = useContext(AuthContext);
+
+  const { isLogIn } = useContext(AuthContext)
+
   return (
-    <div className='App'>
-      <Navbar />
+    <MSContainer className='App'>
       {
-        localStorage.getItem('isLogIn') === "true" || isLogIn === true ?
-          <Routes>
-            <Route path={Paths.DEFAULT} element={< RestaurantListScreen />} />
-            <Route path={`${Paths.MENU}/:id`} element={<MenuScreen />} />
-          </Routes>
-          :
+        isLogIn ?
+          <>
+            <Navbar />
+            <Routes>
+              <Route path={Paths.DEFAULT} element={<RestaurantListScreen />} />
+              <Route path={Paths.MENU} element={<MenuScreen />} />
+              <Route path={Paths.ABOUT_US} element={<AboutUsScreen />} />
+            </Routes>
+          </> :
           <Routes>
             <Route path={Paths.DEFAULT} element={<SignInScreen />} />
-            <Route path={Paths.ABOUT_US} element={<AboutUsScreen />} />
             <Route path={Paths.SIGN_UP} element={<SignUpScreen />} />
           </Routes>
       }
-      {/* <ErrorCard /> */}
-      {/* <Footer /> */}
-    </div >
+    </MSContainer >
   );
 }
 export default App;
+
+//TODOS
+// Navbar ve restaurantlist responsive uyarla. 
+// userInfo girmeyince inaktif buton ve not-allowed cursor.
+// yazılan şifreyi görünür kıl icon da ona göre değişsin.
+// bilgiler girilmeden önce button disabled olsun ve cursor not allowed.
+// width değerlerini vw ile responsive'e uyarla.

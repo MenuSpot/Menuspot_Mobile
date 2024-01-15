@@ -1,9 +1,9 @@
 import React from 'react'
 
 const CustomText = (props) => {
-    const { font, style } = props
+    const { style } = props
     return (
-        <p {...props} style={{ ...style, ...font }}>{props.children}</p>
+        <p {...props} style={{ ...style }}>{props.children}</p>
     )
 }
 

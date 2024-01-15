@@ -1,5 +1,11 @@
 export const ColorPalette = {
-    bgColor: "#FFFCF9",
+    buttonTextColor: "#FFFCF9",
+    restaurantBgColor: "#FFFCF9",
+    gradientBackground: {
+        gradientBgColor1: "#9A615B",
+        gradientBgColor2: "#F3E3E2"
+    },
+    brandName: "#F8E0B0",
     white: "#FFFFFF",
     black: "#000000",
     //#region Primary

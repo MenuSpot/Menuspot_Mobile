@@ -1,38 +1,31 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [isLogIn, setIsLogin] = useState(false);
-
-    useEffect(() => {
-        const storedIsLogIn = localStorage.getItem("isLogIn");
-        setIsLogin(storedIsLogIn === "true");
-    }, []);
-
-    // local storage'e kayıt oluşturulan yer
-    if (isLogIn) {
-        localStorage.setItem("isLogIn", "true");
-    }
+    const [isLogIn, setIsLogin] = useState(true);
+    const [userInfo, setUserInfo] = useState({ email: "", userName: "", password: "", rePassword: "" });
 
     const onSignIn = (token) => {
         setIsLogin(true);
         console.log("giriş yapıldı");
     };
-
-    const signUpFail = () => {
+    const onSignError = () => {
         setIsLogin(false);
         console.log("giriş yapılamadı");
     };
-
-    const logOut = () => {
+    const onSignOut = () => {
         setIsLogin(false);
-        localStorage.removeItem("isLogIn");
         console.log("çıkış yapıldı");
     };
 
+    const value = {
+        isLogIn, onSignIn, onSignError, onSignOut,
+        userInfo, setUserInfo
+    }
+
     return (
-        <AuthContext.Provider value={{ isLogIn, onSignIn, signUpFail, logOut }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );

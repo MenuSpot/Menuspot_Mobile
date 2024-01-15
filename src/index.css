@@ -1,13 +1,25 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --white: #fff;
+  --MerriweatherRegular200-fontFamily: Merriweather;
+  --MerriweatherRegular200-fontSize: 22;
+  --MerriweatherRegular200-fontWeight: 400;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.custom-input::placeholder {
+  color: var(--white);
+  font-family: var(--MerriweatherRegular200-fontFamily);
+  font-size: var(--MerriweatherRegular200-fontSize);
+  font-weight: var(--MerriweatherRegular200-fontWeight)
 }

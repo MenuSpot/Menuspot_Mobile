@@ -2,6 +2,6 @@ export const Paths = {
     DEFAULT: "/",
     ABOUT_US: "/AboutUs",
     SIGN_UP: "/SignUp",
-    RESTAURANTS:"/Restaurants",
+    RESTAURANTS: "/Restaurants",
     MENU: "/Menu"
 }

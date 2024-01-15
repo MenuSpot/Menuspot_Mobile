@@ -8,12 +8,12 @@ export const Fonts = {
     },
     MerriweatherBold50: {
         fontFamily: MERRIWEATHER,
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: "700"
     },
     MerriweatherBold100: {
         fontFamily: MERRIWEATHER,
-        fontSize: 24,
+        fontSize: 32,
         fontWeight: "700"
     },
     MerriweatherBold200: {
