@@ -8,6 +8,9 @@ import { AuthContext } from '../../../context/AuthContext'
 import { handleErrors, post } from '../../../services/BaseApiService'
 import { AuthForm, AuthInput } from '../../../components/formElements'
 import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
+import { localize } from '../../../localization/localize'
+import { Endpoints } from '../../../constants/Endpoints'
+
 
 export const SignUp = () => {
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext);
@@ -30,7 +33,7 @@ export const SignUp = () => {
     const handleSubmit = async () => {
         if (userData.password !== "" && userData.password === userInfo.RePassword) {
             try {
-                const response = await post(`Auth/CustomerRegister`, userData);
+                const response = await post(Endpoints.CUSTOMER_REGISTER, userData);
                 if (response.responseCode === 600) onSignIn();
             } catch {
                 handleErrors()
@@ -46,20 +49,20 @@ export const SignUp = () => {
                     :
                     <MSContainer style={brandContainer}>
                         <SVGSignScreenMobile />
-                        <MSText style={brandName}>MENUSPOT</MSText>
+                        <MSText style={brandName}>{localize("MENUSPOT")}</MSText>
                     </MSContainer>
             }
             <AuthForm style={formStyle} handleSubmit={handleSubmit}>
                 <MSText
-                    style={screenWidth >= 1025 ? titleStyle : titleMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
                 >
-                    SIGN UP
+                    {localize("SIGN UP")}
                 </MSText>
                 <AuthInput
                     type={"text"}
                     placeholder="Username"
                     inputIcon={<SVGUser />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="userName"
                 />
@@ -67,7 +70,7 @@ export const SignUp = () => {
                     type={"mail"}
                     placeholder="E-mail adress"
                     inputIcon={<SVGMail />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="email"
                 />
@@ -76,7 +79,7 @@ export const SignUp = () => {
                     placeholder="•••••••"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="password"
                 />
@@ -85,26 +88,26 @@ export const SignUp = () => {
                     placeholder="Confirm Password"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="RePassword"
                 />
                 <MSButton
-                    style={screenWidth >= 1025 ? buttonStyle : buttonMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
                     type="submit"
                 >
-                    SIGN UP
+                    {localize("SIGN UP")}
                 </MSButton>
                 <MSText
                     style={orText}
                 >
-                    or
+                    {localize("or")}
                 </MSText>
                 <MSText
                     style={haveAccountText}
                 >
-                    Do you have an account?
-                    <MSLink to={Paths.DEFAULT} style={signInLink}>Sign in</MSLink>
+                    {localize("Do you have an account?")}
+                    <MSLink to={Paths.DEFAULT} style={signInLink}>{localize("Sign in")}</MSLink>
                 </MSText>
             </AuthForm>
         </MSContainer >

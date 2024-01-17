@@ -34,8 +34,8 @@ const App = () => {
 export default App;
 
 //TODOS
-// Navbar ve restaurantlist responsive uyarla. 
-// userInfo girmeyince inaktif buton ve not-allowed cursor.
+// Navbar ve restaurantlist responsive uyarla.
+// Navbarda ögelerin hover ve clicked tasarımları.
 // yazılan şifreyi görünür kıl icon da ona göre değişsin.
 // bilgiler girilmeden önce button disabled olsun ve cursor not allowed.
-// width değerlerini vw ile responsive'e uyarla.
+// İnputların wrong text style düzenlemesi. 

@@ -8,6 +8,8 @@ import { MSColorPalette, MSFonts } from '../../../assets/ui'
 import AuthForm from '../../../components/formElements/AuthForm'
 import AuthInput from '../../../components/formElements/AuthInput'
 import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
+import { localize } from '../../../localization/localize'
+import { Endpoints } from '../../../constants/Endpoints'
 
 
 export const SignIn = () => {
@@ -26,10 +28,9 @@ export const SignIn = () => {
         userName: userInfo.userName,
         password: userInfo.password
     }
-
     const handleSubmit = async () => {
         try {
-            const response = await post(`Auth/login`, userData);
+            const response = await post(Endpoints.AUTH_LOGIN, userData);
             if (response.responseCode === 600) onSignIn();
         }
         catch {
@@ -45,20 +46,20 @@ export const SignIn = () => {
                     :
                     <MSContainer style={brandContainer}>
                         <SVGSignScreenMobile />
-                        <MSText style={brandName}>MENUSPOT</MSText>
+                        <MSText style={brandName}>{localize("MENUSPOT")}</MSText>
                     </MSContainer>
             }
             <AuthForm style={formStyle} handleSubmit={handleSubmit}>
                 <MSText
-                    style={screenWidth >= 1025 ? titleStyle : titleMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
                 >
-                    SIGN IN
+                    {localize("SIGN IN")}
                 </MSText>
                 <AuthInput
                     type={"text"}
                     placeholder="Username"
                     inputIcon={<SVGUser />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="userName"
                 />
@@ -67,26 +68,26 @@ export const SignIn = () => {
                     placeholder="•••••••"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= 1025 ? inputStyle : inputMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="password"
                 />
                 <MSButton
-                    style={screenWidth >= 1025 ? buttonStyle : buttonMobileStyle}
+                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
                     type="submit"
                 >
-                    SIGN IN
+                    {localize("SIGN IN")}
                 </MSButton>
                 <MSText
                     style={orText}
                 >
-                    or
+                    {localize("or")}
                 </MSText>
                 <MSText
                     style={haveAccountText}
                 >
-                    Don't you have an account?
-                    <MSLink to={Paths.SIGN_UP} style={signInLink}>Sign up</MSLink>
+                    {localize("Don't you have an account?")}
+                    <MSLink MSLink to={Paths.SIGN_UP} style={signInLink} >{localize("Sign up")}</MSLink>
                 </MSText>
             </AuthForm>
         </MSContainer >

@@ -3,13 +3,14 @@ import { get } from '../../../services/BaseApiService'
 import { CardRestaurant } from '../../../components/restaurantItems'
 import { MSContainer } from '../../../components'
 import { MSColorPalette } from '../../../assets/ui'
+import { Endpoints } from '../../../constants/Endpoints'
 
 export const RestaurantList = () => {
     const [restaurantData, setRestaurantData] = useState([])
 
     const handleRestaurants = async () => {
         try {
-            const response = await get("Restaurant")
+            const response = await get(Endpoints.RESTAURANT_DATA)
             setRestaurantData(response.data)
         } catch {
             console.log("veri alınırken hata oluştu.")

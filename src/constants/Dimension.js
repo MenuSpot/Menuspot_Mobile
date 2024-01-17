@@ -1,1 +1,1 @@
-export const SMALL_DEVICE_TRESHOLD = 1025 
+export const SMALL_DEVICE_TRESHOLD = 1025; 
