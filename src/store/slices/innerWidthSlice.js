@@ -15,5 +15,7 @@ const innerWidthSlice = createSlice({
     }
 })
 
+
+export const size = (state) => state.innerWidthSlice.size
 export const { firstReducer } = innerWidthSlice.actions;
 export default innerWidthSlice.reducer;

@@ -11,11 +11,12 @@ import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 import { localize } from '../../../localization/localize'
 import { Endpoints } from '../../../constants/Endpoints'
 import { useSelector } from 'react-redux'
+import { size } from '../../../store/slices/innerWidthSlice'
 
 
 export const SignIn = () => {
-    const windowSize = useSelector(state => state.innerWidthSlice.size)
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext)
+    const windowSize = useSelector(size)
 
     const userData = {
         userName: userInfo.userName,

@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import { SVGEyeInvisible, SVGFoodSignUp, SVGMail, SVGPassword, SVGSignScreenMobile, SVGUser } from './../../../assets/svg/index'
 import { MSButton, MSContainer, MSLink, MSText } from '../../../components'
 import { ColorPalette } from '../../../assets/ui/ColorPalette'
@@ -11,11 +11,12 @@ import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 import { localize } from '../../../localization/localize'
 import { Endpoints } from '../../../constants/Endpoints'
 import { useSelector } from 'react-redux'
+import { size } from '../../../store/slices/innerWidthSlice'
 
 
 export const SignUp = () => {
-    const windowSize = useSelector(state => state.innerWidthSlice.size)
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext);
+    const windowSize = useSelector(size)
 
     const userData = {
         email: userInfo.email,
