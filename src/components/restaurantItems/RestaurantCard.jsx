@@ -24,8 +24,8 @@ const cardStyle = {
     marginBottom: "24px",
     cursor: "pointer",
     textDecoration: "none",
-    borderRadius: "8",
-    overflow: "hidden"
+    borderRadius: "8px",
+    overflow: "hidden",
 }
 const imageStyle = {
     width: "180px",

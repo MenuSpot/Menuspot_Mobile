@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { SVGEyeInvisible, SVGFoodSignIn, SVGPassword, SVGSignScreenMobile, SVGUser } from './../../../assets/svg/index'
 import { MSButton, MSContainer, MSLink, MSText } from '../../../components'
 import { Paths } from '../../../enums/Paths'
@@ -10,19 +10,12 @@ import AuthInput from '../../../components/formElements/AuthInput'
 import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 import { localize } from '../../../localization/localize'
 import { Endpoints } from '../../../constants/Endpoints'
+import { useSelector } from 'react-redux'
 
 
 export const SignIn = () => {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const windowSize = useSelector(state => state.innerWidthSlice.size)
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext)
-
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth)
-        }
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
 
     const userData = {
         userName: userInfo.userName,
@@ -39,9 +32,9 @@ export const SignIn = () => {
     }
 
     return (
-        <MSContainer style={screenWidth >= SMALL_DEVICE_TRESHOLD ? componentStyle : componentMobileStyle}>
+        <MSContainer style={windowSize >= SMALL_DEVICE_TRESHOLD ? componentStyle : componentMobileStyle}>
             {
-                screenWidth >= SMALL_DEVICE_TRESHOLD ?
+                windowSize >= SMALL_DEVICE_TRESHOLD ?
                     <SVGFoodSignIn />
                     :
                     <MSContainer style={brandContainer}>
@@ -51,7 +44,7 @@ export const SignIn = () => {
             }
             <AuthForm style={formStyle} handleSubmit={handleSubmit}>
                 <MSText
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
                 >
                     {localize("SIGN IN")}
                 </MSText>
@@ -59,7 +52,7 @@ export const SignIn = () => {
                     type={"text"}
                     placeholder="Username"
                     inputIcon={<SVGUser />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="userName"
                 />
@@ -68,12 +61,12 @@ export const SignIn = () => {
                     placeholder="•••••••"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="password"
                 />
                 <MSButton
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
                     type="submit"
                 >
                     {localize("SIGN IN")}

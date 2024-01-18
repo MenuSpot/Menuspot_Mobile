@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext} from 'react'
 import { SVGEyeInvisible, SVGFoodSignUp, SVGMail, SVGPassword, SVGSignScreenMobile, SVGUser } from './../../../assets/svg/index'
 import { MSButton, MSContainer, MSLink, MSText } from '../../../components'
 import { ColorPalette } from '../../../assets/ui/ColorPalette'
@@ -10,25 +10,18 @@ import { AuthForm, AuthInput } from '../../../components/formElements'
 import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 import { localize } from '../../../localization/localize'
 import { Endpoints } from '../../../constants/Endpoints'
+import { useSelector } from 'react-redux'
 
 
 export const SignUp = () => {
+    const windowSize = useSelector(state => state.innerWidthSlice.size)
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     const userData = {
         email: userInfo.email,
         userName: userInfo.userName,
         password: userInfo.password
     }
-
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth)
-        }
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
 
     const handleSubmit = async () => {
         if (userData.password !== "" && userData.password === userInfo.RePassword) {
@@ -42,9 +35,9 @@ export const SignUp = () => {
     }
 
     return (
-        <MSContainer style={screenWidth >= SMALL_DEVICE_TRESHOLD ? componentStyle : componentMobileStyle}>
+        <MSContainer style={windowSize >= SMALL_DEVICE_TRESHOLD ? componentStyle : componentMobileStyle}>
             {
-                screenWidth >= SMALL_DEVICE_TRESHOLD ?
+                windowSize >= SMALL_DEVICE_TRESHOLD ?
                     <SVGFoodSignUp />
                     :
                     <MSContainer style={brandContainer}>
@@ -54,7 +47,7 @@ export const SignUp = () => {
             }
             <AuthForm style={formStyle} handleSubmit={handleSubmit}>
                 <MSText
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? titleStyle : titleMobileStyle}
                 >
                     {localize("SIGN UP")}
                 </MSText>
@@ -62,7 +55,7 @@ export const SignUp = () => {
                     type={"text"}
                     placeholder="Username"
                     inputIcon={<SVGUser />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="userName"
                 />
@@ -70,7 +63,7 @@ export const SignUp = () => {
                     type={"mail"}
                     placeholder="E-mail adress"
                     inputIcon={<SVGMail />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="email"
                 />
@@ -79,7 +72,7 @@ export const SignUp = () => {
                     placeholder="•••••••"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="password"
                 />
@@ -88,12 +81,12 @@ export const SignUp = () => {
                     placeholder="Confirm Password"
                     inputIcon={<SVGPassword />}
                     eyeIcon={<SVGEyeInvisible />}
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="RePassword"
                 />
                 <MSButton
-                    style={screenWidth >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
+                    style={windowSize >= SMALL_DEVICE_TRESHOLD ? buttonStyle : buttonMobileStyle}
                     type="submit"
                 >
                     {localize("SIGN UP")}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import { Paths } from './enums/Paths';
@@ -6,10 +6,22 @@ import { AboutUsScreen, SignInScreen, SignUpScreen } from "./screens/homeScreens
 import { AuthContext } from "./context/AuthContext";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import { MSContainer } from "./components";
+import { useDispatch } from "react-redux";
+import { firstReducer } from "./store/slices/innerWidthSlice";
 
 const App = () => {
 
+  const dispatch = useDispatch()
   const { isLogIn } = useContext(AuthContext)
+
+  useEffect(() => {
+    const handleResize = () => {
+      dispatch(firstReducer(window.innerWidth))
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  })
+
 
   return (
     <MSContainer className='App'>
