@@ -7,3 +7,4 @@ export { default as SVGPassword } from "./InputSVGs/PasswordSVG";
 export { default as SVGSignScreenMobile } from "./SignMobileSVG";
 export { default as SVGEyeVisible } from "./InputSVGs/EyeVisibleSVG";
 export { default as SVGLogOut } from "./LogOutSVG"
+export { default as SVGHamburgerMenu } from "./HamburgerMenuSVG"

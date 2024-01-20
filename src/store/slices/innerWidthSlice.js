@@ -1,21 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { SMALL_DEVICE_TRESHOLD } from "../../constants/Dimension";
 
 
 const initialState = {
-    size: window.innerWidth
+    screenSize: window.innerWidth,
+    isHamburgerMenu: false
 }
 
 const innerWidthSlice = createSlice({
-    name: "screenSize",
+    name: "innerWidthSlice",
     initialState,
     reducers: {
-        firstReducer: (state, action) => {
-            state.size = action.payload;
-        }
+        changeScreenSize: (state, action) => {
+            state.screenSize = action.payload;
+            state.isHamburgerMenu = state.screenSize >= SMALL_DEVICE_TRESHOLD ? false : true;
+        },
     }
 })
 
 
-export const size = (state) => state.innerWidthSlice.size
-export const { firstReducer } = innerWidthSlice.actions;
+export const screenSize = (state) => state.innerWidthSlice.screenSize
+export const isHamburgerMenu = (state) => state.innerWidthSlice.isHamburgerMenu
+export const { changeScreenSize, changeNavbarSize } = innerWidthSlice.actions;
 export default innerWidthSlice.reducer;

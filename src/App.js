@@ -7,7 +7,7 @@ import { AuthContext } from "./context/AuthContext";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import { MSContainer } from "./components";
 import { useDispatch } from "react-redux";
-import { firstReducer } from "./store/slices/innerWidthSlice";
+import { changeScreenSize, } from "./store/slices/innerWidthSlice";
 
 const App = () => {
 
@@ -16,12 +16,11 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      dispatch(firstReducer(window.innerWidth))
+      dispatch(changeScreenSize(window.innerWidth))
     }
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   })
-
 
   return (
     <MSContainer className='App'>

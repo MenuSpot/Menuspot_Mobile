@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [isLogIn, setIsLogin] = useState(false);
+    const [isLogIn, setIsLogin] = useState(true);
     const [userInfo, setUserInfo] = useState({ email: "", userName: "", password: "", rePassword: "" });
 
     const onSignIn = (token) => {
