@@ -17,6 +17,11 @@ body {
   width: 100%;
 }
 
+#root {
+  height: 100%;
+  width:100%
+}
+
 .custom-input::placeholder {
   color: var(--white);
   font-family: var(--MerriweatherRegular200-fontFamily);

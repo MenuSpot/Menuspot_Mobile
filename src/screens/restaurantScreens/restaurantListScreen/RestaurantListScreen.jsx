@@ -24,12 +24,18 @@ export const RestaurantList = () => {
     return (
         <MSContainer style={componentStyle}>
             <MSContainer style={containerStyle}>
-                {
+                {/* {
                     restaurantData.map(item => (
                         <CardRestaurant item={item} key={item.id} />
                     ))
-                }
+                } */}
+
+                <div style={{ height: "200px" }}>askd</div>
+                
+
+
             </MSContainer>
+
         </MSContainer>
     )
 }

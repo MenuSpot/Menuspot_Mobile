@@ -4,15 +4,13 @@ import { MSContainer, MSLink, MSText } from '..';
 import { SVGHamburgerMenu, SVGLogOut, SVGMenuSpot } from '../../assets/svg';
 import { Paths } from '../../enums/Paths';
 import { localize } from '../../localization/localize';
-import { useSelector } from 'react-redux';
-import { isMobileDevice } from '../../store/slices/innerWidthSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { isMobileDevice, openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 
 export const Navbar = () => {
-    //#region useStates
+    const dispatch = useDispatch()
     const isMobile = useSelector(isMobileDevice)
-    const show = false
     // const [activeLink, setActiveLink] = useState("");
-    //#endregion
 
     return (
         <>
@@ -20,8 +18,7 @@ export const Navbar = () => {
                 isMobile ?
                     < MSContainer style={navbarMobile} >
                         <MSContainer style={navItemsMobile}>
-                            <SVGHamburgerMenu onClick={() => console.log("tamam")} />
-                            <MSContainer style={{ display: show ? "flex" : "none" }}>Hamburger Menü</MSContainer>
+                            <SVGHamburgerMenu onClick={() => dispatch(openHamburgerMenu())} />
                             <MSLink to={Paths.DEFAULT} style={brandAreaMobile}>
                                 <SVGMenuSpot style={logoMobile} />
                                 <MSText style={logoTextMobile}>MENUSPOT</MSText>
@@ -54,7 +51,7 @@ const navbar = {
     backgroundColor: MSColorPalette.primary500,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
 }
 const navItems = {
     display: "flex",
@@ -107,7 +104,7 @@ const navbarMobile = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "10px"
+    padding: "10px",
 }
 const navItemsMobile = {
     display: "flex",
@@ -134,12 +131,7 @@ const logoTextMobile = {
     fontSize: MSFonts.MerriweatherBold25.fontSize,
     fontWeight: MSFonts.MerriweatherBold25.fontWeight,
 }
-const hamburgerMenu = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px"
-}
+
 const linkMobile = {
     textDecoration: "none",
     padding: "10px",

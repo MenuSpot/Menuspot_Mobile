@@ -6,14 +6,14 @@ import { AboutUsScreen, SignInScreen, SignUpScreen } from "./screens/homeScreens
 import { AuthContext } from "./context/AuthContext";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import { MSContainer } from "./components";
-import { useDispatch } from "react-redux";
-import { changeScreenSize } from "./store/slices/innerWidthSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { changeScreenSize, isHamburgetOpen } from "./store/slices/innerWidthSlice";
+import HamburgerMenu from "./components/navbar/HamburgerMenu";
 
 const App = () => {
-
-  const dispatch = useDispatch()
+  const hamburgerMenu = useSelector(isHamburgetOpen)
   const { isLogIn } = useContext(AuthContext)
-
+  const dispatch = useDispatch()
 
   dispatch(changeScreenSize(window.innerWidth))
   useEffect(() => {
@@ -31,6 +31,7 @@ const App = () => {
         isLogIn ?
           <>
             <Navbar />
+            <HamburgerMenu style={{ display: hamburgerMenu ? "flex" : "none" }} />
             <Routes>
               <Route path={Paths.DEFAULT} element={<RestaurantListScreen />} />
               <Route path={Paths.MENU} element={<MenuScreen />} />
