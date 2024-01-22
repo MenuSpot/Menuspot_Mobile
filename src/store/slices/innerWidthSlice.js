@@ -4,7 +4,7 @@ import { SMALL_DEVICE_TRESHOLD } from "../../constants/Dimension";
 
 const initialState = {
     screenSize: window.innerWidth,
-    isHamburgerMenu: false
+    isMobileDevice: false
 }
 
 const innerWidthSlice = createSlice({
@@ -13,13 +13,13 @@ const innerWidthSlice = createSlice({
     reducers: {
         changeScreenSize: (state, action) => {
             state.screenSize = action.payload;
-            state.isHamburgerMenu = state.screenSize >= SMALL_DEVICE_TRESHOLD ? false : true;
+            state.isMobileDevice = state.screenSize >= SMALL_DEVICE_TRESHOLD ? false : true;
         },
     }
 })
 
 
 export const screenSize = (state) => state.innerWidthSlice.screenSize
-export const isHamburgerMenu = (state) => state.innerWidthSlice.isHamburgerMenu
+export const isMobileDevice = (state) => state.innerWidthSlice.isMobileDevice
 export const { changeScreenSize, changeNavbarSize } = innerWidthSlice.actions;
 export default innerWidthSlice.reducer;

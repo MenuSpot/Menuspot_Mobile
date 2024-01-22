@@ -7,17 +7,20 @@ import { AuthContext } from "./context/AuthContext";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import { MSContainer } from "./components";
 import { useDispatch } from "react-redux";
-import { changeScreenSize, } from "./store/slices/innerWidthSlice";
+import { changeScreenSize } from "./store/slices/innerWidthSlice";
 
 const App = () => {
 
   const dispatch = useDispatch()
   const { isLogIn } = useContext(AuthContext)
 
+
+  dispatch(changeScreenSize(window.innerWidth))
   useEffect(() => {
     const handleResize = () => {
       dispatch(changeScreenSize(window.innerWidth))
     }
+    handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   })
@@ -45,7 +48,7 @@ const App = () => {
 export default App;
 
 //TODOS
-// Navbar ve restaurantlist responsive uyarla.
+// restaurantList responsive uyarla
 // Navbarda ögelerin hover ve clicked tasarımları.
 // yazılan şifreyi görünür kıl icon da ona göre değişsin.
 // bilgiler girilmeden önce button disabled olsun ve cursor not allowed.

@@ -1,8 +1,9 @@
 import React from 'react'
 
-const HamburgerMenuSVG = () => {
+const HamburgerMenuSVG = ({ onClick }) => {
     return (
         <svg
+            onClick={onClick}
             width="24"
             height="25"
             viewBox="0 0 24 25"

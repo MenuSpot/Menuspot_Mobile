@@ -1,39 +1,39 @@
 import React from 'react'
 import { MSColorPalette, MSFonts } from '../../assets/ui';
-import NavbarLogoSVG from '../../assets/svg/NavbarLogoSVG';
 import { MSContainer, MSLink, MSText } from '..';
-import { SVGHamburgerMenu, SVGLogOut } from '../../assets/svg';
+import { SVGHamburgerMenu, SVGLogOut, SVGMenuSpot } from '../../assets/svg';
 import { Paths } from '../../enums/Paths';
 import { localize } from '../../localization/localize';
 import { useSelector } from 'react-redux';
-import { isHamburgerMenu } from '../../store/slices/innerWidthSlice';
-import LogOutSVG from '../../assets/svg/LogOutSVG';
+import { isMobileDevice } from '../../store/slices/innerWidthSlice';
 
 export const Navbar = () => {
     //#region useStates
-    const isHamburgerMenuOpen = useSelector(isHamburgerMenu)
+    const isMobile = useSelector(isMobileDevice)
+    const show = false
     // const [activeLink, setActiveLink] = useState("");
     //#endregion
 
     return (
         <>
             {
-                isHamburgerMenuOpen ?
-                    < MSContainer style={navbarMobileStyle} >
-                        <MSContainer style={navItemsMobileStyle}>
-                            < SVGHamburgerMenu />
-                            <MSLink to={Paths.DEFAULT} style={logo}>
-                                <NavbarLogoSVG />
-                                <MSText style={logoText}>MENUSPOT</MSText>
+                isMobile ?
+                    < MSContainer style={navbarMobile} >
+                        <MSContainer style={navItemsMobile}>
+                            <SVGHamburgerMenu onClick={() => console.log("tamam")} />
+                            <MSContainer style={{ display: show ? "flex" : "none" }}>Hamburger Menü</MSContainer>
+                            <MSLink to={Paths.DEFAULT} style={brandAreaMobile}>
+                                <SVGMenuSpot style={logoMobile} />
+                                <MSText style={logoTextMobile}>MENUSPOT</MSText>
                             </MSLink>
-                            <LogOutSVG />
+                            <MSContainer style={logOutMobile}><SVGLogOut /></MSContainer>
                         </MSContainer >
                     </MSContainer >
                     :
                     <MSContainer style={navbar}>
                         <MSContainer style={navItems}>
-                            <MSLink to={Paths.DEFAULT} style={logo}>
-                                <NavbarLogoSVG />
+                            <MSLink to={Paths.DEFAULT} style={brandArea}>
+                                <SVGMenuSpot style={logoStyle} />
                                 <MSText style={logoText}>MENUSPOT</MSText>
                             </MSLink>
                             <MSContainer style={features}>
@@ -60,13 +60,17 @@ const navItems = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "80%",
+    width: "100%",
 }
-const logo = {
+const brandArea = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     textDecoration: "none"
+}
+const logoStyle = {
+    width: "75",
+    height: "49"
 }
 const logoText = {
     marginTop: "12px",
@@ -97,7 +101,7 @@ const logOut = {
 //#endregion
 
 //#region small device styles
-const navbarMobileStyle = {
+const navbarMobile = {
     width: "100%",
     backgroundColor: MSColorPalette.primary500,
     display: "flex",
@@ -105,43 +109,48 @@ const navbarMobileStyle = {
     alignItems: "center",
     padding: "10px"
 }
-const navItemsMobileStyle = {
+const navItemsMobile = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
 }
-// const logoMobileStyle = {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//     textDecoration: "none"
-// }
-// const logoTextMobileStyle = {
-//     marginTop: "12px",
-//     marginLeft: "5px",
-//     color: MSColorPalette.brandName,
-//     fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-//     fontSize: MSFonts.MerriweatherBold25.fontSize,
-//     fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-// }
-// const featuresMobileStyle = {
-//     display: "flex",
-//     justifyContent: "center",
-//     alignItems: "center",
-//     gap: "10px"
-// }
-// const linkMobileStyle = {
-//     textDecoration: "none",
-//     padding: "10px",
-//     color: MSColorPalette.white,
-//     fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-//     fontSize: MSFonts.MerriweatherBold25.fontSize,
-//     fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-//     lineHeight: "16px",
-// }
-// const logOutMobileStyle = {
-//     cursor: "pointer"
-// }
+const brandAreaMobile = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    textDecoration: "none",
+}
+const logoMobile = {
+    width: "57px",
+    height: "38px"
+}
+
+const logoTextMobile = {
+    marginTop: "12px",
+    marginLeft: "5px",
+    color: MSColorPalette.brandName,
+    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
+    fontSize: MSFonts.MerriweatherBold25.fontSize,
+    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
+}
+const hamburgerMenu = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px"
+}
+const linkMobile = {
+    textDecoration: "none",
+    padding: "10px",
+    color: MSColorPalette.white,
+    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
+    fontSize: MSFonts.MerriweatherBold25.fontSize,
+    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
+    lineHeight: "16px",
+}
+const logOutMobile = {
+    cursor: "pointer"
+}
 //#endregion
 export default Navbar
