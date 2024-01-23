@@ -17,9 +17,9 @@ export const RestaurantList = () => {
         }
     }
 
-    useEffect(() => {
-        handleRestaurants()
-    }, [])
+    // useEffect(() => {
+    //     handleRestaurants()
+    // }, [])
 
     return (
         <MSContainer style={componentStyle}>
@@ -31,7 +31,7 @@ export const RestaurantList = () => {
                 } */}
 
                 <div style={{ height: "200px" }}>askd</div>
-                
+
 
 
             </MSContainer>

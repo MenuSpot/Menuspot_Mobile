@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MSColorPalette, MSFonts } from '../../assets/ui';
 import { MSContainer, MSLink, MSText } from '..';
 import { SVGHamburgerMenu, SVGLogOut, SVGMenuSpot } from '../../assets/svg';
@@ -6,12 +6,15 @@ import { Paths } from '../../enums/Paths';
 import { localize } from '../../localization/localize';
 import { useDispatch, useSelector } from 'react-redux';
 import { isMobileDevice, openHamburgerMenu } from '../../store/slices/innerWidthSlice';
+import { NavbarRoutes } from '../../enums/NavbarRoutes';
+import { getClassName, navbarRouteMapper } from './utils';
+import { useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
     const dispatch = useDispatch()
     const isMobile = useSelector(isMobileDevice)
-    // const [activeLink, setActiveLink] = useState("");
-
+    const [activeLink, setActiveLink] = useState("");
+    const location = useLocation()
     return (
         <>
             {
@@ -34,8 +37,18 @@ export const Navbar = () => {
                                 <MSText style={logoText}>MENUSPOT</MSText>
                             </MSLink>
                             <MSContainer style={features}>
-                                <MSLink to={Paths.ABOUT_US} style={link}>{localize("About Us")}</MSLink>
-                                <MSLink to={Paths.MENU} style={link}>{localize("Menus")}</MSLink>
+                                {
+                                    Object.keys(NavbarRoutes).map(route => (
+                                        <MSLink
+                                            key={route}
+                                            to={NavbarRoutes[route]}
+                                            style={getClassName(route, activeLink) === "active" ? currentLink : link}
+                                            onClick={() => setActiveLink(navbarRouteMapper(route))}
+                                        >
+                                            {localize(navbarRouteMapper(route))}
+                                        </MSLink>
+                                    ))
+                                }
                                 <MSContainer style={link}>{localize("Options")}</MSContainer>
                                 <MSContainer style={logOut}><SVGLogOut /></MSContainer>
                             </MSContainer>
@@ -92,6 +105,19 @@ const link = {
     fontWeight: MSFonts.MerriweatherBold25.fontWeight,
     lineHeight: "16px",
 }
+
+const currentLink = {
+    backgroundColor: MSColorPalette.primary700,
+    textDecoration: "none",
+    padding: "10px",
+    color: MSColorPalette.white,
+    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
+    fontSize: MSFonts.MerriweatherBold25.fontSize,
+    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
+    lineHeight: "16px",
+    borderRadius: "8px"
+}
+
 const logOut = {
     cursor: "pointer"
 }

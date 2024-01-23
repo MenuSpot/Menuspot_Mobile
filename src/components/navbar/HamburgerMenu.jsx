@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MSContainer, MSLink } from '..'
 import { SVGLogOut } from '../../assets/svg'
-import { MSColorPalette } from '../../assets/ui'
+import { MSColorPalette, MSFonts } from '../../assets/ui'
+import { NavbarRoutes } from '../../enums/NavbarRoutes'
+import { Link } from 'react-router-dom'
+import { getClassName, navbarRouteMapper } from './utils'
+import { localize } from '../../localization/localize'
 
 const HamburgerMenu = ({ style }) => {
-    return (
+    const [activeLink, setActiveLink] = useState("")
 
+    return (
         <MSContainer style={{ ...HamburgerMenuStyle, ...style }}>
-            <MSLink style={button}>About Us</MSLink>
-            <MSLink style={button}>Menus</MSLink>
-            <MSLink style={button}>Options</MSLink>
-            <MSContainer style={button}>
+            {
+                Object.keys(NavbarRoutes).map(route => (
+                    <MSLink
+                        key={route}
+                        to={NavbarRoutes[route]}
+                        style={getClassName(route, activeLink) === "active" ? currentLink : link}
+                        onClick={() => setActiveLink(navbarRouteMapper(route))}
+                    >
+                        {localize(navbarRouteMapper(route))}
+                    </MSLink>
+                ))
+            }
+            <MSLink style={link}>Options</MSLink>
+            <MSContainer style={link}>
                 <SVGLogOut />
             </MSContainer>
         </MSContainer >
@@ -27,7 +42,7 @@ const HamburgerMenuStyle = {
     padding: "24px",
     backdropFilter: "blur(2px)",
 }
-const button = {
+const link = {
     display: "flex",
     height: "44px",
     padding: "10px",
@@ -39,5 +54,18 @@ const button = {
     borderRadius: "8px",
     color: MSColorPalette.white,
     backgroundColor: MSColorPalette.primary300,
+}
+const currentLink = {
+    display: "flex",
+    height: "44px",
+    padding: "10px",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    alignSelf: "stretch",
+    textDecoration: "none",
+    color: MSColorPalette.white,
+    backgroundColor: MSColorPalette.primary700,
+    borderRadius: "8px"
 }
 export default HamburgerMenu
