@@ -32,6 +32,6 @@ const innerWidthSlice = createSlice({
 
 export const screenSize = (state) => state.innerWidthSlice.screenSize
 export const isMobileDevice = (state) => state.innerWidthSlice.isMobileDevice
-export const isHamburgetOpen = (state) => state.innerWidthSlice.isHamburgerOpen
+export const isHamburgerOpen = (state) => state.innerWidthSlice.isHamburgerOpen
 export const { changeScreenSize, changeNavbarSize, openHamburgerMenu } = innerWidthSlice.actions;
 export default innerWidthSlice.reducer;

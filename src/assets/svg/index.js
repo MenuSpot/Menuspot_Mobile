@@ -8,4 +8,4 @@ export { default as SVGSignScreenMobile } from "./SignMobileSVG";
 export { default as SVGEyeVisible } from "./InputSVGs/EyeVisibleSVG";
 export { default as SVGLogOut } from "./LogOutSVG"
 export { default as SVGHamburgerMenu } from "./HamburgerMenuSVG"
-export {default as SVGMenuSpot} from "./MenuSpotLogo"
+export { default as SVGMenuSpot } from "./MenuSpotLogo"

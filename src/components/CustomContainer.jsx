@@ -1,9 +1,9 @@
 import React from 'react'
 
 const CustomContainer = (props) => {
-    const { style } = props
+    const { style, onMouseEnter } = props
     return (
-        <div style={style}>{props.children}</div>
+        <div style={style} onMouseEnter={onMouseEnter}>{props.children}</div>
     )
 }
 

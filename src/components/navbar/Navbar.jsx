@@ -8,13 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isMobileDevice, openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 import { NavbarRoutes } from '../../enums/NavbarRoutes';
 import { getClassName, navbarRouteMapper } from './utils';
-import { useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
     const dispatch = useDispatch()
     const isMobile = useSelector(isMobileDevice)
     const [activeLink, setActiveLink] = useState("");
-    const location = useLocation()
+
     return (
         <>
             {

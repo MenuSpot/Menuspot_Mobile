@@ -7,11 +7,11 @@ import { AuthContext } from "./context/AuthContext";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import { MSContainer } from "./components";
 import { useDispatch, useSelector } from "react-redux";
-import { changeScreenSize, isHamburgetOpen } from "./store/slices/innerWidthSlice";
+import { changeScreenSize, isHamburgerOpen } from "./store/slices/innerWidthSlice";
 import HamburgerMenu from "./components/navbar/HamburgerMenu";
 
 const App = () => {
-  const hamburgerMenu = useSelector(isHamburgetOpen)
+  const hamburgerMenu = useSelector(isHamburgerOpen)
   const { isLogIn } = useContext(AuthContext)
   const dispatch = useDispatch()
 

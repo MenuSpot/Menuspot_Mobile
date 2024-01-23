@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { MSContainer, MSLink } from '..'
 import { SVGLogOut } from '../../assets/svg'
-import { MSColorPalette, MSFonts } from '../../assets/ui'
+import { MSColorPalette } from '../../assets/ui'
 import { NavbarRoutes } from '../../enums/NavbarRoutes'
-import { Link } from 'react-router-dom'
 import { getClassName, navbarRouteMapper } from './utils'
 import { localize } from '../../localization/localize'
+import { useDispatch } from 'react-redux'
+import { openHamburgerMenu } from '../../store/slices/innerWidthSlice'
 
 const HamburgerMenu = ({ style }) => {
     const [activeLink, setActiveLink] = useState("")
+    const dispatch = useDispatch()
 
     return (
         <MSContainer style={{ ...HamburgerMenuStyle, ...style }}>
@@ -18,7 +20,10 @@ const HamburgerMenu = ({ style }) => {
                         key={route}
                         to={NavbarRoutes[route]}
                         style={getClassName(route, activeLink) === "active" ? currentLink : link}
-                        onClick={() => setActiveLink(navbarRouteMapper(route))}
+                        onClick={() => {
+                            setActiveLink(navbarRouteMapper(route))
+                            dispatch(openHamburgerMenu())
+                        }}
                     >
                         {localize(navbarRouteMapper(route))}
                     </MSLink>
