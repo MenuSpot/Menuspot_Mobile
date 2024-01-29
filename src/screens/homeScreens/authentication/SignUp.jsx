@@ -12,11 +12,13 @@ import { localize } from '../../../localization/localize'
 import { Endpoints } from '../../../constants/Endpoints'
 import { useSelector } from 'react-redux'
 import { screenSize } from '../../../store/slices/innerWidthSlice'
+import { useNavigate } from 'react-router-dom'
 
 
 export const SignUp = () => {
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext);
     const windowSize = useSelector(screenSize)
+    const navigate = useNavigate()
 
     const userData = {
         email: userInfo.email,
@@ -29,11 +31,13 @@ export const SignUp = () => {
             try {
                 const response = await post(Endpoints.CUSTOMER_REGISTER, userData);
                 if (response.responseCode === 600) onSignIn();
+                return navigate(Paths.DEFAULT)
             } catch {
                 handleErrors()
             }
         } else console.log("eşit değil") //when password and confirm doesn't match.
     }
+
 
     return (
         <MSContainer style={windowSize >= SMALL_DEVICE_TRESHOLD ? componentStyle : componentMobileStyle}>

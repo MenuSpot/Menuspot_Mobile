@@ -15,7 +15,6 @@ const App = () => {
   const { isLogIn } = useContext(AuthContext)
   const dispatch = useDispatch()
 
-  dispatch(changeScreenSize(window.innerWidth))
   useEffect(() => {
     const handleResize = () => {
       dispatch(changeScreenSize(window.innerWidth))
@@ -23,7 +22,8 @@ const App = () => {
     handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
-  })
+  }, [dispatch])
+
 
   return (
     <MSContainer className='App'>
@@ -49,7 +49,8 @@ const App = () => {
 export default App;
 
 //TODOS
-// restaurantList responsive uyarla
+
+// About us yazının üstünde durunca default description olmasın.
 // Navbarda ögelerin hover ve clicked tasarımları.
 // yazılan şifreyi görünür kıl icon da ona göre değişsin.
 // bilgiler girilmeden önce button disabled olsun ve cursor not allowed.

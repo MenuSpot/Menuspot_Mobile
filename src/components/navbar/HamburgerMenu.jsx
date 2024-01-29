@@ -45,7 +45,7 @@ const HamburgerMenuStyle = {
     height: "100vh",
     gap: "24px",
     padding: "24px",
-    backdropFilter: "blur(2px)",
+    backdropFilter: "blur(20px)",
 }
 const link = {
     display: "flex",
