@@ -50,7 +50,6 @@ export default App;
 
 //TODOS
 
-// About us yazının üstünde durunca default description olmasın.
 // Navbarda ögelerin hover ve clicked tasarımları.
 // yazılan şifreyi görünür kıl icon da ona göre değişsin.
 // bilgiler girilmeden önce button disabled olsun ve cursor not allowed.

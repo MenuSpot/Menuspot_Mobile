@@ -73,19 +73,17 @@ export const SignUp = () => {
                     inputName="email"
                 />
                 <AuthInput
-                    type={"password"}
+                    type={"text"}
                     placeholder="•••••••"
                     inputIcon={<SVGPassword />}
-                    eyeIcon={<SVGEyeInvisible />}
                     style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="password"
                 />
                 <AuthInput
-                    type={"password"}
+                    type={"text"}
                     placeholder="Confirm Password"
                     inputIcon={<SVGPassword />}
-                    eyeIcon={<SVGEyeInvisible />}
                     style={windowSize >= SMALL_DEVICE_TRESHOLD ? inputStyle : inputMobileStyle}
                     setUserInfo={setUserInfo}
                     inputName="RePassword"

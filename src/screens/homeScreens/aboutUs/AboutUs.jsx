@@ -56,8 +56,8 @@ export const AboutUs = () => {
                             <MSContainer
                                 style={isMobile ? personalInfoCardMobile : personalInfoCard}>
                                 <MSImage src={employeeInfo.image} alt={employeeInfo.name} />
-                                <MSText>{employeeInfo.title}</MSText>
-                                <MSText>{employeeInfo.name}</MSText>
+                                <MSText style={title}>{employeeInfo.title}</MSText>
+                                <MSText style={name}>{employeeInfo.name}</MSText>
                             </MSContainer>
                             <MSText style={isMobile ? descriptionMobileText : descriptionText}>{employeeInfo.description}</MSText>
                         </MSContainer>
@@ -75,8 +75,8 @@ export const AboutUs = () => {
                                     onMouseEnter={() => onHover(item)}
                                     onMouseLeave={() => onLeave()}>
                                     <MSImage src={item.image} alt={item.name} style={isMobile ? imageMobileStyle : undefined} />
-                                    <MSText>{item.title}</MSText>
-                                    <MSText>{item.name}</MSText>
+                                    <MSText style={isMobile ? titleMobile : title}>{item.title}</MSText>
+                                    <MSText style={isMobile ? nameMobile : name}>{item.name}</MSText>
                                 </MSContainer>
                             ))
                         }
@@ -124,6 +124,7 @@ const teamTitle = {
     fontWeight: Fonts.MerriweatherRegular300.fontWeight,
     fontSize: Fonts.MerriweatherRegular300.fontSize,
     textAlign: "center",
+    marginBottom:"31px"
 }
 const list = {
     display: "flex",
@@ -140,7 +141,20 @@ const listItem = {
     justifyContent: "center",
     alignItems: "center",
     cursor: "pointer",
-    textAlign: "center"
+    textAlign: "center",
+}
+const title = {
+    color: MSColorPalette.primary500,
+    fontFamily: MSFonts.MerriweatherRegular100.fontFamily,
+    fontSize: MSFonts.MerriweatherRegular100.fontSize,
+    fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
+}
+const name = {
+    color: MSColorPalette.text500,
+    fontFamily: MSFonts.MerriweatherItalic50.fontFamily,
+    fontSize: MSFonts.MerriweatherItalic50.fontSize,
+    fontWeight: MSFonts.MerriweatherItalic50.fontWeight,
+    fontStyle: MSFonts.MerriweatherItalic50.fontStyle
 }
 const personalInfo = {
     display: "flex",
@@ -223,5 +237,19 @@ const listItemMobile = {
 }
 const imageMobileStyle = {
     width: "130px"
+}
+const titleMobile = {
+    color: MSColorPalette.primary500,
+    fontFamily: MSFonts.MerriweatherRegular50.fontFamily,
+    fontSize: MSFonts.MerriweatherRegular50.fontSize,
+    fontWeight: MSFonts.MerriweatherRegular50.fontWeight,
+}
+const nameMobile = {
+    color: MSColorPalette.text500,
+    fontFamily: MSFonts.MerriweatherItalic25.fontFamily,
+    fontSize: MSFonts.MerriweatherItalic25.fontSize,
+    fontWeight: MSFonts.MerriweatherItalic25.fontWeight,
+    fontStyle: MSFonts.MerriweatherItalic25.fontStyle,
+    fontStyle: "italic"
 }
 //#endregion
