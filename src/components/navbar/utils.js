@@ -1,6 +1,5 @@
 import { NavbarRoutes } from "../../enums/NavbarRoutes";
 
-
 export const navbarRouteMapper = (route) => {
     if (NavbarRoutes[route] === NavbarRoutes.ABOUT_US) {
         return "About Us";
@@ -8,10 +7,13 @@ export const navbarRouteMapper = (route) => {
     else if (NavbarRoutes[route] === NavbarRoutes.RESTAURANTS) {
         return "Restaurants";
     }
-    else return "Restaurants";
+    else if (route === "/AboutUs") {
+        return "About Us"
+    }
+    else return "Restaurants"
 }
 
-export const getClassName = (route, activeLink) => {
+export const setActiveLink = (route, pathname) => {
     const currentRoute = navbarRouteMapper(route);
-    return (activeLink === currentRoute || (activeLink === "" && currentRoute === "Restaurants")) ? "active" : "";
+    return (pathname === currentRoute) ? "active" : "";
 }

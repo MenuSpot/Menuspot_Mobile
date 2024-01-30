@@ -4,7 +4,7 @@ import { SMALL_DEVICE_TRESHOLD } from "../../constants/Dimension";
 
 const initialState = {
     screenSize: window.innerWidth,
-    isMobileDevice: undefined,
+    isMobileDevice: (window.innerWidth <= SMALL_DEVICE_TRESHOLD),
     isHamburgerOpen: undefined
 }
 

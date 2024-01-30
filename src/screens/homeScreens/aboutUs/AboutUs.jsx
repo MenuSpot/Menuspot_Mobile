@@ -5,10 +5,13 @@ import { MSColorPalette, MSFonts } from '../../../assets/ui'
 import { ColorPalette } from '../../../assets/ui/ColorPalette'
 import { Fonts } from '../../../assets/ui/Fonts'
 import { useSelector } from 'react-redux'
-import { isMobileDevice } from '../../../store/slices/innerWidthSlice'
+import { isMobileDevice, screenSize } from '../../../store/slices/innerWidthSlice'
+import { localize } from '../../../localization/localize'
+import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 
 export const AboutUs = () => {
 
+    const windowSize = useSelector(screenSize)
     //#region states
     const [employeeInfo, setEmployeeInfo] = useState('');
     const [hoverState, setHoverState] = useState(false);
@@ -25,12 +28,14 @@ export const AboutUs = () => {
         setHoveredItem(item.id);
     };
     const onLeave = () => {
-        const interval = setInterval(() => {
-            setHoverState(false);
-        }, 2000);
-        setTimingState(interval)
-        setHoveredItem('');
-        return () => clearInterval(interval);
+        if (windowSize >= SMALL_DEVICE_TRESHOLD) {
+            const interval = setInterval(() => {
+                setHoverState(false);
+            }, 2000);
+            setTimingState(interval)
+            setHoveredItem('');
+            return () => clearInterval(interval);
+        }
     };
     const holdInfo = () => {
         setHoverState(true);
@@ -65,7 +70,7 @@ export const AboutUs = () => {
                         <MSText style={isMobile ? descriptionMobileText : descriptionText}>{defaultDescription.description}</MSText>
                 }
                 <MSContainer style={isMobile ? teamMobile : team}>
-                    <MSText style={{ ...teamTitle, display: hoverState && !isMobile ? "none" : "block" }}>TEAM</MSText>
+                    <MSText style={{ ...teamTitle, display: hoverState && !isMobile ? "none" : "block" }}>{localize("TEAM")}</MSText>
                     <MSContainer style={isMobile ? listMobile : list}>
                         {
                             employeeData.map(item => (
@@ -124,7 +129,7 @@ const teamTitle = {
     fontWeight: Fonts.MerriweatherRegular300.fontWeight,
     fontSize: Fonts.MerriweatherRegular300.fontSize,
     textAlign: "center",
-    marginBottom:"31px"
+    marginBottom: "31px"
 }
 const list = {
     display: "flex",

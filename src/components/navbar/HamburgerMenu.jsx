@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MSContainer, MSLink } from '..'
 import { SVGLogOut } from '../../assets/svg'
 import { MSColorPalette } from '../../assets/ui'
 import { NavbarRoutes } from '../../enums/NavbarRoutes'
-import { getClassName, navbarRouteMapper } from './utils'
+import { navbarRouteMapper, setActiveLink } from './utils'
 import { localize } from '../../localization/localize'
 import { useDispatch } from 'react-redux'
 import { openHamburgerMenu } from '../../store/slices/innerWidthSlice'
 
 const HamburgerMenu = ({ style }) => {
-    const [activeLink, setActiveLink] = useState("")
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [pathname, setPathname] = useState("");
+
+    useEffect(() => {
+        const url = window.location.pathname
+        setPathname(navbarRouteMapper(url))
+    }, [])
+
 
     return (
         <MSContainer style={{ ...HamburgerMenuStyle, ...style }}>
@@ -19,9 +25,9 @@ const HamburgerMenu = ({ style }) => {
                     <MSLink
                         key={route}
                         to={NavbarRoutes[route]}
-                        style={getClassName(route, activeLink) === "active" ? currentLink : link}
+                        style={setActiveLink(route, pathname) === "active" ? currentLink : link}
                         onClick={() => {
-                            setActiveLink(navbarRouteMapper(route))
+                            setPathname(navbarRouteMapper(route))
                             dispatch(openHamburgerMenu())
                         }}
                     >
