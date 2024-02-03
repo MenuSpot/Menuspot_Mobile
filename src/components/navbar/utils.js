@@ -10,7 +10,10 @@ export const navbarRouteMapper = (route) => {
     else if (route === "/AboutUs") {
         return "About Us"
     }
-    else return "Restaurants"
+    else if (route === "/") {
+        return "Restaurants"
+    }
+    else return ""
 }
 
 export const setActiveLink = (route, pathname) => {

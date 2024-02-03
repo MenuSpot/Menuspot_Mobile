@@ -34,7 +34,7 @@ const App = () => {
             <HamburgerMenu style={{ display: hamburgerMenu ? "flex" : "none" }} />
             <Routes>
               <Route path={Paths.DEFAULT} element={<RestaurantListScreen />} />
-              <Route path={Paths.MENU} element={<MenuScreen />} />
+              <Route path={`${Paths.MENU}/:id/:name`} element={<MenuScreen />} />
               <Route path={Paths.ABOUT_US} element={<AboutUsScreen />} />
             </Routes>
           </> :
@@ -48,9 +48,20 @@ const App = () => {
 }
 export default App;
 
-//TODOS
 
+
+//TODOS
 // Navbarda ögelerin hover ve clicked tasarımları.
-// yazılan şifreyi görünür kıl icon da ona göre değişsin.
-// bilgiler girilmeden önce button disabled olsun ve cursor not allowed.
-// İnputların wrong text style düzenlemesi. 
+// İnputların wrong text style düzenlemesi.
+// restaurantların mobile tasarımları iyileştirilmeli
+// menülerin mobile tasarımları iyileştirilmeli (cardların boyutları vs yeniden düzenlenecek)
+// giriş yaparken token alınmalı. Hatalı giriş gibi durumlarda dönülecek hata mesajları düzenlenmeli.
+// modal düzenlenmeli, modalda dönülecek hata mesajları belirlenmeli, gereken zamanlar için modal hazırlanmalı(sistemsel giriş yapılamaması vs.)
+// local storage eklenmeli.
+// logOut fonksiyonu eklenmeli, logOut olunca localStorage silinmeli.
+// token süresi bitince logOut olmalı.
+// view1 menü için cardlara flip özelliği ve arkasına bakma özelliği getirilmeli.
+// skeleton loading yapılmalı.
+// menü ekranında iken navbarda restaurants aktif olmamalı.
+// footer eklenmeli.
+// tüm yazı tipleri ui elemanları vs gözden geçir.

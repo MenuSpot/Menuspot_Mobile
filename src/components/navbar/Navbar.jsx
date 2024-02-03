@@ -17,7 +17,7 @@ export const Navbar = () => {
     useEffect(() => {
         const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
-    }, [])
+    }, [pathname])
 
     return (
         <>
@@ -132,6 +132,7 @@ const navbarMobile = {
     justifyContent: "center",
     alignItems: "center",
     padding: "10px",
+    cursor:"pointer"
 }
 const navItemsMobile = {
     display: "flex",

@@ -17,7 +17,6 @@ const HamburgerMenu = ({ style }) => {
         setPathname(navbarRouteMapper(url))
     }, [])
 
-
     return (
         <MSContainer style={{ ...HamburgerMenuStyle, ...style }}>
             {

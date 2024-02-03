@@ -181,7 +181,6 @@ const signInLink = {
     fontWeight: Fonts.MerriweatherBold25.fontWeight
 }
 //#endregion
-
 //#region Small device styles
 const componentMobileStyle = {
     height: "100vh",
@@ -243,4 +242,3 @@ const buttonMobileStyle = {
     fontWeight: Fonts.MerriweatherRegular200.fontWeight
 }
 //#endregion
-

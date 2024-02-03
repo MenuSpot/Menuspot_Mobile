@@ -4,6 +4,7 @@ import { CardRestaurant } from '../../../components/restaurantItems'
 import { MSContainer } from '../../../components'
 import { MSColorPalette } from '../../../assets/ui'
 import { Endpoints } from '../../../constants/Endpoints'
+import { Paths } from '../../../enums/Paths'
 
 export const RestaurantList = () => {
     const [restaurantData, setRestaurantData] = useState([])
@@ -16,7 +17,6 @@ export const RestaurantList = () => {
             console.log("veri alınırken hata oluştu.")
         }
     }
-
     useEffect(() => {
         handleRestaurants()
     }, [])
@@ -26,10 +26,9 @@ export const RestaurantList = () => {
             <MSContainer style={containerStyle}>
                 {
                     restaurantData.map(item => (
-                        <CardRestaurant item={item} key={item.id} />
+                        <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />
                     ))
                 }
-
             </MSContainer>
 
         </MSContainer>

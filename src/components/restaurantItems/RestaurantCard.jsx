@@ -4,17 +4,16 @@ import { MSLink, MSText } from '..';
 import { MSColorPalette, MSFonts } from '../../assets/ui';
 
 const RestaurantCard = (props) => {
-    const { item } = props;
+    const { item, to } = props;
 
     return (
-        <MSLink style={cardStyle}>
+        <MSLink to={to} style={cardStyle}>
             <Base64Image style={imageStyle} data={item.imageUrl} />
             <MSText style={titleStyle}>{item.name}</MSText>
         </MSLink>
     )
 }
 export default RestaurantCard
-
 //#region Large device styles
 const cardStyle = {
     height: "240px",
