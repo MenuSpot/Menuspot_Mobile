@@ -1,22 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { SVGEyeInvisible, SVGEyeVisible, SVGFoodSignIn, SVGPassword, SVGSignScreenMobile, SVGUser } from './../../../assets/svg/index'
-import { MSButton, MSContainer, MSLink, MSText } from '../../../components'
-import { Paths } from '../../../enums/Paths'
-import { AuthContext } from '../../../context/AuthContext'
-import { handleErrors, post } from '../../../services/BaseApiService'
-import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
-import { localize } from '../../../localization/localize'
-import { Endpoints } from '../../../constants/Endpoints'
+import { SVGEyeInvisible, SVGEyeVisible, SVGFoodSignIn, SVGPassword, SVGSignScreenMobile, SVGUser } from '../../../../assets/svg/index'
+import { MSButton, MSContainer, MSLink, MSText } from '../../../../components'
+import { Paths } from '../../../../enums/Paths'
+import { AuthContext } from '../../../../context/AuthContext'
+import { handleErrors, post } from '../../../../services/BaseApiService'
+import { SMALL_DEVICE_TRESHOLD } from '../../../../constants/Dimension'
+import { localize } from '../../../../localization/localize'
+import { Endpoints } from '../../../../constants/Endpoints'
 import { useSelector } from 'react-redux'
-import { screenSize } from '../../../store/slices/innerWidthSlice'
-import {
-    brandContainer, brandName, componentMobileStyle,
-    componentStyle, formStyle, haveAccountText, inputMobileStyle, inputStyle,
-    orText, signInLink, titleMobileStyle, titleStyle
-} from './styles'
-import { buttonStyleCreator } from './utils'
-import { responsiveStyleCreator } from '../../../utils/ResponsiveControl'
-import { AuthForm, AuthInput } from '../../../components/formElements'
+import { screenSize } from '../../../../store/slices/innerWidthSlice'
+import { brandContainer, brandName, componentMobileStyle, componentStyle, formStyle, haveAccountText, inputMobileStyle, inputStyle, orText, signInLink, titleMobileStyle, titleStyle } from './SignInStyles'
+import { buttonStyleCreator } from '../utils'
+import { responsiveStyleCreator } from '../../../../utils/ResponsiveControl'
+import { AuthForm, AuthInput } from '../../../../components/formElements'
 
 export const SignIn = () => {
     const windowSize = useSelector(screenSize);
@@ -38,7 +34,7 @@ export const SignIn = () => {
         }
     }
     useEffect(() => {
-        if (userData.password === "" || userData.userName === "") {
+        if (userInfo.password === "" || userInfo.userName === "") {
             setIsDisabled(true)
         } else setIsDisabled(false)
     }, [userInfo])

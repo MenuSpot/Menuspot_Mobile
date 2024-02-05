@@ -1,4 +1,4 @@
-import { MSColorPalette, MSFonts } from "../../../assets/ui"
+import { MSColorPalette, MSFonts } from "../../../../assets/ui"
 
 //#region Large device styles
 export const componentStyle = {

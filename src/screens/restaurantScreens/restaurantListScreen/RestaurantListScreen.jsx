@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { get } from '../../../services/BaseApiService'
 import { CardRestaurant } from '../../../components/restaurantItems'
 import { MSContainer } from '../../../components'
-import { MSColorPalette } from '../../../assets/ui'
 import { Endpoints } from '../../../constants/Endpoints'
 import { Paths } from '../../../enums/Paths'
+import { componentStyle, containerStyle } from './RestaurantListStyles'
 
 export const RestaurantList = () => {
     const [restaurantData, setRestaurantData] = useState([])
@@ -30,23 +30,6 @@ export const RestaurantList = () => {
                     ))
                 }
             </MSContainer>
-
         </MSContainer>
     )
-}
-//#region Large device styles
-const componentStyle = {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: MSColorPalette.restaurantBgColor
-}
-const containerStyle = {
-    marginTop: "24px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    width: "900px",
-    gap: 10
 }

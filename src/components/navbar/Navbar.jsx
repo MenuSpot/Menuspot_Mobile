@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { MSColorPalette, MSFonts } from '../../assets/ui';
+import React, { useContext, useEffect, useState } from 'react'
 import { MSContainer, MSLink, MSText } from '..';
 import { SVGHamburgerMenu, SVGLogOut, SVGMenuSpot } from '../../assets/svg';
 import { Paths } from '../../enums/Paths';
@@ -8,12 +7,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isMobileDevice, openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 import { NavbarRoutes } from '../../enums/NavbarRoutes';
 import { setActiveLink, navbarRouteMapper } from './utils';
+import { brandArea, brandAreaMobile, features, linkStyle, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
+    const { onSignOut } = useContext(AuthContext)
     const dispatch = useDispatch()
     const isMobile = useSelector(isMobileDevice)
     const [pathname, setPathname] = useState("");
+    const [hoveredItem, setHoveredItem] = useState("");
+    const navigate = useNavigate()
 
+    const handleLogOut = () => {
+        onSignOut()
+        navigate(Paths.DEFAULT)
+    }
     useEffect(() => {
         const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
@@ -46,131 +55,21 @@ export const Navbar = () => {
                                         <MSLink
                                             key={route}
                                             to={NavbarRoutes[route]}
-                                            style={setActiveLink(route, pathname) === "active" ? currentLink : link}
+                                            style={setActiveLink(route, pathname, hoveredItem)}
                                             onClick={() => setPathname(navbarRouteMapper(route))}
+                                            onMouseEnter={() => setHoveredItem(route)}
+                                            onMouseLeave={() => setHoveredItem("")}
                                         >
                                             {localize(navbarRouteMapper(route))}
                                         </MSLink>
                                     ))
                                 }
-                                <MSContainer style={link}>{localize("Options")}</MSContainer>
-                                <MSContainer style={logOut}><SVGLogOut /></MSContainer>
+                                <MSContainer style={linkStyle}>{localize("Options")}</MSContainer>
+                                <MSContainer style={logOut} onClick={() => handleLogOut()}><SVGLogOut /></MSContainer>
                             </MSContainer>
                         </MSContainer>
                     </MSContainer >
             }</>
     )
 }
-//#region large device styles
-const navbar = {
-    width: "100%",
-    padding: "10px 190px", //burada 190px yerine 12vw yazılabilir. Responsive uygun ayarlanıyor.
-    backgroundColor: MSColorPalette.primary500,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-}
-const navItems = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-}
-const brandArea = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    textDecoration: "none"
-}
-const logoStyle = {
-    width: "75",
-    height: "49"
-}
-const logoText = {
-    marginTop: "12px",
-    marginLeft: "5px",
-    color: MSColorPalette.brandName,
-    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-    fontSize: MSFonts.MerriweatherBold25.fontSize,
-    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-}
-const features = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px"
-}
-const link = {
-    textDecoration: "none",
-    padding: "10px",
-    color: MSColorPalette.white,
-    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-    fontSize: MSFonts.MerriweatherBold25.fontSize,
-    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-    lineHeight: "16px",
-}
-const currentLink = {
-    backgroundColor: MSColorPalette.primary700,
-    textDecoration: "none",
-    padding: "10px",
-    color: MSColorPalette.white,
-    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-    fontSize: MSFonts.MerriweatherBold25.fontSize,
-    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-    lineHeight: "16px",
-    borderRadius: "8px"
-}
-const logOut = {
-    cursor: "pointer"
-}
-//#endregion
-//#region small device styles
-const navbarMobile = {
-    width: "100%",
-    backgroundColor: MSColorPalette.primary500,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "10px",
-    cursor:"pointer"
-}
-const navItemsMobile = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-}
-const brandAreaMobile = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    textDecoration: "none",
-}
-const logoMobile = {
-    width: "57px",
-    height: "38px"
-}
-
-const logoTextMobile = {
-    marginTop: "12px",
-    marginLeft: "5px",
-    color: MSColorPalette.brandName,
-    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-    fontSize: MSFonts.MerriweatherBold25.fontSize,
-    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-}
-
-const linkMobile = {
-    textDecoration: "none",
-    padding: "10px",
-    color: MSColorPalette.white,
-    fontFamily: MSFonts.MerriweatherBold25.fontFamily,
-    fontSize: MSFonts.MerriweatherBold25.fontSize,
-    fontWeight: MSFonts.MerriweatherBold25.fontWeight,
-    lineHeight: "16px",
-}
-const logOutMobile = {
-    cursor: "pointer"
-}
-//#endregion
 export default Navbar
