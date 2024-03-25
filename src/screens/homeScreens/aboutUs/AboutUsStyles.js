@@ -2,9 +2,9 @@ import { MSColorPalette, MSFonts } from "../../../assets/ui"
 
 //#region large device style
 export const component = {
+    minHeight: "100%",
+    height: "auto",
     width: "100%",
-    height: "100%",
-    minHeight: "2000",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -82,26 +82,10 @@ export const personalInfoCard = {
 }
 //#endregion
 
-//#region medium device style
-export const mediumComponentStyle = {
-    height: "100%",
-    // minHeight: "1060px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "center",
-    padding: "20px",
-    lineHeight: "25px",
-    fontFamily: MSFonts.MerriweatherRegular100.fontFamily,
-    fontSize: MSFonts.MerriweatherRegular100.fontSize,
-    fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
-}
-//#endregion
-
 //#region small device style
 export const mobileComponentStyle = {
     height: "auto",
-    minHeight: "800px",
+    minHeight: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",

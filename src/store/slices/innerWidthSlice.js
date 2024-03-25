@@ -4,7 +4,8 @@ import { MEDIUM_DEVICE_TRESHOLD } from "../../constants/Dimension";
 const initialState = {
     screenSize: window.innerWidth,
     isMobileDevice: (window.innerWidth <= MEDIUM_DEVICE_TRESHOLD),
-    isHamburgerOpen: undefined
+    isHamburgerOpen: undefined,
+    currentStyle: ""
 }
 const innerWidthSlice = createSlice({
     name: "innerWidthSlice",
@@ -24,12 +25,10 @@ const innerWidthSlice = createSlice({
                 state.isHamburgerOpen = false
                 document.querySelector("body").style.overflow = ""
             }
-        }
+        },
     }
 })
 
-export const screenSize = (state) => state.innerWidthSlice.screenSize
-export const isMobileDevice = (state) => state.innerWidthSlice.isMobileDevice
-export const isHamburgerOpen = (state) => state.innerWidthSlice.isHamburgerOpen
+
 export const { changeScreenSize, changeNavbarSize, openHamburgerMenu } = innerWidthSlice.actions;
 export default innerWidthSlice.reducer;

@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SVGEyeInvisible, SVGEyeVisible, SVGFoodSignIn, SVGPassword, SVGSignScreenMobile, SVGUser } from '../../../../assets/svg/index'
-import { MSButton, MSContainer, MSLink, MSText } from '../../../../components'
+import { MSButton, MSContainer, MSLink, MSSpan, MSText } from '../../../../components'
 import { Paths } from '../../../../enums/Paths'
 import { AuthContext } from '../../../../context/AuthContext'
-import { handleErrors, post } from '../../../../services/BaseApiService'
-import { SMALL_DEVICE_TRESHOLD } from '../../../../constants/Dimension'
+import { post } from '../../../../services/BaseApiService'
+import { MEDIUM_DEVICE_TRESHOLD } from '../../../../constants/Dimension'
 import { localize } from '../../../../localization/localize'
 import { Endpoints } from '../../../../constants/Endpoints'
-import { useSelector } from 'react-redux'
-import { screenSize } from '../../../../store/slices/innerWidthSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { brandContainer, brandName, componentMobileStyle, componentStyle, formStyle, haveAccountText, inputMobileStyle, inputStyle, orText, signInLink, titleMobileStyle, titleStyle } from './SignInStyles'
 import { buttonStyleCreator } from '../utils'
 import { responsiveStyleCreator } from '../../../../utils/ResponsiveControl'
 import { AuthForm, AuthInput } from '../../../../components/formElements'
+import { showErrorMessage } from '../../../../store/slices/errorMessageSlice'
 
 export const SignIn = () => {
-    const windowSize = useSelector(screenSize);
+    const { screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
+    const dispatch = useDispatch()
     const { setUserInfo, userInfo, onSignIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
@@ -25,14 +26,17 @@ export const SignIn = () => {
         password: userInfo.password
     }
     const handleSubmit = async () => {
-        try {
-            const response = await post(Endpoints.AUTH_LOGIN, userData);
-            if (response.responseCode === 600) onSignIn();
+        const response = await post(Endpoints.AUTH_LOGIN, userData);
+        if (!response.data) {
+            dispatch(showErrorMessage({ title: response.title, description: response.description, buttonText: response.buttonText }))
         }
-        catch {
-            handleErrors()
+        const token = response.data?.accessToken
+        if (token) {
+            onSignIn(token)
         }
+        console.log(response)
     }
+
     useEffect(() => {
         if (userInfo.password === "" || userInfo.userName === "") {
             setIsDisabled(true)
@@ -42,7 +46,7 @@ export const SignIn = () => {
     return (
         <MSContainer style={responsiveStyleCreator(windowSize, componentStyle, componentMobileStyle)}>
             {
-                windowSize >= SMALL_DEVICE_TRESHOLD ?
+                windowSize >= MEDIUM_DEVICE_TRESHOLD ?
                     <SVGFoodSignIn />
                     :
                     <MSContainer style={brandContainer}>
@@ -56,28 +60,32 @@ export const SignIn = () => {
                 >
                     {localize("SIGN IN")}
                 </MSText>
-                <AuthInput
-                    type={"text"}
-                    placeholder="Username"
-                    inputIcon={<SVGUser />}
-                    style={responsiveStyleCreator(windowSize, inputStyle, inputMobileStyle)}
-                    setUserInfo={setUserInfo}
-                    inputName="userName"
-                    setIsDisabled={setIsDisabled}
-                />
-                <AuthInput
-                    type={showPassword ? "text" : "password"}
-                    placeholder="•••••••"
-                    inputIcon={<SVGPassword />}
-                    style={responsiveStyleCreator(windowSize, inputStyle, inputMobileStyle)}
-                    setUserInfo={setUserInfo}
-                    inputName="password"
-                    showPassword={showPassword}
-                    setShowPassword={setShowPassword}
-                    visiblePassword={<SVGEyeVisible />}
-                    hiddenPassword={<SVGEyeInvisible />}
-                    setIsDisabled={setIsDisabled}
-                />
+                <MSContainer>
+                    <AuthInput
+                        type={"text"}
+                        placeholder="Username"
+                        inputIcon={<SVGUser />}
+                        style={responsiveStyleCreator(windowSize, inputStyle, inputMobileStyle)}
+                        setUserInfo={setUserInfo}
+                        inputName="userName"
+                        setIsDisabled={setIsDisabled}
+                    />
+                </MSContainer>
+                <MSContainer>
+                    <AuthInput
+                        type={showPassword ? "text" : "password"}
+                        placeholder="•••••••"
+                        inputIcon={<SVGPassword />}
+                        style={responsiveStyleCreator(windowSize, inputStyle, inputMobileStyle)}
+                        setUserInfo={setUserInfo}
+                        inputName="password"
+                        showPassword={showPassword}
+                        setShowPassword={setShowPassword}
+                        visiblePassword={<SVGEyeVisible />}
+                        hiddenPassword={<SVGEyeInvisible />}
+                        setIsDisabled={setIsDisabled}
+                    />
+                </MSContainer>
                 <MSButton
                     style={buttonStyleCreator(windowSize, isDisabled)}
                     disabled={isDisabled}

@@ -7,25 +7,24 @@ import { localize } from '../../../localization/localize'
 import { useDispatch } from 'react-redux'
 import { openHamburgerMenu } from '../../../store/slices/innerWidthSlice'
 import { HamburgerLinkStyle, HamburgerMenuStyle } from './HamburgerMenuStyles'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
 import { Paths } from '../../../enums/Paths'
 
 const HamburgerMenu = ({ style }) => {
     const { onSignOut } = useContext(AuthContext)
-
-    const dispatch = useDispatch();
     const [pathname, setPathname] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     useEffect(() => {
         const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
     }, [])
 
-
     const handleLogOut = () => {
         onSignOut()
-        Navigate(Paths.DEFAULT)
+        navigate(Paths.DEFAULT)
     }
 
     return (
@@ -46,7 +45,7 @@ const HamburgerMenu = ({ style }) => {
                 ))
             }
             <MSLink style={HamburgerLinkStyle}>Options</MSLink>
-            <MSContainer style={HamburgerLinkStyle} onClick={() => handleLogOut()}>
+            <MSContainer style={HamburgerLinkStyle} onClick={handleLogOut}>
                 <SVGLogOut />
             </MSContainer>
         </MSContainer >

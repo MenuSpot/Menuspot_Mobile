@@ -11,6 +11,8 @@ export { default as SVGHamburgerMenu } from "./HamburgerMenuSVG";
 export { default as SVGMenuSpot } from "./MenuSpotLogo";
 export { default as SVGFilterRow } from "./filterSVGs/FourPiecesSVG";
 export { default as SVGFilterColumn } from "./filterSVGs/OnePieceSVG";
-export {default as SVGInstagram} from "./footerSVGs/InstagramSVG"
-export {default as SVGLinkedn} from "./footerSVGs/LinkednSVG"
-export {default as SVGTwitter} from "./footerSVGs/TwitterSVG"
+export { default as SVGInstagram } from "./footerSVGs/InstagramSVG";
+export { default as SVGLinkedn } from "./footerSVGs/LinkednSVG";
+export { default as SVGTwitter } from "./footerSVGs/TwitterSVG";
+export { default as SVGCloseModal } from "./modal/CloseModal"
+export { default as SVGAvatar } from "./Avatar"

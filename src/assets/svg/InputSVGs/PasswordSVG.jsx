@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PasswordSVG = () => {
+const PasswordSVG = ({ color }) => {
     return (
         <svg
             width="25"

@@ -21,6 +21,7 @@ export const HamburgerLinkStyle = {
     alignSelf: "stretch",
     textDecoration: "none",
     borderRadius: "8px",
+    cursor: "pointer",
     color: MSColorPalette.white,
     backgroundColor: MSColorPalette.primary300,
 }

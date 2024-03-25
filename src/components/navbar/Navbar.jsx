@@ -4,7 +4,7 @@ import { SVGHamburgerMenu, SVGLogOut, SVGMenuSpot } from '../../assets/svg';
 import { Paths } from '../../enums/Paths';
 import { localize } from '../../localization/localize';
 import { useDispatch, useSelector } from 'react-redux';
-import { isMobileDevice, openHamburgerMenu } from '../../store/slices/innerWidthSlice';
+import { openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 import { NavbarRoutes } from '../../enums/NavbarRoutes';
 import { setActiveLink, navbarRouteMapper } from './utils';
 import { brandArea, brandAreaMobile, features, linkStyle, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 export const Navbar = () => {
     const { onSignOut } = useContext(AuthContext)
     const dispatch = useDispatch()
-    const isMobile = useSelector(isMobileDevice)
+    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     const [pathname, setPathname] = useState("");
     const [hoveredItem, setHoveredItem] = useState("");
     const navigate = useNavigate()
@@ -39,7 +39,7 @@ export const Navbar = () => {
                                 <SVGMenuSpot style={logoMobile} />
                                 <MSText style={logoTextMobile}>{localize("MENUSPOT")}</MSText>
                             </MSLink>
-                            <MSContainer style={logOutMobile}><SVGLogOut /></MSContainer>
+                            <MSContainer style={logOutMobile} onClick={handleLogOut}><SVGLogOut /></MSContainer>
                         </MSContainer >
                     </MSContainer >
                     :
@@ -65,7 +65,7 @@ export const Navbar = () => {
                                     ))
                                 }
                                 <MSContainer style={linkStyle}>{localize("Options")}</MSContainer>
-                                <MSContainer style={logOut} onClick={() => handleLogOut()}><SVGLogOut /></MSContainer>
+                                <MSContainer style={logOut} onClick={handleLogOut}><SVGLogOut /></MSContainer>
                             </MSContainer>
                         </MSContainer>
                     </MSContainer >

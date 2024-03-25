@@ -4,26 +4,22 @@ import { CardRestaurant } from '../../../components/restaurantItems'
 import { MSContainer } from '../../../components'
 import { Endpoints } from '../../../constants/Endpoints'
 import { Paths } from '../../../enums/Paths'
-import { componentStyle, containerStyle } from './RestaurantListStyles'
+import { componentStyle, containerStyleMobile } from './RestaurantListStyles'
 
 export const RestaurantList = () => {
     const [restaurantData, setRestaurantData] = useState([])
 
-    const handleRestaurants = async () => {
-        try {
+    useEffect(() => {
+        const handleRestaurants = async () => {
             const response = await get(Endpoints.RESTAURANT_DATA)
             setRestaurantData(response.data)
-        } catch {
-            console.log("veri alınırken hata oluştu.")
         }
-    }
-    useEffect(() => {
         handleRestaurants()
     }, [])
 
     return (
         <MSContainer style={componentStyle}>
-            <MSContainer style={containerStyle}>
+            <MSContainer style={containerStyleMobile}>
                 {
                     restaurantData.map(item => (
                         <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />

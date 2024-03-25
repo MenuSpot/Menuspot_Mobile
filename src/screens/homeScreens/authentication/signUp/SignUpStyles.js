@@ -1,3 +1,4 @@
+import { MSColorPalette } from "../../../../assets/ui"
 import { ColorPalette } from "../../../../assets/ui/ColorPalette"
 import { Fonts } from "../../../../assets/ui/Fonts"
 
@@ -28,6 +29,9 @@ export const inputStyle = {
     borderRadius: "76.565px",
     backgroundColor: "transparent",
     outline: "none"
+}
+export const inputRed = {
+    backgroundColor: "red"
 }
 export const formStyle = {
     display: "flex",
@@ -71,6 +75,14 @@ export const signInLink = {
     fontSize: Fonts.MerriweatherBold25.fontSize,
     fontWeight: Fonts.MerriweatherBold25.fontWeight
 }
+export const errorMessage = {
+    color: MSColorPalette.errorTextColor,
+    paddingLeft: "10px",
+    paddingTop: "3px"
+}
+export const errorInput = {
+    borderColor: MSColorPalette.errorInputColor
+}
 //#endregion
 //#region Small device styles
 export const componentMobileStyle = {
@@ -108,7 +120,7 @@ export const inputMobileStyle = {
     fontFamily: Fonts.MerriweatherRegular200.fontFamily,
     fontSize: Fonts.MerriweatherRegular200.fontSize,
     fontWeight: Fonts.MerriweatherRegular200.fontWeight,
-    padding: "12.977px 42px",
+    padding: "12.977px 52px",
     border: `1px solid ${ColorPalette.white}`,
     borderRadius: "76.565px",
     backgroundColor: "transparent",

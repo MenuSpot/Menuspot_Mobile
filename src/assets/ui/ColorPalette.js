@@ -1,4 +1,6 @@
 export const ColorPalette = {
+    errorTextColor: "#C70039",
+    errorInputColor: "#872341",
     buttonTextColor: "#FFFCF9",
     restaurantBgColor: "#FFFCF9",
     gradientBackground: {

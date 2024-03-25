@@ -2,18 +2,19 @@ import { MSColorPalette, MSFonts } from "../../../assets/ui"
 
 //#region region large device styles
 export const componentStyle = {
-    height: "100%",
+    minHeight: "100%",
     width: "100%",
-    backgroundColor: "MSColorPalette.restaurantBgColor",
+    height: "auto",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "MSColorPalette.restaurantBgColor",
 }
 export const containerStyle = {
     width: "900px",
     marginTop: "24px",
     display: "flex",
-    alignItems: "left",
+    alignItems: "center",
     flexDirection: "column",
     gap: 24,
     flexWrap: "wrap"
@@ -67,12 +68,15 @@ export const productRow = {
     display: "flex",
     flexDirection: "column",
     gap: "24px",
-    margin: "24px 0px"
+    margin: "24px 0px",
+    flexWrap: "wrap",
 }
 export const productCardView1 = {
     display: "flex",
-    gap: "51px",
-    flexWrap: "wrap"
+    justifyContent: "center",
+    gap: "25px",
+    flexWrap: "wrap",
+    padding: "10px"
 }
 export const cardStyleView1 = {
     display: "flex",
@@ -111,7 +115,8 @@ export const productColumn = {
     display: "flex",
     flexDirection: "column",
     gap: "24px",
-    marginTop: "20px"
+    marginTop: "20px",
+    marginBottom: "20px"
 }
 export const productCardView2 = {
     display: "flex",
@@ -125,7 +130,9 @@ export const cardStyleView2 = {
     borderRadius: "8px",
     padding: "12px",
     backgroundColor: MSColorPalette.secondary500,
-    gap: "24px"
+    gap: "24px",
+    alignItems: "center",
+    justifyContent: "center"
 }
 export const cardImageView2 = {
     width: "180px",
@@ -171,7 +178,7 @@ export const containerMobileStyle = {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    gap: 24
+    gap: "24px"
 }
 export const toolbarMobile = {
     display: "flex",

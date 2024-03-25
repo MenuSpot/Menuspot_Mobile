@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
+import { MSColorPalette } from '../../assets/ui';
 
 const AuthInput = (props) => {
     const { type, inputIcon, style, setUserInfo, inputName, placeholder, showPassword, setShowPassword,
-        visiblePassword, hiddenPassword } = props;
+        visiblePassword, hiddenPassword, errorMessage } = props;
     const [inputValue, setInputValue] = useState("");
 
     return (
         <div style={componentStyle}>
+            <div style={inputIconStyle}>{inputIcon}</div>
             <input
                 className='custom-input'
                 type={type}
-                style={style}
+                style={{
+                    ...style,
+                    borderColor: errorMessage ? MSColorPalette.errorInputColor : MSColorPalette.white,
+                }}
                 value={props.children}
                 placeholder={placeholder}
                 autoComplete='off'
@@ -22,7 +27,6 @@ const AuthInput = (props) => {
                     }))
                 }}
             />
-            <div style={inputIconStyle}>{inputIcon}</div>
             <div style={{ ...eyeIconStyle, display: inputValue.length > 0 ? "inline" : "none" }}
                 onClick={() => setShowPassword(!showPassword)}>
                 {
@@ -38,13 +42,15 @@ const AuthInput = (props) => {
 export default AuthInput
 
 const componentStyle = {
-    position: "relative"
+    position: "relative",
+    zIndex: "1"
 }
 const inputIconStyle = {
     position: "absolute",
     top: "50%",
     transform: "translateY(-40%)",
     left: "16px",
+    zIndex: "1",
 }
 const eyeIconStyle = {
     position: "absolute",

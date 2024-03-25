@@ -3,7 +3,6 @@ import { Base64Image, MSContainer, MSText } from '..'
 import { localize } from '../../localization/localize'
 
 const MenuView2Card = ({ CardStyle, CardHeaderStyle, CardImage, cardPriceStyleView2, cardProductDescriptionView2, cardTextArea, item }) => {
-    console.log(item)
     return (
         <MSContainer style={CardStyle}>
             <Base64Image style={CardImage} data={item.imageUrl} alt={item.name} />

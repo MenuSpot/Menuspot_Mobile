@@ -14,13 +14,11 @@ export const Menu = () => {
     const { id, name } = useParams();
 
     const handleMenu = async () => {
-        try {
-            const response = await get(`${Endpoints.MENU_DATA}/${id}`)
-            setData(response.data.categories)
-        } catch {
-            console.log("menü alınırken hata oluştu.")
-        }
+        const response = await get(`${Endpoints.MENU_DATA}/${id}`)
+        setData(response.data.categories)
+        console.log(response)
     }
+
     useEffect(() => {
         handleMenu()
     }, [])

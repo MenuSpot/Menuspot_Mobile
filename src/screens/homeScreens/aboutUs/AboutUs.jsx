@@ -6,11 +6,9 @@ import { localize } from '../../../localization/localize'
 import { SMALL_DEVICE_TRESHOLD } from '../../../constants/Dimension'
 import { titleTeam, descriptionMobileText, descriptionText, imageMobileStyle, list, listItem, listItemMobile, listMobile, name, nameMobile, personalInfo, personalInfoCard, personalInfoCardMobile, personalInfoMobile, title, titleMobile, mobileComponentStyle, component, team, MediumComponentStyle, mediumComponentStyle, } from './AboutUsStyles'
 import { responsiveStyleCreator } from '../../../utils/ResponsiveControl'
-import { screenSize } from '../../../store/slices/innerWidthSlice'
 
 export const AboutUs = () => {
-
-    const windowSize = useSelector(screenSize)
+    const { screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
     //#region states
     const [employeeInfo, setEmployeeInfo] = useState('');
     const [hoverState, setHoverState] = useState(false);
@@ -46,7 +44,7 @@ export const AboutUs = () => {
     //#endregion
 
     return (
-        < MSContainer style={responsiveStyleCreator(windowSize, component, mediumComponentStyle, mobileComponentStyle)} >
+        < MSContainer style={responsiveStyleCreator(windowSize, component, mobileComponentStyle)} >
             {
                 hoverState
                     ?
@@ -102,4 +100,3 @@ export const AboutUs = () => {
         </ MSContainer>
     )
 }
-
