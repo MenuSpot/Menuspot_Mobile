@@ -1,30 +1,35 @@
-import { NavbarRoutes, navbarLogInRoutes } from "../../enums/NavbarRoutes";
-
+import { NavbarRoutes } from "../../enums/NavbarRoutes";
+import { HamburgerLinkStyle, currentLinkForHamburger } from "./hamburgerMenu/HamburgerMenuStyles";
+import { currentLink, linkStyle, onHover } from "./NavbarStyles";
 
 export const navbarRouteMapper = (route) => {
     if (NavbarRoutes[route] === NavbarRoutes.ABOUT_US) {
         return "About Us";
     }
-    else if (NavbarRoutes[route] === NavbarRoutes.DEFAULT) {
-        return "Sign In";
+    else if (NavbarRoutes[route] === NavbarRoutes.RESTAURANTS) {
+        return "Restaurants";
     }
-    else if (navbarLogInRoutes[route] === navbarLogInRoutes.SIGN_OUT) {
-        return "Sign Out"
+    // else if (route === "/AboutUs") {
+    //     return "About Us"
+    // }
+    else if (route === "/") {
+        return "Restaurants"
     }
-    else if (navbarLogInRoutes[route] === navbarLogInRoutes.MENUS) {
-        return "Menus"
-    }
-    else return "Sign Up";
+    else return ""
 }
 
-export const getClassName = (route, activeLink) => {
+export const setActiveLink = (route, pathname, isHovered) => {
     const currentRoute = navbarRouteMapper(route);
-    return (
-        `features-li ${activeLink === currentRoute || (activeLink === "" && currentRoute === "Sign In" || activeLink === "" && currentRoute === "Menus") ? "active" : ""}`
-    )
+    if (pathname === currentRoute) {
+        return currentLink
+    } else if (isHovered === route) {
+        return onHover
+    } else return linkStyle
 }
 
-export const getClassNameForMobile = (route, activeLink) => {
+export const setActiveLinkforHamburger = (route, pathname) => {
     const currentRoute = navbarRouteMapper(route);
-    return `menu-content_ul_li ${activeLink === currentRoute || (activeLink === "" && currentRoute === "Sign In") ? "active" : ""}`
+    if (pathname === currentRoute) {
+        return currentLinkForHamburger
+    } else return HamburgerLinkStyle
 }

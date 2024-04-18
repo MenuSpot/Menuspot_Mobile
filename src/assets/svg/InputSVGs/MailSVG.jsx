@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MailSVG = () => {
+const MailSVG = ({color}) => {
   return (
 
     <svg

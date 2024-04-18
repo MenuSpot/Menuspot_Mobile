@@ -1,29 +1,25 @@
 import React, { createContext, useState } from "react";
 
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [isLogIn, setIsLogin] = useState(true);
     const [userInfo, setUserInfo] = useState({ email: "", userName: "", password: "", rePassword: "" });
+    const [isLogin, setIsLogin] = useState(false)
 
     const onSignIn = (token) => {
-        setIsLogin(true);
-        console.log("giriş yapıldı");
+        setIsLogin(true)
+        localStorage.setItem("token", token)
     };
-    const onSignError = () => {
-        setIsLogin(false);
-        console.log("giriş yapılamadı");
-    };
+
     const onSignOut = () => {
-        setIsLogin(false);
-        console.log("çıkış yapıldı");
+        setIsLogin(false)
+        localStorage.removeItem("token")
     };
-
     const value = {
-        isLogIn, onSignIn, onSignError, onSignOut,
-        userInfo, setUserInfo
+        onSignIn, onSignOut,
+        userInfo, setUserInfo, isLogin
     }
-
     return (
         <AuthContext.Provider value={value}>
             {children}
@@ -32,3 +28,4 @@ const AuthProvider = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+

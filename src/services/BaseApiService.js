@@ -1,43 +1,57 @@
 import axios from 'axios';
+import { errorCodes } from '../constants/ErrorMessages';
 
-const API_BASE_URL = 'https://localhost:7163/api/';
+const API_BASE_URL = 'http://menuspotapiv2.runasp.net/api/';
 
-const api = axios.create({
+let api = axios.create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
     },
-});
+})
 
-const handleErrors = (error) => {
-    if (error.response) {
-        console.error('Response Error:', error.response.status, error.response.data);
-        return Promise.reject(error.response.data);
-    } else if (error.request) {
-        console.error('Request Error:', error.request);
-        return Promise.reject('No response from the server');
-    } else {
-        console.error('Error:', error.message, error);
-        return Promise.reject(error.message);
-    }
-};
+const getErrorData = (errorCode) => {
+    if (errorCode === 200) {
+        return false
+    } return errorCodes[errorCode]
+}
 
 const get = async (url, params) => {
+    if (localStorage.getItem('token')) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+    }
     try {
         const response = await api.get(url, params);
+        if (!response.data.data) {
+            const error = getErrorData(response.data.responseCode)
+            if (error) {
+                return { title: error.title, description: error.body, buttonText: "okay." }
+            }
+            return { title: "woops!", description: "theres been an error blabla...", buttonText: "okay." }
+        }
         return response.data;
     } catch (error) {
-        return handleErrors(error);
+        return console.log(error)
     }
 };
 
 const post = async (url, params) => {
+    if (localStorage.getItem('token')) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+    }
     try {
         const response = await api.post(url, params);
+        if (!response.data.data) {
+            const error = getErrorData(response.data.responseCode)
+            if (error) {
+                return { title: error.title, description: error.body, buttonText: "okay." }
+            }
+            return { title: "woops!", description: "theres been an error, please try again later...", buttonText: "okay." }
+        }
         return response.data;
     } catch (error) {
-        return handleErrors(error);
+        return console.error(error);
     }
 };
 
-export { get, post, handleErrors };
+export { get, post };

@@ -56,10 +56,16 @@ export const Fonts = {
         fontSize: 32,
         fontWeight: "400"
     },
+    MerriweatherItalic25: {
+        fontFamily: MERRIWEATHER,
+        fontStyle: "italic",
+        fontSize: 12,
+        fontWeight: "400",
+    },
     MerriweatherItalic50: {
         fontFamily: MERRIWEATHER,
         fontStyle: "italic",
         fontSize: 20,
-        fontWeight: "400"
+        fontWeight: "400",
     }
 }

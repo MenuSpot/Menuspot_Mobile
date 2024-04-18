@@ -1,10 +1,9 @@
 import React from 'react'
 
-const NavbarLogoSVG = () => {
+const MenuSpotLogo = ({ style }) => {
     return (
         <svg
-            width="74.61"
-            height="48px"
+            style={style}
             viewBox="0 0 212 139"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -49,4 +48,4 @@ const NavbarLogoSVG = () => {
     )
 }
 
-export default NavbarLogoSVG
+export default MenuSpotLogo

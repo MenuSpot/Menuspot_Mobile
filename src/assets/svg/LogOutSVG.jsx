@@ -1,8 +1,9 @@
 import React from 'react'
 
-const LogOutSVG = () => {
+const LogOutSVG = ({ style }) => {
     return (
         <svg
+            style={style}
             width="24"
             height="24"
             viewBox="0 0 24 24"
