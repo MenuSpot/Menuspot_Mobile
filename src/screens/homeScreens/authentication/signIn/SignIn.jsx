@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SVGEyeInvisible, SVGEyeVisible, SVGFoodSignIn, SVGPassword, SVGSignScreenMobile, SVGUser } from '../../../../assets/svg/index'
-import { MSButton, MSContainer, MSLink, MSSpan, MSText } from '../../../../components'
+import { MSButton, MSContainer, MSLink, MSText } from '../../../../components'
 import { Paths } from '../../../../enums/Paths'
 import { AuthContext } from '../../../../context/AuthContext'
 import { post } from '../../../../services/BaseApiService'
@@ -34,7 +34,6 @@ export const SignIn = () => {
         if (token) {
             onSignIn(token)
         }
-        console.log(response)
     }
 
     useEffect(() => {

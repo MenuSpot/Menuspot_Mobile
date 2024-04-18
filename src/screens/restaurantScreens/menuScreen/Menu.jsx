@@ -16,7 +16,6 @@ export const Menu = () => {
     const handleMenu = async () => {
         const response = await get(`${Endpoints.MENU_DATA}/${id}`)
         setData(response.data.categories)
-        console.log(response)
     }
 
     useEffect(() => {

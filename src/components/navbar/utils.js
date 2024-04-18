@@ -9,9 +9,9 @@ export const navbarRouteMapper = (route) => {
     else if (NavbarRoutes[route] === NavbarRoutes.RESTAURANTS) {
         return "Restaurants";
     }
-    else if (route === "/AboutUs") {
-        return "About Us"
-    }
+    // else if (route === "/AboutUs") {
+    //     return "About Us"
+    // }
     else if (route === "/") {
         return "Restaurants"
     }

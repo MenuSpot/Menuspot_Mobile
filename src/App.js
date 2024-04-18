@@ -4,17 +4,17 @@ import { Paths } from './enums/Paths';
 import { MSContainer, MSModal } from "./components";
 import Footer from "./components/footer/Footer";
 import Navbar from './components/navbar/Navbar';
-import { AuthContext } from "./context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { AboutUsScreen, SignInScreen, SignUpScreen } from "./screens/homeScreens";
 import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import HamburgerMenu from "./components/navbar/hamburgerMenu/HamburgerMenu";
 import { changeScreenSize } from "./store/slices/innerWidthSlice";
+import { AuthContext } from "./context/AuthContext";
 
 const App = () => {
-  const { isHamburgerOpen: hamburgerMenu } = useSelector((state) => state.innerWidthSlice)
-  const { isLogIn } = useContext(AuthContext)
   const dispatch = useDispatch()
+  const Context = useContext(AuthContext)
+  const { isHamburgerOpen: hamburgerMenu } = useSelector((state) => state.innerWidthSlice)
   const { isVisible: isErrorMessageVisible } = useSelector((state) => state.errorMessageSlice)
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const App = () => {
         isErrorMessageVisible && <MSModal />
       }
       {
-        localStorage.getItem("token") ?
+        localStorage.getItem("token") || Context.isLogin ?
           <>
             <Navbar />
             <HamburgerMenu style={{ display: hamburgerMenu ? "flex" : "none" }} />
@@ -64,8 +64,7 @@ const styles = {
 
 //TODOS
 
-
 // view1 menü için cardlara flip özelliği ve arkasına bakma özelliği getirilmeli.
 // skeleton loading yapılmalı.
 // menü ekranında iken navbarda restaurants aktif olmamalı.
-// Medium device için medium trashold'a göre mobil responsive düzenlemesi yapılabilir.
+// About Us Mobile görünümde fonksiyonabiliteyi düzenle.

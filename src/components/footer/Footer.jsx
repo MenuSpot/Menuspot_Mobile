@@ -8,15 +8,15 @@ const Footer = () => {
         <MSContainer style={styles.container}>
             <MSContainer style={styles.linkBox}>
                 <SVGInstagram />
-                <MSText>MenuSpot</MSText>
+                <MSText>Instagram</MSText>
             </MSContainer>
             <MSContainer style={styles.linkBox}>
                 <SVGLinkedn />
-                <MSText>MenuSpot</MSText>
+                <MSText>Linkedn</MSText>
             </MSContainer>
             <MSContainer style={styles.linkBox}>
                 <SVGTwitter />
-                <MSText>MenuSpot</MSText>
+                <MSText>Twitter</MSText>
             </MSContainer>
         </MSContainer>
     )
@@ -34,7 +34,7 @@ const styles = {
         aligItems: "center",
         gap: "15px",
         postition: "relative",
-        bottom: 0,  
+        bottom: 0,
     },
     linkBox: {
         display: "flex",

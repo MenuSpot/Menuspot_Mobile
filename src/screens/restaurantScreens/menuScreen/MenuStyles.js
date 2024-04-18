@@ -7,7 +7,6 @@ export const componentStyle = {
     height: "auto",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "MSColorPalette.restaurantBgColor",
 }
 export const containerStyle = {
