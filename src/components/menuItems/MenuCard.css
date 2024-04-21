@@ -1,0 +1,31 @@
+.container {
+    width: 180px;
+    height: 250px;
+}
+
+.card {
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    position: absolute;
+    backface-visibility: hidden;
+
+}
+
+.front {}
+
+.back {
+    transform: rotateY(180deg);
+    display: "flex";
+    height: 100%;
+    width: 100%;
+}
+
+.container:hover>.card {
+    cursor: pointer;
+    transform: rotateY(180deg)
+}

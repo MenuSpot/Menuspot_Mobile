@@ -4,9 +4,12 @@ import { Endpoints } from '../../../constants/Endpoints';
 import { get } from '../../../services/BaseApiService';
 import { MSContainer, MSText } from '../../../components';
 import { SVGFilterColumn, SVGFilterRow } from '../../../assets/svg';
-import MenuCard from '../../../components/restaurantItems/MenuCard';
-import MenuView2Card from '../../../components/restaurantItems/MenuView2Card';
-import { cardFooterStyleView1, cardHeaderStyleView1, cardHeaderStyleView2, cardImageView1, cardImageView2, cardPriceStyleView2, cardProductDescriptionView2, cardStyleView1, cardStyleView2, cardTextArea, categoryName, chosenView, componentStyle, containerStyle, filter, productCardView1, productCardView2, productColumn, productRow, restaurantName, toolbar } from './MenuStyles';
+import MenuCard from '../../../components/restaurantItems/menuItems/ProductCard';
+import MenuView2Card from '../../../components/restaurantItems/menuItems/ProductFullCard';
+import { MSColorPalette, MSFonts } from '../../../assets/ui';
+import Toolbar from '../../../components/restaurantItems/menuItems/Toolbar';
+import View1 from '../../../components/restaurantItems/menuItems/View1';
+import View2 from '../../../components/restaurantItems/menuItems/View2';
 
 export const Menu = () => {
     const [isRow, setIsRow] = useState(true);
@@ -23,76 +26,75 @@ export const Menu = () => {
     }, [])
 
     return (
-        <MSContainer style={componentStyle}>
-            <MSContainer style={containerStyle}>
-                <MSContainer style={toolbar}>
-                    <MSText style={restaurantName}>
-                        {name}
-                    </MSText>
-                    <MSContainer style={filter}>
-                        <MSContainer style={isRow ? chosenView : {}}>
-                            <SVGFilterRow
-                                isChosen={isRow}
-                                onClick={() => setIsRow(true)} />
-                        </MSContainer>
-                        <MSContainer
-                            style={isRow ? {} : chosenView}>
-                            <SVGFilterColumn
-                                isChosen={isRow}
-                                onClick={() => setIsRow(false)} />
-                        </MSContainer>
-                    </MSContainer>
-                </MSContainer >
+        <MSContainer style={styles.componentStyle}>
+            <MSContainer style={styles.containerStyle}>
+                <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
                 <MSContainer>
                     {
-                        isRow ?
-                            data.map(categories => (
-                                <MSContainer key={categories.categoryId} style={productRow}>
-                                    <MSText style={categoryName}>
-                                        {categories.name}
-                                    </MSText>
-                                    <MSContainer style={productCardView1}>
-                                        {
-                                            (categories.products).map((item, index) => (
-                                                <MenuCard
-                                                    key={index}
-                                                    item={item}
-                                                    CardStyle={cardStyleView1}
-                                                    CardHeaderStyle={cardHeaderStyleView1}
-                                                    CardImage={cardImageView1}
-                                                    CardFooterStyle={cardFooterStyleView1}
-                                                />
-                                            ))
-                                        }
-                                    </MSContainer>
-                                </MSContainer>
-                            )) :
-                            data.map(categories => (
-                                <MSContainer key={categories.categoryId} style={productColumn}>
-                                    <MSText style={categoryName}>
-                                        {categories.name}
-                                    </MSText>
-                                    <MSContainer style={productCardView2}>
-                                        {
-                                            (categories.products).map((item, index) => (
-                                                <MenuView2Card
-                                                    key={index}
-                                                    item={item}
-                                                    CardStyle={cardStyleView2}
-                                                    CardImage={cardImageView2}
-                                                    CardHeaderStyle={cardHeaderStyleView2}
-                                                    cardProductDescriptionView2={cardProductDescriptionView2}
-                                                    cardPriceStyleView2={cardPriceStyleView2}
-                                                    cardTextArea={cardTextArea}
-                                                />
-                                            ))
-                                        }
-                                    </MSContainer>
-                                </MSContainer>
-                            ))
-                    }
+                        data.map(categories => (
+                            isRow ?
+                                <View1 categories={categories} />
+                                :
+                                <View2 categories={categories} />
+                        ))}
+
                 </MSContainer>
             </MSContainer>
         </MSContainer >
     )
+}
+
+const styles = {
+
+    componentStyle: {
+        minHeight: "100%",
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        justifyContent: "center",
+        backgroundColor: "MSColorPalette.restaurantBgColor",
+    },
+    containerStyle: {
+        width: "900px",
+        marginTop: "24px",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: 24,
+        flexWrap: "wrap"
+    },
+
+
+
+
+    //#endregion
+
+    //#region small device styles
+    containerMobileStyle: {
+        width: "100%",
+        marginTop: "24px",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "24px"
+    },
+    toolbarMobile: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: MSColorPalette.secondary300,
+        height: "62px",
+        padding: "0 16px",
+        borderRadius: "8px"
+    },
+    menuRowMobile: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "10px",
+    },
+    menuColumnMobile: {
+
+    }
 }

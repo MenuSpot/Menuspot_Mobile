@@ -1,5 +1,5 @@
 import React from 'react'
-import Base64Image from '../Base64Image'
+import Base64Image from '../customs/Base64Image'
 import { MSLink, MSText } from '..';
 import { MSColorPalette, MSFonts } from '../../assets/ui';
 

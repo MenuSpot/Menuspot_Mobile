@@ -1,12 +1,8 @@
 import React, { useContext, useEffect } from "react"
-import { Route, Routes } from 'react-router-dom';
-import { Paths } from './enums/Paths';
 import { MSContainer, MSModal } from "./components";
 import Footer from "./components/footer/Footer";
 import Navbar from './components/navbar/Navbar';
 import { useDispatch, useSelector } from "react-redux";
-import { AboutUsScreen, SignInScreen, SignUpScreen } from "./screens/homeScreens";
-import { MenuScreen, RestaurantListScreen } from "./screens/restaurantScreens";
 import HamburgerMenu from "./components/navbar/hamburgerMenu/HamburgerMenu";
 import { changeScreenSize } from "./store/slices/innerWidthSlice";
 import { AuthContext } from "./context/AuthContext";
@@ -58,7 +54,8 @@ const styles = {
 }
 
 //TODOS
-// view1 menü için cardlara flip özelliği ve arkasına bakma özelliği getirilmeli.
+
+//refactoring yap. Gereksiz style proplarını sil, spesific componentler oluştur. Style işlemlerini gereklilerini css dosyasına yaz. card componentini tekrar yap.
 // skeleton loading yapılmalı.
 // menü ekranında iken navbarda restaurants aktif olmamalı.
 // About Us Mobile görünümde fonksiyonabiliteyi düzenle.
