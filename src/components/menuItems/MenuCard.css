@@ -36,7 +36,15 @@
     transform: rotateY(180deg);
 }
 
-.container:hover>.card {
-    cursor: pointer;
-    transform: rotateY(180deg)
+@media screen and (width>1500px) {
+    .container:hover>.card {
+        cursor: pointer;
+        transform: rotateY(180deg)
+    }
+}
+
+@media screen and (width<1500px) {
+    .flipped {
+        transform: rotateY(180deg)
+    }
 }

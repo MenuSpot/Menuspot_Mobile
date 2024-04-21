@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Base64Image, MSText } from ".."
 import { MSColorPalette, MSFonts } from "../../assets/ui"
 import { ColorPalette } from "../../assets/ui/ColorPalette"
@@ -6,11 +7,15 @@ import "./MenuCard.css"
 
 
 const ProductCard = ({ item }) => {
+    const [isFlipped, setIsFlipped] = useState(false)
+
+    const handleToggle = () => {
+        setIsFlipped(!isFlipped)
+    }
 
     return (
-
         <div className='container' style={styles.container}>
-            <div className='card' style={styles.card}>
+            <div className={`card ${isFlipped ? "flipped" : ""}`} style={styles.card} onClick={handleToggle}>
                 <div className="front">
                     <MSText style={styles.cardHeaderStyle}>{localize(item.name)}</MSText>
                     <Base64Image style={styles.cardImageView1} data={item.imageUrl} alt={item.name} />
@@ -21,7 +26,7 @@ const ProductCard = ({ item }) => {
                     <MSText style={styles.description}>{localize(item.description)}</MSText>
                 </div>
             </div>
-        </div>
+        </div >
 
 
     )

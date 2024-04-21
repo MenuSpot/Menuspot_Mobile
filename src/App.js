@@ -57,7 +57,8 @@ const styles = {
 
 
 //refactoring yap!
-// style dosyalarını düzenle, gereksiz yere ayrı dosyada tutma spesifik stylelar kendi dosyasında olsun, gereken yerleri tekrar yaz
+
+//ekran boyutunu dinamik hesaplamayı düzenle, daha iyi çalıştır.
 // skeleton loading yapılmalı.
 // menü ekranında iken navbarda restaurants aktif olmamalı.
 // About Us Mobile görünümde fonksiyonabiliteyi düzenle.
