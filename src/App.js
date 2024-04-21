@@ -57,7 +57,6 @@ const styles = {
 
 
 //refactoring yap!
-//flip özelliğini geliştir, gerekirse kartları ve stylelarını yeniden oluştur.
 // style dosyalarını düzenle, gereksiz yere ayrı dosyada tutma spesifik stylelar kendi dosyasında olsun, gereken yerleri tekrar yaz
 // skeleton loading yapılmalı.
 // menü ekranında iken navbarda restaurants aktif olmamalı.
