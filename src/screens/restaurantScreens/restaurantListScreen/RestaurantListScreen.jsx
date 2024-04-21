@@ -12,7 +12,7 @@ export const RestaurantList = () => {
     useEffect(() => {
         const handleRestaurants = async () => {
             const response = await get(Endpoints.RESTAURANT_DATA)
-            setRestaurantData(response.data)
+            setRestaurantData(response.data);
         }
         handleRestaurants()
     }, [])

@@ -20,8 +20,8 @@ export const Navbar = () => {
     const navigate = useNavigate()
 
     const handleLogOut = () => {
-        navigate(Paths.DEFAULT)
         onSignOut()
+        navigate(Paths.DEFAULT)
     }
     useEffect(() => {
         const url = window.location.pathname

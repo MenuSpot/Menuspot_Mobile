@@ -9,32 +9,44 @@ const ProductCard = ({ item }) => {
 
     return (
 
-        <div className='container'>
-            <div className='card'>
+        <div className='container' style={styles.container}>
+            <div className='card' style={styles.card}>
                 <div className="front">
-                    <MSText style={styles.cardHeaderStyleView1}>{localize(item.name)}</MSText>
+                    <MSText style={styles.cardHeaderStyle}>{localize(item.name)}</MSText>
                     <Base64Image style={styles.cardImageView1} data={item.imageUrl} alt={item.name} />
-                    <MSText style={styles.cardFooterStyleView1}>{localize("$" + item.price)}</MSText>
+                    <MSText style={styles.cardFooterStyle}>{localize("$" + item.price)}</MSText>
                 </div>
                 <div className="back" style={styles.cardbackFace}>
-                    <MSText style={styles.carHeaderBackFace}>{localize(item.name)}</MSText>
-                    <MSText>{localize(item.description)}</MSText>
+                    <MSText style={styles.cardHeaderStyle}>{localize(item.name)}</MSText>
+                    <MSText style={styles.description}>{localize(item.description)}</MSText>
                 </div>
             </div>
         </div>
+
 
     )
 }
 export default ProductCard
 
+
+
 const styles = {
-    cardHeaderStyleView1: {
+    container: {
+        width: "200px",
+        height: "250px"
+    },
+    card: {
+        borderRadius: "8px",
+    },
+    cardHeaderStyle: {
         display: "flex",
+        textAlign: "center",
         justifyContent: "center",
         alignIitems: "center",
+        borderTopLeftRadius: "8px",
+        borderTopRightRadius: "8px",
         width: "100%",
-        height: "40px",
-        padding: "8px 12px",
+        padding: "12px",
         backgroundColor: MSColorPalette.secondary300,
         fontFamily: MSFonts.MerriweatherLight100.fontFamily,
         fontSize: MSFonts.MerriweatherLight100.fontSize,
@@ -43,33 +55,104 @@ const styles = {
     cardImageView1: {
         width: "100%",
         height: "170px",
-
     },
-    cardFooterStyleView1: {
+    cardFooterStyle: {
         display: "flex",
         width: "100%",
-        height: "30px",
+        height: "40px",
+        borderRadius: "8px",
         padding: "8px 12px",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: MSColorPalette.secondary300
+        backgroundColor: MSColorPalette.secondary300,
     },
     carHeaderBackFace: {
         display: "flex",
         justifyContent: "center",
         alignIitems: "center",
-        padding: "8px 12px",
         backgroundColor: MSColorPalette.primary500,
         color: ColorPalette.secondary200,
         fontFamily: MSFonts.MerriweatherLight100.fontFamily,
         fontSize: MSFonts.MerriweatherLight100.fontSize,
         fontWeight: MSFonts.MerriweatherLight100.fontWeight,
-        marginBottom: 10,
-        borderRadius: 10
     },
     cardbackFace: {
-        paddingTop: 10,
-        padding: 20,
-        backgroundColor: ColorPalette.secondary500,
+        backgroundColor: ColorPalette.primary400,
+        borderRadius: "8px"
+    },
+    description: {
+        padding: 15
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // card: {
+    //     borderRadius: "8px",
+    // },
+    // cardHeaderStyleView1: {
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignIitems: "center",
+    //     width: "100%",
+    //     height: "40px",
+    //     padding: "8px 12px",
+    //     backgroundColor: MSColorPalette.secondary300,
+    //     fontFamily: MSFonts.MerriweatherLight100.fontFamily,
+    //     fontSize: MSFonts.MerriweatherLight100.fontSize,
+    //     fontWeight: MSFonts.MerriweatherLight100.fontWeight,
+    // },
+    // cardImageView1: {
+    //     width: "100%",
+    //     height: "170px",
+    // },
+    // cardFooterStyleView1: {
+    //     display: "flex",
+    //     width: "100%",
+    //     height: "30px",
+    //     padding: "8px 12px",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //     backgroundColor: MSColorPalette.secondary300,
+    // },
+    // carHeaderBackFace: {
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignIitems: "center",
+    //     padding: "8px 12px",
+    //     backgroundColor: MSColorPalette.primary500,
+    //     color: ColorPalette.secondary200,
+    //     fontFamily: MSFonts.MerriweatherLight100.fontFamily,
+    //     fontSize: MSFonts.MerriweatherLight100.fontSize,
+    //     fontWeight: MSFonts.MerriweatherLight100.fontWeight,
+    //     marginBottom: 10,
+    // },
+    // cardbackFace: {
+    //     paddingTop: 10,
+    //     padding: 20,
+    //     backgroundColor: ColorPalette.secondary500,
+    // }
 }
