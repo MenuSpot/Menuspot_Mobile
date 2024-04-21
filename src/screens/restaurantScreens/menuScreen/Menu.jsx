@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Endpoints } from '../../../constants/Endpoints';
 import { get } from '../../../services/BaseApiService';
-import { MSContainer, MSText } from '../../../components';
-import { SVGFilterColumn, SVGFilterRow } from '../../../assets/svg';
-import MenuCard from '../../../components/restaurantItems/menuItems/ProductCard';
-import MenuView2Card from '../../../components/restaurantItems/menuItems/ProductFullCard';
-import { MSColorPalette, MSFonts } from '../../../assets/ui';
-import Toolbar from '../../../components/restaurantItems/menuItems/Toolbar';
-import View1 from '../../../components/restaurantItems/menuItems/View1';
-import View2 from '../../../components/restaurantItems/menuItems/View2';
+import { MSContainer } from '../../../components';
+import { MSColorPalette } from '../../../assets/ui';
+
+import View1 from '../../../components/menuItems/View1';
+import View2 from '../../../components/menuItems/View2';
+import Toolbar from '../../../components/menuItems/Toolbar';
 
 export const Menu = () => {
     const [isRow, setIsRow] = useState(true);
@@ -45,7 +43,6 @@ export const Menu = () => {
 }
 
 const styles = {
-
     componentStyle: {
         minHeight: "100%",
         width: "100%",
@@ -63,12 +60,6 @@ const styles = {
         gap: 24,
         flexWrap: "wrap"
     },
-
-
-
-
-    //#endregion
-
     //#region small device styles
     containerMobileStyle: {
         width: "100%",
@@ -93,8 +84,6 @@ const styles = {
         alignItems: "center",
         flexWrap: "wrap",
         gap: "10px",
-    },
-    menuColumnMobile: {
-
     }
+    //#endregion
 }

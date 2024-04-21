@@ -1,8 +1,6 @@
-import React from 'react'
-import { Base64Image, MSText } from '../..'
-import { localize } from '../../../localization/localize';
-import { MSColorPalette, MSFonts } from '../../../assets/ui';
-import "./MenuCard.css"
+import { Base64Image, MSText } from ".."
+import { MSColorPalette, MSFonts } from "../../assets/ui"
+import { localize } from "../../localization/localize"
 
 const ProductCard = ({ item }) => {
 

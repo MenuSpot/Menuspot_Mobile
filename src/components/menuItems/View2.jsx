@@ -1,6 +1,6 @@
-import { MSColorPalette, MSFonts } from "../../../assets/ui"
-import { MSContainer, MSText } from "../.."
-import MenuView2Card from "./ProductFullCard"
+import { MSContainer, MSText } from ".."
+import { MSColorPalette, MSFonts } from "../../assets/ui"
+import ProductFullCard from "./ProductFullCard"
 
 const View2 = ({ categories }) => {
     return (
@@ -11,7 +11,7 @@ const View2 = ({ categories }) => {
             <MSContainer style={styles.productColumn}>
                 {
                     (categories.products).map((item, index) => (
-                        <MenuView2Card
+                        <ProductFullCard
                             key={index}
                             item={item}
                         />

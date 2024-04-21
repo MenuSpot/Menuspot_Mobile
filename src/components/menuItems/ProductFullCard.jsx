@@ -1,7 +1,7 @@
-import React from 'react'
-import { Base64Image, MSContainer, MSText } from '../..'
-import { localize } from '../../../localization/localize'
-import { MSColorPalette, MSFonts } from '../../../assets/ui'
+import { Base64Image, MSContainer, MSText } from ".."
+import { MSColorPalette, MSFonts } from "../../assets/ui"
+import { localize } from "../../localization/localize"
+
 
 const ProductFullCard = ({ item }) => {
     return (

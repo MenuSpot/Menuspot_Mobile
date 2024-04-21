@@ -1,6 +1,7 @@
-import { SVGFilterColumn, SVGFilterRow } from "../../../assets/svg"
-import { MSColorPalette, MSFonts } from "../../../assets/ui"
-import { MSContainer, MSText } from "../.."
+import { MSContainer, MSText } from ".."
+import { SVGFilterColumn, SVGFilterRow } from "../../assets/svg"
+import { MSColorPalette, MSFonts } from "../../assets/ui"
+
 
 const Toolbar = ({ isRow, setIsRow, name }) => {
     return (

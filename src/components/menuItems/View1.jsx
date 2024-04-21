@@ -1,6 +1,7 @@
-import { MSColorPalette, MSFonts } from "../../../assets/ui"
-import { MSContainer, MSText } from "../.."
-import MenuCard from "./ProductCard"
+import { MSContainer, MSText } from ".."
+import { MSColorPalette, MSFonts } from "../../assets/ui"
+import ProductCard from "./ProductCard"
+
 
 const View1 = ({ categories }) => {
     return (
@@ -11,7 +12,7 @@ const View1 = ({ categories }) => {
             <MSContainer style={styles.productCardView1}>
                 {
                     (categories.products).map((item, index) => (
-                        <MenuCard
+                        <ProductCard
                             key={index}
                             item={item}
                         />
