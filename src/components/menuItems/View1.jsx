@@ -3,6 +3,7 @@ import { MSColorPalette, MSFonts } from "../../assets/ui"
 import ProductCard from "./ProductCard"
 
 
+
 const View1 = ({ categories }) => {
     return (
         <MSContainer key={categories.categoryId} style={styles.productRow}>

@@ -1,5 +1,11 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
-    width: 180px;
+    width: 200px;
     height: 250px;
 }
 
@@ -7,13 +13,19 @@
     position: relative;
     transition: transform 1500ms;
     transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .front,
 .back {
     position: absolute;
     backface-visibility: hidden;
-
+    height: 100%;
+    width: 100%;
 }
 
 .front {}
