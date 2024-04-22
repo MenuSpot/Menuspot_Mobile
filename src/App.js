@@ -56,10 +56,11 @@ const styles = {
 //TODOS
 
 
-//refactoring yap!
-
-//ekran boyutunu dinamik hesaplamayı düzenle, daha iyi çalıştır.
 // skeleton loading yapılmalı.
+
+
+//refactoring yap!
+//ekran boyutunu dinamik hesaplamayı düzenle, daha iyi çalıştır.
 // menü ekranında iken navbarda restaurants aktif olmamalı.
 // About Us Mobile görünümde fonksiyonabiliteyi düzenle.
 // Readme dosyasının güncellenmesi 
