@@ -3,15 +3,15 @@ import "./Skeleton.css"
 
 const RectangleSkeleton = () => {
     return (
-        <div style={styles.cardStyle}>
-            <div className='imageLoading' style={styles.cardImage} />
-            <div style={styles.cardTextArea}>
-                <div className='titleLoading' style={styles.header}></div>
-                <div className='titleLoading' style={styles.description}></div>
-                <div className='titleLoading' style={styles.description}></div>
-                <div className='titleLoading' style={styles.price}></div>
+            <div style={styles.cardStyle}>
+                <div className='imageLoading' style={styles.cardImage} />
+                <div style={styles.cardTextArea}>
+                    <div className='titleLoading' style={styles.header}></div>
+                    <div className='titleLoading' style={styles.description}></div>
+                    <div className='titleLoading' style={styles.description}></div>
+                    <div className='titleLoading' style={styles.price}></div>
+                </div>
             </div>
-        </div>
     )
 }
 
@@ -20,6 +20,7 @@ export default RectangleSkeleton
 const styles = {
     cardStyle: {
         display: "flex",
+        width: "100%",
         borderRadius: "8px",
         padding: "12px",
         gap: "24px",

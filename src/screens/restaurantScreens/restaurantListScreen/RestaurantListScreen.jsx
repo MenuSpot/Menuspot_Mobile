@@ -5,7 +5,6 @@ import { MSContainer } from '../../../components'
 import { Endpoints } from '../../../constants/Endpoints'
 import { Paths } from '../../../enums/Paths'
 import { MSColorPalette } from '../../../assets/ui'
-import CardSkeleton from '../../../components/loadingOverlay/CardSkeleton'
 import { renderSkeletonCard } from '../../../utils/loadingRenderer'
 
 export const RestaurantList = () => {
@@ -25,7 +24,7 @@ export const RestaurantList = () => {
         <MSContainer style={styles.component}>
             <MSContainer style={styles.container}>
                 {
-                    isLoading ? renderSkeletonCard(20) :
+                    isLoading ? renderSkeletonCard(20, "restaurant") :
                         <>
                             {
                                 restaurantData.map(item => (

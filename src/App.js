@@ -56,7 +56,8 @@ const styles = {
 //TODOS
 
 
-// skeleton loading yapılmalı.
+// kategoriler için de skeleton animasyonu ekle.
+// card animasyonunu column'daki gibi yap.
 
 
 //refactoring yap!

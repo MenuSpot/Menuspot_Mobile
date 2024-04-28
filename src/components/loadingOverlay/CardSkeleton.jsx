@@ -1,10 +1,10 @@
 import "./Skeleton.css"
 
-const CardSkeleton = () => {
+const CardSkeleton = ({ type }) => {
     return (
-        <div className="cardLoading" style={styles.cardStyle}>
+        <div className="cardLoading" style={type === "restaurant" ? styles.resCard : styles.productCard}>
             <div className="titleLoading" style={styles.titleStyle}></div>
-            <div className="imageLoading" style={styles.imageStyle}></div>
+            <div className="imageLoading" style={type === "restaurant" ? styles.resImage : styles.productImage}></div>
             <div className="titleLoading" style={styles.titleStyle}></div>
         </div>
     )
@@ -13,7 +13,7 @@ const CardSkeleton = () => {
 export default CardSkeleton
 
 const styles = {
-    cardStyle: {
+    resCard: {
         height: "240px",
         width: "180px",
         display: "flex",
@@ -22,10 +22,27 @@ const styles = {
         cursor: "pointer",
         textDecoration: "none",
         borderRadius: "8px",
-        overflow: "hidden",
+        overflow: "hidden"
     },
-    imageStyle: {
+    resImage: {
         width: "180px",
+        height: "200px",
+    },
+    productCard: {
+        height: "240px",
+        width: "205px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: "24px",
+        cursor: "pointer",
+        textDecoration: "none",
+        borderRadius: "8px",
+        overflow: "hidden"
+    },
+    productImage: {
+        width: "100%",
         height: "200px",
     },
     titleStyle: {

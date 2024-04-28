@@ -4,7 +4,6 @@ import { Endpoints } from '../../../constants/Endpoints';
 import { get } from '../../../services/BaseApiService';
 import { MSContainer } from '../../../components';
 import { MSColorPalette } from '../../../assets/ui';
-
 import View1 from '../../../components/menuItems/View1';
 import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
@@ -28,14 +27,16 @@ export const Menu = () => {
 
     return (
         <MSContainer style={styles.componentStyle}>
-            <MSContainer style={styles.containerStyle}>
+            <MSContainer style={isRow ? styles.containerRow : styles.containerCol}>
                 <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
-                    {
-                        data.map(categories => (
-                            isRow ? <View1 categories={categories} /> :
-                                <View2 categories={categories} />
-                        ))
-                    }
+                {
+                    isLoading && isRow ? renderSkeletonCard(20, "menu") :
+                        isLoading && !isRow ? renderRectangleSkeleton(20) :
+                            data.map(categories => (
+                                isRow ? <View1 categories={categories} /> :
+                                    <View2 categories={categories} />
+                            ))
+                }
             </MSContainer>
         </MSContainer >
     )
@@ -50,14 +51,24 @@ const styles = {
         justifyContent: "center",
         backgroundColor: "MSColorPalette.restaurantBgColor",
     },
-    containerStyle: {
+    containerRow: {
         width: "900px",
         marginTop: "24px",
         display: "flex",
         alignItems: "center",
-        flexDirection: "column",
+        justifyContent: "center",
         gap: 24,
         flexWrap: "wrap"
+    },
+    containerCol: {
+        width: "900px",
+        marginTop: "24px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: 24,
+        flexWrap: "wrap",
     },
     //#region small device styles
     containerMobileStyle: {
