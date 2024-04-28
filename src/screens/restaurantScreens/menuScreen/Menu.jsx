@@ -8,15 +8,18 @@ import { MSColorPalette } from '../../../assets/ui';
 import View1 from '../../../components/menuItems/View1';
 import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
+import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
 
 export const Menu = () => {
     const [isRow, setIsRow] = useState(true);
     const [data, setData] = useState([])
     const { id, name } = useParams();
+    const [isLoading, setIsLoading] = useState(true)
 
     const handleMenu = async () => {
         const response = await get(`${Endpoints.MENU_DATA}/${id}`)
         setData(response.data.categories)
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -27,16 +30,12 @@ export const Menu = () => {
         <MSContainer style={styles.componentStyle}>
             <MSContainer style={styles.containerStyle}>
                 <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
-                <MSContainer>
                     {
                         data.map(categories => (
-                            isRow ?
-                                <View1 categories={categories} />
-                                :
+                            isRow ? <View1 categories={categories} /> :
                                 <View2 categories={categories} />
-                        ))}
-
-                </MSContainer>
+                        ))
+                    }
             </MSContainer>
         </MSContainer >
     )

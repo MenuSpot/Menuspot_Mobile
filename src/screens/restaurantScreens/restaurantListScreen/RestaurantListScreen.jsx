@@ -5,14 +5,18 @@ import { MSContainer } from '../../../components'
 import { Endpoints } from '../../../constants/Endpoints'
 import { Paths } from '../../../enums/Paths'
 import { MSColorPalette } from '../../../assets/ui'
+import CardSkeleton from '../../../components/loadingOverlay/CardSkeleton'
+import { renderSkeletonCard } from '../../../utils/loadingRenderer'
 
 export const RestaurantList = () => {
     const [restaurantData, setRestaurantData] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const handleRestaurants = async () => {
             const response = await get(Endpoints.RESTAURANT_DATA)
             setRestaurantData(response.data);
+            setIsLoading(false)
         }
         handleRestaurants()
     }, [])
@@ -21,11 +25,17 @@ export const RestaurantList = () => {
         <MSContainer style={styles.component}>
             <MSContainer style={styles.container}>
                 {
-                    restaurantData.map(item => (
-                        <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />
-                    ))
+                    isLoading ? renderSkeletonCard(20) :
+                        <>
+                            {
+                                restaurantData.map(item => (
+                                    <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />
+                                ))
+                            }
+                        </>
                 }
             </MSContainer>
+
         </MSContainer>
     )
 }

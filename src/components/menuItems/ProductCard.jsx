@@ -10,7 +10,6 @@ import { useSelector } from "react-redux"
 const ProductCard = ({ item }) => {
     const [isFlipped, setIsFlipped] = useState(false)
     const isHamburgerOpen = useSelector((state) => state.innerWidthSlice.isHamburgerOpen)
-    console.log(isHamburgerOpen)
 
     const handleToggle = () => {
         setIsFlipped(!isFlipped)

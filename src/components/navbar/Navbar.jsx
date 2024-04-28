@@ -64,7 +64,7 @@ export const Navbar = () => {
                                         </MSLink>
                                     ))
                                 }
-                                <MSContainer style={linkStyle}>{localize("Options")}</MSContainer>
+                                {/* <MSContainer style={linkStyle}>{localize("Options")}</MSContainer> */}
                                 <MSContainer style={logOut} onClick={handleLogOut}><SVGLogOut /></MSContainer>
                             </MSContainer>
                         </MSContainer>
