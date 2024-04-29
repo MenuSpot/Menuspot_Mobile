@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    perspective: 1000px;
+}
+
+.card {
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.front,
+.back {
+    position: absolute;
+    backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.front {}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+@media screen and (width>1500px) {
+    .container:hover>.card {
+        cursor: pointer;
+        transform: rotateY(180deg)
+    }
+}
+
+@media screen and (width<1500px) {
+    .flipped {
+        transform: rotateY(180deg)
+    }
+}

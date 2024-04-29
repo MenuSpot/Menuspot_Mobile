@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 import { NavbarRoutes } from '../../enums/NavbarRoutes';
 import { setActiveLink, navbarRouteMapper } from './utils';
-import { brandArea, brandAreaMobile, features, linkStyle, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
+import { brandArea, brandAreaMobile, features, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,13 +20,14 @@ export const Navbar = () => {
     const navigate = useNavigate()
 
     const handleLogOut = () => {
-        navigate(Paths.DEFAULT)
         onSignOut()
+        navigate(Paths.DEFAULT)
     }
+    
+    const url = window.location.pathname
     useEffect(() => {
-        const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
-    }, [pathname])
+    }, [url])
 
     return (
         <>
@@ -56,7 +57,6 @@ export const Navbar = () => {
                                             key={route}
                                             to={NavbarRoutes[route]}
                                             style={setActiveLink(route, pathname, hoveredItem)}
-                                            onClick={() => setPathname(navbarRouteMapper(route))}
                                             onMouseEnter={() => setHoveredItem(route)}
                                             onMouseLeave={() => setHoveredItem("")}
                                         >
@@ -64,7 +64,7 @@ export const Navbar = () => {
                                         </MSLink>
                                     ))
                                 }
-                                <MSContainer style={linkStyle}>{localize("Options")}</MSContainer>
+                                {/* <MSContainer style={linkStyle}>{localize("Options")}</MSContainer> */}
                                 <MSContainer style={logOut} onClick={handleLogOut}><SVGLogOut /></MSContainer>
                             </MSContainer>
                         </MSContainer>
