@@ -12,7 +12,7 @@ const View1 = ({ categories }) => {
 
     return (
         <MSContainer key={categories.categoryId} style={styles.productRow}>
-            <MSText style={{ marginLeft: windowSize <= SMALL_DEVICE_TRESHOLD ? "3%" : 0, ...styles.categoryName }}>
+            <MSText style={styles.categoryName}>
                 {categories.name}
             </MSText>
             <MSContainer style={styles.productCardView1}>
@@ -51,14 +51,12 @@ const styles = {
         gap: "24px",
         margin: "24px 0px",
         flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "left"
+        width: "100%"
     },
     productCardView1: {
         display: "flex",
-        justifyContent: "center",
         gap: "25px",
         flexWrap: "wrap",
-        padding: "10px"
+        padding: "10px 0px",
     }
 }

@@ -60,9 +60,9 @@ const styles = {
         marginTop: "24px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent:"center",
         gap: 24,
-        flexWrap: "wrap"
+        flexWrap: "wrap",
     },
     containerCol: {
         width: "900px",

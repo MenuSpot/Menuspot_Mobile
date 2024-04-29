@@ -3,33 +3,33 @@ import { HamburgerLinkStyle, currentLinkForHamburger } from "./hamburgerMenu/Ham
 import { currentLink, linkStyle, onHover } from "./NavbarStyles";
 
 export const navbarRouteMapper = (route) => {
-    if (NavbarRoutes[route] === NavbarRoutes.ABOUT_US) {
+    if (NavbarRoutes[route] === NavbarRoutes.ABOUT_US || route === "/AboutUs") {
         return "About Us";
     }
-    else if (NavbarRoutes[route] === NavbarRoutes.RESTAURANTS) {
+    if (NavbarRoutes[route] === NavbarRoutes.RESTAURANTS) {
         return "Restaurants";
     }
-    // else if (route === "/AboutUs") {
-    //     return "About Us"
-    // }
-    else if (route === "/") {
+    if (route === "/") {
         return "Restaurants"
     }
-    else return ""
+    return ""
 }
 
 export const setActiveLink = (route, pathname, isHovered) => {
     const currentRoute = navbarRouteMapper(route);
     if (pathname === currentRoute) {
         return currentLink
-    } else if (isHovered === route) {
+    }
+    if (isHovered === route) {
         return onHover
-    } else return linkStyle
+    }
+    return linkStyle
 }
 
 export const setActiveLinkforHamburger = (route, pathname) => {
     const currentRoute = navbarRouteMapper(route);
     if (pathname === currentRoute) {
         return currentLinkForHamburger
-    } else return HamburgerLinkStyle
+    }
+    return HamburgerLinkStyle
 }

@@ -67,7 +67,7 @@ const styles = {
         display: "flex",
         width: "100%",
         height: "40px",
-        borderRadius: "8px",
+        borderRadius: "0 0 8px 8px",
         padding: "8px 12px",
         justifyContent: "center",
         alignItems: "center",

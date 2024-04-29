@@ -23,10 +23,11 @@ export const Navbar = () => {
         onSignOut()
         navigate(Paths.DEFAULT)
     }
+    
+    const url = window.location.pathname
     useEffect(() => {
-        const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
-    }, [pathname])
+    }, [url])
 
     return (
         <>
@@ -56,7 +57,6 @@ export const Navbar = () => {
                                             key={route}
                                             to={NavbarRoutes[route]}
                                             style={setActiveLink(route, pathname, hoveredItem)}
-                                            onClick={() => setPathname(navbarRouteMapper(route))}
                                             onMouseEnter={() => setHoveredItem(route)}
                                             onMouseLeave={() => setHoveredItem("")}
                                         >
