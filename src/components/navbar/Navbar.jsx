@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openHamburgerMenu } from '../../store/slices/innerWidthSlice';
 import { NavbarRoutes } from '../../enums/NavbarRoutes';
 import { setActiveLink, navbarRouteMapper } from './utils';
-import { brandArea, brandAreaMobile, features, linkStyle, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
+import { brandArea, brandAreaMobile, features, logOut, logOutMobile, logoMobile, logoStyle, logoText, logoTextMobile, navItems, navItemsMobile, navbar, navbarMobile } from './NavbarStyles';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 

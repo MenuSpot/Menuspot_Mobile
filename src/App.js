@@ -55,13 +55,6 @@ const styles = {
 
 //TODOS
 
-
-// kategoriler için de skeleton animasyonu ekle.
-// card animasyonunu column'daki gibi yap.
-
-
-//refactoring yap!
-//ekran boyutunu dinamik hesaplamayı düzenle, daha iyi çalıştır.
-// menü ekranında iken navbarda restaurants aktif olmamalı.
-// About Us Mobile görünümde fonksiyonabiliteyi düzenle.
+// Ekran boyutunu dinamik hesaplamayı düzenle, daha iyi çalıştır.
+// Dimensionları belirle, responsive'e geçiş kodlarını düzenle.
 // Readme dosyasının güncellenmesi 

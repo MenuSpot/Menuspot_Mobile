@@ -1,9 +1,13 @@
 import React from 'react'
+import {  SMALL_DEVICE_TRESHOLD } from '../../constants/Dimension'
+import { useSelector } from 'react-redux'
 
 const CategoryNameSkeleton = () => {
+    const { screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
+
     return (
         <div style={styles.container}>
-            <div className='titleLoading' style={styles.categoryName}></div>
+            <div className='titleLoading' style={{ marginLeft: windowSize <= SMALL_DEVICE_TRESHOLD ? "3%" : 0, ...styles.categoryName }}></div>
         </div>
     )
 }
@@ -17,7 +21,7 @@ const styles = {
         justifyContent: "left",
         alignItems: "center",
         borderRadius: "10px",
-        overflow: "hidden"
+        overflow: "hidden",
     },
     categoryName: {
         width: "192px",

@@ -1,13 +1,18 @@
+import { useSelector } from "react-redux"
 import { MSContainer, MSText } from ".."
 import { MSColorPalette, MSFonts } from "../../assets/ui"
 import ProductCard from "./ProductCard"
+import { SMALL_DEVICE_TRESHOLD, } from "../../constants/Dimension"
 
 
 
 const View1 = ({ categories }) => {
+
+    const { screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
+
     return (
         <MSContainer key={categories.categoryId} style={styles.productRow}>
-            <MSText style={styles.categoryName}>
+            <MSText style={{ marginLeft: windowSize <= SMALL_DEVICE_TRESHOLD ? "3%" : 0, ...styles.categoryName }}>
                 {categories.name}
             </MSText>
             <MSContainer style={styles.productCardView1}>
@@ -46,6 +51,8 @@ const styles = {
         gap: "24px",
         margin: "24px 0px",
         flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "left"
     },
     productCardView1: {
         display: "flex",

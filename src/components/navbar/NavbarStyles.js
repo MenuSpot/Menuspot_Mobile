@@ -28,7 +28,7 @@ export const logoStyle = {
 export const logoText = {
     marginTop: "12px",
     marginLeft: "5px",
-    color: MSColorPalette.brandName,
+    color: MSColorPalette.secondary500,
     fontFamily: MSFonts.MerriweatherBold25.fontFamily,
     fontSize: MSFonts.MerriweatherBold25.fontSize,
     fontWeight: MSFonts.MerriweatherBold25.fontWeight,
@@ -103,7 +103,7 @@ export const logoMobile = {
 export const logoTextMobile = {
     marginTop: "12px",
     marginLeft: "5px",
-    color: MSColorPalette.brandName,
+    color: MSColorPalette.secondary500,
     fontFamily: MSFonts.MerriweatherBold25.fontFamily,
     fontSize: MSFonts.MerriweatherBold25.fontSize,
     fontWeight: MSFonts.MerriweatherBold25.fontWeight,

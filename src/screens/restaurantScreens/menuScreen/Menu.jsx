@@ -8,6 +8,7 @@ import View1 from '../../../components/menuItems/View1';
 import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
 import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
+import ToolbarSkeleton from '../../../components/loadingOverlay/ToolbarSkeleton';
 
 export const Menu = () => {
     const [isRow, setIsRow] = useState(true);
@@ -28,7 +29,10 @@ export const Menu = () => {
     return (
         <MSContainer style={styles.componentStyle}>
             <MSContainer style={isRow ? styles.containerRow : styles.containerCol}>
-                <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
+                {
+                    isLoading ? <ToolbarSkeleton /> :
+                        <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
+                }
                 {
                     isLoading && isRow ? renderSkeletonCard(20, "menu") :
                         isLoading && !isRow ? renderRectangleSkeleton(20) :
