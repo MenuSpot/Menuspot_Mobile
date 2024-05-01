@@ -1,9 +1,9 @@
-import { MSColorPalette, MSFonts } from "../../assets/ui"
+import { MSColorPalette, MSFonts } from "../../../assets/ui"
 
 //#region large device styles
 export const navbar = {
     width: "100%",
-    padding: "10px 190px", //burada 190px yerine 12vw yazılabilir. Responsive uygun ayarlanıyor.
+    padding: "10px 190px",
     backgroundColor: MSColorPalette.primary500,
     display: "flex",
     justifyContent: "center",

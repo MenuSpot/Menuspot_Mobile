@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { MSContainer, MSModal } from "./components";
 import Footer from "./components/footer/Footer";
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/navbarOverlay/Navbar';
 import { useDispatch, useSelector } from "react-redux";
 import HamburgerMenu from "./components/navbar/hamburgerMenu/HamburgerMenu";
 import { changeScreenSize } from "./store/slices/innerWidthSlice";
@@ -10,7 +10,6 @@ import Unauthenticated from "./navigation/Unauthenticated";
 
 const App = () => {
   const dispatch = useDispatch()
-  const { isHamburgerOpen: hamburgerMenu } = useSelector((state) => state.innerWidthSlice)
   const { isVisible: isErrorMessageVisible } = useSelector((state) => state.errorMessageSlice)
 
   useEffect(() => {
@@ -31,13 +30,11 @@ const App = () => {
         localStorage.getItem("token") ?
           <>
             <Navbar />
-            <HamburgerMenu style={{ display: hamburgerMenu ? "flex" : "none" }} />
+            <HamburgerMenu />
             <Authenticated />
             <Footer />
           </> :
-          <>
-            <Unauthenticated />
-          </>
+          <Unauthenticated />
       }
     </MSContainer >
   );
@@ -52,5 +49,5 @@ const styles = {
 }
 
 //TODOS
-// Readme dosyasının güncellenmesi.
 // UI kontrol.
+// Readme dosyasının güncellenmesi.
