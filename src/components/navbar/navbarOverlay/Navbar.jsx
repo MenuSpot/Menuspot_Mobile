@@ -12,7 +12,6 @@ export const Navbar = () => {
     const { onSignOut } = useContext(AuthContext)
     const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     const [pathname, setPathname] = useState("");
-
     const navigate = useNavigate()
 
     const handleLogOut = () => {

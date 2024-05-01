@@ -1,29 +1,27 @@
-import { useSelector } from "react-redux"
 import { MSContainer, MSText } from ".."
 import { MSColorPalette, MSFonts } from "../../assets/ui"
 import ProductCard from "./ProductCard"
-import { SMALL_DEVICE_TRESHOLD, } from "../../constants/Dimension"
 
 
 
-const View1 = ({ categories }) => {
-
-    const { screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
+const View1 = ({ categories, isMobile }) => {
 
     return (
         <MSContainer key={categories.categoryId} style={styles.productRow}>
-            <MSText style={styles.categoryName}>
+            <MSText style={{ ...styles.categoryName, borderRadius: isMobile ? "" : "8px" }}>
                 {categories.name}
             </MSText>
-            <MSContainer style={styles.productCardView1}>
-                {
-                    (categories.products).map((item, index) => (
-                        <ProductCard
-                            key={index}
-                            item={item}
-                        />
-                    ))
-                }
+            <MSContainer style={{ ...styles.productCardView1, padding: isMobile ? "25px" : 0 }}>
+                <MSContainer style={styles.cardsContainer}>
+                    {
+                        (categories.products).map((item, index) => (
+                            <ProductCard
+                                key={index}
+                                item={item}
+                            />
+                        ))
+                    }
+                </MSContainer>
             </MSContainer>
         </MSContainer>
     )
@@ -38,7 +36,6 @@ const styles = {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: "8px",
         color: MSColorPalette.white,
         backgroundColor: MSColorPalette.primary500,
         fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
@@ -51,12 +48,19 @@ const styles = {
         gap: "24px",
         margin: "24px 0px",
         flexWrap: "wrap",
-        width: "100%"
+        width: "100%",
     },
     productCardView1: {
         display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexWrap: "wrap",
+    },
+    cardsContainer: {
+        display: "flex",
         gap: "25px",
         flexWrap: "wrap",
-        padding: "10px 0px",
+        justifyContent: "left",
+        alignItems: "center",
     }
 }

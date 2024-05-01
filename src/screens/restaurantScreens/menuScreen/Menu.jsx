@@ -9,8 +9,10 @@ import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
 import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
 import ToolbarSkeleton from '../../../components/loadingOverlay/ToolbarSkeleton';
+import { useSelector } from 'react-redux';
 
 export const Menu = () => {
+    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     const [isRow, setIsRow] = useState(true);
     const [data, setData] = useState([])
     const { id, name } = useParams();
@@ -21,7 +23,6 @@ export const Menu = () => {
         setData(response.data.categories)
         setIsLoading(false)
     }
-
     useEffect(() => {
         handleMenu()
     }, [])
@@ -30,14 +31,18 @@ export const Menu = () => {
         <MSContainer style={styles.componentStyle}>
             <MSContainer style={isRow ? styles.containerRow : styles.containerCol}>
                 {
-                    isLoading ? <ToolbarSkeleton /> :
-                        <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} />
+                    isLoading ? <ToolbarSkeleton isMobile={isMobile} /> :
+                        <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} isMobile={isMobile} />
                 }
                 {
-                    isLoading && isRow ? renderSkeletonCard(20, "menu") :
-                        isLoading && !isRow ? renderRectangleSkeleton(20) :
+                    isLoading && isRow ?
+                        renderSkeletonCard(20, "menu")
+                        :
+                        isLoading && !isRow ?
+                            renderRectangleSkeleton(20)
+                            :
                             data.map(categories => (
-                                isRow ? <View1 categories={categories} /> :
+                                isRow ? <View1 categories={categories} isMobile={isMobile} /> :
                                     <View2 categories={categories} />
                             ))
                 }
@@ -60,9 +65,10 @@ const styles = {
         marginTop: "24px",
         display: "flex",
         alignItems: "center",
-        justifyContent:"center",
+        justifyContent: "left",
         gap: 24,
         flexWrap: "wrap",
+
     },
     containerCol: {
         width: "900px",
@@ -73,6 +79,8 @@ const styles = {
         flexDirection: "column",
         gap: 24,
         flexWrap: "wrap",
+    },
+    cardsWrapper: {
     },
     //#region small device styles
     containerMobileStyle: {

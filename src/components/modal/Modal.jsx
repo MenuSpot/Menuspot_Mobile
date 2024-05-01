@@ -38,11 +38,6 @@ const Modal = () => {
                                 onClick={() => dispatch(clearErrorMessage())}>
                                 {buttonText}
                             </button>
-                            <button
-                                style={responsiveStyleCreator(windowSize, largeStyles.modalAcceptButton, smallStyles.modalAcceptButton)}
-                                onClick={() => dispatch(clearErrorMessage())}>
-                                {buttonText}
-                            </button>
                         </div>
                     </div>
                 </div>

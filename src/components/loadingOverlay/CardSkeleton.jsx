@@ -6,7 +6,7 @@ const CardSkeleton = ({ type }) => {
             <div className="titleLoading" style={styles.titleStyle}></div>
             <div className="imageLoading" style={type === "restaurant" ? styles.resImage : styles.productImage}></div>
             <div className="titleLoading" style={styles.titleStyle}></div>
-        </div>
+        </div >
     )
 }
 
@@ -22,7 +22,9 @@ const styles = {
         cursor: "pointer",
         textDecoration: "none",
         borderRadius: "8px",
-        overflow: "hidden"
+        overflow: "hidden",
+        justifyContent: "center",
+        alignItems: "center"
     },
     resImage: {
         width: "180px",

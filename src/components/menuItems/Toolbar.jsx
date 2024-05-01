@@ -3,9 +3,9 @@ import { SVGFilterColumn, SVGFilterRow } from "../../assets/svg"
 import { MSColorPalette, MSFonts } from "../../assets/ui"
 
 
-const Toolbar = ({ isRow, setIsRow, name }) => {
+const Toolbar = ({ isRow, setIsRow, name, isMobile }) => {
     return (
-        <MSContainer style={styles.toolbar}>
+        <MSContainer style={{ ...styles.toolbar, borderRadius: isMobile ? "" : "8px" }}>
             <MSText style={styles.restaurantName}>
                 {name}
             </MSText>
@@ -37,7 +37,6 @@ const styles = {
         width: "100%",
         height: "62px",
         padding: "0 16px",
-        borderRadius: "8px"
     },
     restaurantName: {
         color: MSColorPalette.text500,
