@@ -11,7 +11,7 @@ const View1 = ({ categories, isMobile }) => {
             <MSText style={{ ...styles.categoryName, borderRadius: isMobile ? "" : "8px" }}>
                 {categories.name}
             </MSText>
-            <MSContainer style={{ ...styles.productCardView1, margin: isMobile ? "5px" : 0 }}>
+            <MSContainer style={{ ...styles.productCardView1 }}>
                 <MSContainer style={styles.cardsContainer}>
                     {
                         (categories.products).map((item, index) => (
@@ -34,13 +34,14 @@ const styles = {
     categoryName: {
         width: "192px",
         height: "48px",
+        textAlign: "center",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         color: MSColorPalette.white,
         backgroundColor: MSColorPalette.primary500,
         fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
-        fontWeight: MSFonts.MerriweatherRegular200.fontWeight,
+        fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
         fontSize: MSFonts.MerriweatherRegular200.fontSize,
     },
     productRow: {

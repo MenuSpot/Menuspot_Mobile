@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux"
 import "./Skeleton.css"
 
 const CardSkeleton = ({ type }) => {
+    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     return (
-        <div className="cardLoading" style={type === "restaurant" ? styles.resCard : styles.productCard}>
+        <div className="cardLoading"
+            style={type === "restaurant" ? styles.resCard : styles.productCard}>
             <div className="titleLoading" style={styles.titleStyle}></div>
             <div className="imageLoading" style={type === "restaurant" ? styles.resImage : styles.productImage}></div>
             <div className="titleLoading" style={styles.titleStyle}></div>
@@ -24,7 +27,7 @@ const styles = {
         borderRadius: "8px",
         overflow: "hidden",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
     resImage: {
         width: "180px",
@@ -32,7 +35,7 @@ const styles = {
     },
     productCard: {
         height: "240px",
-        width: "205px",
+        width: "180px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

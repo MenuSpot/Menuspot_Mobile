@@ -49,5 +49,4 @@ const styles = {
 }
 
 //TODOS
-// UI kontrol.
 // Readme dosyasının güncellenmesi.
