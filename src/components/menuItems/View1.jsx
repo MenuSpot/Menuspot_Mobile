@@ -8,9 +8,11 @@ const View1 = ({ categories, isMobile }) => {
 
     return (
         <MSContainer key={categories.categoryId} style={styles.productRow}>
-            <MSText style={{ ...styles.categoryName, borderRadius: isMobile ? "" : "8px" }}>
-                {categories.name}
-            </MSText>
+            <MSContainer style={{ ...styles.categoryBox, borderRadius: isMobile ? "" : "8px" }}>
+                <MSText style={styles.categoryName}>
+                    {categories.name}
+                </MSText>
+            </MSContainer>
             <MSContainer style={{ ...styles.productCardView1 }}>
                 <MSContainer style={styles.cardsContainer}>
                     {
@@ -31,15 +33,18 @@ const View1 = ({ categories, isMobile }) => {
 export default View1
 
 const styles = {
-    categoryName: {
-        width: "192px",
+    categoryBox: {
+        width: "100%",
         height: "48px",
-        textAlign: "center",
+        padding: "8px 10px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        color: MSColorPalette.white,
         backgroundColor: MSColorPalette.primary500,
+    }
+    ,
+    categoryName: {
+        color: MSColorPalette.white,
         fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
         fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
         fontSize: MSFonts.MerriweatherRegular200.fontSize,
@@ -50,7 +55,6 @@ const styles = {
         gap: "24px",
         margin: "24px 0px",
         flexWrap: "wrap",
-        width: "100%",
     },
     productCardView1: {
         display: "flex",
@@ -58,10 +62,10 @@ const styles = {
     },
     cardsContainer: {
         display: "flex",
-        gap: "25px",
+        padding: "12px",
+        gap: "52px",
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
-        margin: "10px",
     }
 }

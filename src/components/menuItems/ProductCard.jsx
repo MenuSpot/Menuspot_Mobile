@@ -17,7 +17,11 @@ const ProductCard = ({ item, isMobile }) => {
 
     return (
         <div className='container'
-            style={{ ...styles.container, width: isMobile ? "160px" : "180px", zIndex: isHamburgerOpen ? -1 : "auto" }} >
+            style={{
+                ...styles.container, width: isMobile ? "160px" : "180px",
+                height: isMobile ? "215px" : "240px",
+                zIndex: isHamburgerOpen ? -1 : "auto"
+            }} >
             <div className={`card ${isFlipped ? "flipped" : ""}`} style={styles.card} onClick={handleToggle}>
                 <div className="front">
                     <MSText style={styles.cardHeaderStyle}>{localize(item.name)}</MSText>

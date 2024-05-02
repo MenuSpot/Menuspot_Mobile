@@ -43,7 +43,7 @@ export const Menu = () => {
                             :
                             data.map(categories => (
                                 isRow ? <View1 categories={categories} isMobile={isMobile} /> :
-                                    <View2 categories={categories} />
+                                    <View2 categories={categories} isMobile={isMobile}/>
                             ))
                 }
             </MSContainer>
@@ -65,10 +65,9 @@ const styles = {
         marginTop: "24px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "left",
         gap: 24,
         flexWrap: "wrap",
-
     },
     containerCol: {
         width: "900px",

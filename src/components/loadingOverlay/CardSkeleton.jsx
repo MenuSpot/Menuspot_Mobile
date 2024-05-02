@@ -1,8 +1,6 @@
-import { useSelector } from "react-redux"
 import "./Skeleton.css"
 
 const CardSkeleton = ({ type }) => {
-    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     return (
         <div className="cardLoading"
             style={type === "restaurant" ? styles.resCard : styles.productCard}>

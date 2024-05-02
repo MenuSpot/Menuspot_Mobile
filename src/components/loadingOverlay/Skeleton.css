@@ -8,7 +8,7 @@
 
 .imageLoading {
     opacity: .7;
-    animation: skeleton-loading-content 1s ease-in-out infinite alternate
+    animation: skeleton-loading-content 1s ease-in-out infinite alternate;
 }
 
 @keyframes skeleton-loading {
@@ -30,3 +30,4 @@
         background-color: hsl(200, 20%, 92%);
     }
 }
+
