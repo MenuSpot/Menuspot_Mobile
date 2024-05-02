@@ -46,7 +46,7 @@ const styles = {
         fontWeight: MSFonts.MerriweatherRegular200.fontWeight
     },
     cardProductDescriptionView2: {
-        margin:"12px 0",
+        margin: "12px 0",
         color: MSColorPalette.text400,
         fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
         fontSize: MSFonts.MerriweatherRegular200.fontSize,

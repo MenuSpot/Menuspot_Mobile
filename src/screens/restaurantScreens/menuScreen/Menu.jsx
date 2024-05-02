@@ -42,9 +42,7 @@ export const Menu = () => {
                             renderRectangleSkeleton(20)
                             :
                             data.map(categories => (
-                                isRow ?
-                                    <View1 categories={categories} isMobile={isMobile} />
-                                    :
+                                isRow ? <View1 categories={categories} isMobile={isMobile} /> :
                                     <View2 categories={categories} />
                             ))
                 }
@@ -81,8 +79,6 @@ const styles = {
         flexDirection: "column",
         gap: 24,
         flexWrap: "wrap",
-    },
-    cardsWrapper: {
     },
     //#region small device styles
     containerMobileStyle: {

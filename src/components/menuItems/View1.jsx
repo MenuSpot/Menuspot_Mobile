@@ -11,13 +11,14 @@ const View1 = ({ categories, isMobile }) => {
             <MSText style={{ ...styles.categoryName, borderRadius: isMobile ? "" : "8px" }}>
                 {categories.name}
             </MSText>
-            <MSContainer style={{ ...styles.productCardView1, padding: isMobile ? "25px" : 0 }}>
+            <MSContainer style={{ ...styles.productCardView1, margin: isMobile ? "5px" : 0 }}>
                 <MSContainer style={styles.cardsContainer}>
                     {
                         (categories.products).map((item, index) => (
                             <ProductCard
                                 key={index}
                                 item={item}
+                                isMobile={isMobile}
                             />
                         ))
                     }
@@ -55,12 +56,13 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
         flexWrap: "wrap",
+        width: "auto",
     },
     cardsContainer: {
         display: "flex",
         gap: "25px",
         flexWrap: "wrap",
-        justifyContent: "left",
+        justifyContent: "center",
         alignItems: "center",
     }
 }

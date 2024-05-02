@@ -7,7 +7,7 @@ import "./MenuCard.css"
 import { useSelector } from "react-redux"
 
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, isMobile }) => {
     const [isFlipped, setIsFlipped] = useState(false)
     const isHamburgerOpen = useSelector((state) => state.innerWidthSlice.isHamburgerOpen)
 
@@ -16,7 +16,8 @@ const ProductCard = ({ item }) => {
     }
 
     return (
-        <div className='container' style={{ ...styles.container, zIndex: isHamburgerOpen ? -1 : "auto" }}>
+        <div className='container'
+            style={{ ...styles.container, width: isMobile ? "160px" : "180px", zIndex: isHamburgerOpen ? -1 : "auto" }} >
             <div className={`card ${isFlipped ? "flipped" : ""}`} style={styles.card} onClick={handleToggle}>
                 <div className="front">
                     <MSText style={styles.cardHeaderStyle}>{localize(item.name)}</MSText>
@@ -39,8 +40,8 @@ export default ProductCard
 
 const styles = {
     container: {
-        width: "200px",
-        height: "250px",
+        width: "180px",
+        height: "240px",
     },
     card: {
         borderRadius: "8px",
