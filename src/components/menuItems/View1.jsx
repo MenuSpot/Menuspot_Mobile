@@ -54,10 +54,7 @@ const styles = {
     },
     productCardView1: {
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         flexWrap: "wrap",
-        width: "auto",
     },
     cardsContainer: {
         display: "flex",
@@ -65,5 +62,6 @@ const styles = {
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
+        margin: "10px",
     }
 }
