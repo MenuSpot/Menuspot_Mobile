@@ -1,24 +1,28 @@
+import { useSelector } from "react-redux"
 import { MSContainer, MSText } from ".."
 import { MSColorPalette, MSFonts } from "../../assets/ui"
+import { responsiveStyleCreator } from "../../utils/ResponsiveControl"
 import ProductCard from "./ProductCard"
 
 
 
-const View1 = ({ categories, isMobile }) => {
+const View1 = ({ categories }) => {
 
+
+    const { isMobileDevice: isMobile, screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
     return (
-        <MSContainer key={categories.categoryId} style={styles.productRow}>
-            <MSContainer style={{ ...styles.categoryBox, borderRadius: isMobile ? "" : "8px" }}>
-                <MSText style={styles.categoryName}>
+        <MSContainer style={styles.largeDevice.productRow}>
+            <MSContainer style={{ ...styles.largeDevice.categoryBox, borderRadius: isMobile ? "" : "8px" }}>
+                <MSText style={styles.largeDevice.categoryName}>
                     {categories.name}
                 </MSText>
             </MSContainer>
-            <MSContainer style={{ ...styles.productCardView1 }}>
-                <MSContainer style={styles.cardsContainer}>
+            <MSContainer style={{ ...styles.largeDevice.productCardView1 }}>
+                <MSContainer style={responsiveStyleCreator(windowSize, styles.largeDevice.cardsContainer, styles.smallDevice.cardsContainer)}>
                     {
-                        (categories.products).map((item, index) => (
+                        (categories.products).map((item) => (
                             <ProductCard
-                                key={index}
+                                key={item.id}
                                 item={item}
                                 isMobile={isMobile}
                             />
@@ -33,39 +37,50 @@ const View1 = ({ categories, isMobile }) => {
 export default View1
 
 const styles = {
-    categoryBox: {
-        width: "100%",
-        height: "48px",
-        padding: "8px 10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: MSColorPalette.primary500,
-    }
-    ,
-    categoryName: {
-        color: MSColorPalette.white,
-        fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
-        fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
-        fontSize: MSFonts.MerriweatherRegular200.fontSize,
+    largeDevice: {
+        categoryBox: {
+            width: "100%",
+            height: "48px",
+            padding: "8px 10px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: MSColorPalette.primary500,
+        }
+        ,
+        categoryName: {
+            color: MSColorPalette.white,
+            fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
+            fontWeight: MSFonts.MerriweatherRegular100.fontWeight,
+            fontSize: MSFonts.MerriweatherRegular200.fontSize,
+        },
+        productRow: {
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+            flexWrap: "wrap",
+            width: "100%",
+        },
+        productCardView1: {
+            display: "flex",
+            flexWrap: "wrap",
+        },
+        cardsContainer: {
+            display: "flex",
+            gap: "60px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+        }
     },
-    productRow: {
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-        margin: "24px 0px",
-        flexWrap: "wrap",
+    smallDevice: {
+        cardsContainer: {
+            display: "flex",
+            width: "100%",
+            gap: "30px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+        }
     },
-    productCardView1: {
-        display: "flex",
-        flexWrap: "wrap",
-    },
-    cardsContainer: {
-        display: "flex",
-        padding: "12px",
-        gap: "52px",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-    }
+
 }

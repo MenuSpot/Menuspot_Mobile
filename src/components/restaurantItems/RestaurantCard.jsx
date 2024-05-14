@@ -1,14 +1,12 @@
 import React from 'react'
-import Base64Image from '../customs/Base64Image'
 import { MSLink, MSText } from '..';
 import { MSColorPalette, MSFonts } from '../../assets/ui';
 
 const RestaurantCard = (props) => {
     const { item, to } = props;
-
     return (
         <MSLink to={to} style={styles.cardStyle}>
-            <Base64Image style={styles.imageStyle} data={item.imageUrl} />
+            <img src={item.imageUrl} alt={item.name} style={styles.imageStyle}/>
             <MSText style={styles.titleStyle}>{item.name}</MSText>
         </MSLink>
     )

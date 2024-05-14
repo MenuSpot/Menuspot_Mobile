@@ -31,7 +31,7 @@ const get = async (url, params) => {
         }
         return response.data;
     } catch (error) {
-        return console.log(error)
+        return console.error(error)
     }
 };
 

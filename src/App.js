@@ -1,15 +1,13 @@
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { MSContainer, MSModal } from "./components";
-import Footer from "./components/footer/Footer";
-import Navbar from './components/navbar/navbarOverlay/Navbar';
 import { useDispatch, useSelector } from "react-redux";
-import HamburgerMenu from "./components/navbar/hamburgerMenu/HamburgerMenu";
 import { changeScreenSize } from "./store/slices/innerWidthSlice";
-import Authenticated from "./navigation/Authenticated";
-import Unauthenticated from "./navigation/Unauthenticated";
+import { AuthContext } from "./context/AuthContext";
+import AuthScreens from "./navigation/AuthScreens";
 
 const App = () => {
   const dispatch = useDispatch()
+  const context = useContext(AuthContext)
   const { isVisible: isErrorMessageVisible } = useSelector((state) => state.errorMessageSlice)
 
   useEffect(() => {
@@ -21,21 +19,20 @@ const App = () => {
     return () => window.removeEventListener("resize", handleResize)
   }, [dispatch])
 
+  useEffect(() => {
+    const fetchToken = () => {
+      const token = localStorage.getItem("token")
+      if (token) context.onSignIn(token)
+    }
+    fetchToken()
+  }, [context])
+
   return (
     <MSContainer style={styles.appContainer}>
       {
         isErrorMessageVisible && <MSModal />
       }
-      {
-        localStorage.getItem("token") ?
-          <>
-            <Navbar />
-            <HamburgerMenu />
-            <Authenticated />
-            <Footer />
-          </> :
-          <Unauthenticated />
-      }
+      <AuthScreens />
     </MSContainer >
   );
 }

@@ -1,25 +1,36 @@
 import React, { createContext, useState } from "react";
 
+const initialValues = {
+    userInfo: "",
+    token: "",
+    onSignIn: () => { },
+    onSignOut: () => { },
+}
 
-const AuthContext = createContext();
+
+const AuthContext = createContext(initialValues);
 
 const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({ email: "", userName: "", password: "", rePassword: "" });
-    const [isLogin, setIsLogin] = useState(false)
+    const [authToken, setAuthToken] = useState("")
 
     const onSignIn = (token) => {
-        setIsLogin(true)
+        setAuthToken(token)
         localStorage.setItem("token", token)
     };
 
     const onSignOut = () => {
-        setIsLogin(false)
+        setAuthToken(null)
         localStorage.removeItem("token")
     };
     const value = {
-        onSignIn, onSignOut,
-        userInfo, setUserInfo, isLogin
+        userInfo: userInfo,
+        setUserInfo: setUserInfo,
+        onSignIn: onSignIn,
+        onSignOut: onSignOut,
+        token: authToken,
     }
+
     return (
         <AuthContext.Provider value={value}>
             {children}

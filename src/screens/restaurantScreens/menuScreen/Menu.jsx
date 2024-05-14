@@ -10,9 +10,10 @@ import Toolbar from '../../../components/menuItems/Toolbar';
 import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
 import ToolbarSkeleton from '../../../components/loadingOverlay/ToolbarSkeleton';
 import { useSelector } from 'react-redux';
+import { responsiveStyleCreator } from '../../../utils/ResponsiveControl';
 
 export const Menu = () => {
-    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
+    const { isMobileDevice: isMobile, screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
     const [isRow, setIsRow] = useState(true);
     const [data, setData] = useState([])
     const { id, name } = useParams();
@@ -26,10 +27,13 @@ export const Menu = () => {
     useEffect(() => {
         handleMenu()
     }, [])
-
     return (
-        <MSContainer style={styles.componentStyle}>
-            <MSContainer style={isRow ? styles.containerRow : styles.containerCol}>
+        <MSContainer style={styles.largeDevice.componentStyle}>
+            <MSContainer
+                style={isRow ? responsiveStyleCreator(windowSize, styles.largeDevice.containerRow, styles.smallDevice.containerRow)
+                    :
+                    responsiveStyleCreator(windowSize, styles.largeDevice.containerCol, styles.smallDevice.containerCol)}
+            >
                 {
                     isLoading ? <ToolbarSkeleton isMobile={isMobile} /> :
                         <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} isMobile={isMobile} />
@@ -42,8 +46,8 @@ export const Menu = () => {
                             renderRectangleSkeleton(20)
                             :
                             data.map(categories => (
-                                isRow ? <View1 categories={categories} isMobile={isMobile} /> :
-                                    <View2 categories={categories} isMobile={isMobile}/>
+                                isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
+                                    <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
                             ))
                 }
             </MSContainer>
@@ -52,57 +56,74 @@ export const Menu = () => {
 }
 
 const styles = {
-    componentStyle: {
-        minHeight: "100%",
-        width: "100%",
-        height: "auto",
-        display: "flex",
-        justifyContent: "center",
-        backgroundColor: "MSColorPalette.restaurantBgColor",
+    largeDevice: {
+        componentStyle: {
+            minHeight: "100%",
+            width: "100%",
+            height: "auto",
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: MSColorPalette.restaurantBgColor,
+        },
+        containerRow: {
+            width: "900px",
+            marginTop: "24px",
+            display: "flex",
+            alignItems: "center",
+            gap: 60,
+            flexWrap: "wrap",
+        },
+        containerCol: {
+            width: "900px",
+            marginTop: "24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: 24,
+            flexWrap: "wrap",
+        },
     },
-    containerRow: {
-        width: "900px",
-        marginTop: "24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "left",
-        gap: 24,
-        flexWrap: "wrap",
-    },
-    containerCol: {
-        width: "900px",
-        marginTop: "24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: 24,
-        flexWrap: "wrap",
-    },
-    //#region small device styles
-    containerMobileStyle: {
-        width: "100%",
-        marginTop: "24px",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "24px"
-    },
-    toolbarMobile: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: MSColorPalette.secondary300,
-        height: "62px",
-        padding: "0 16px",
-        borderRadius: "8px"
-    },
-    menuRowMobile: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexWrap: "wrap",
-        gap: "10px",
+    smallDevice: {
+        containerMobileStyle: {
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "24px"
+        },
+        containerRow: {
+            width: "900px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 24,
+            flexWrap: "wrap",
+        },
+        containerCol: {
+            width: "900px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: 24,
+            flexWrap: "wrap",
+        },
+        toolbarMobile: {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: MSColorPalette.secondary300,
+            height: "62px",
+            padding: "0 16px",
+            borderRadius: "8px"
+        },
+        menuRowMobile: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "10px",
+        }
     }
-    //#endregion
 }

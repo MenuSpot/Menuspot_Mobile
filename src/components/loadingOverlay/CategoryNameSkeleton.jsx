@@ -5,8 +5,8 @@ const CategoryNameSkeleton = () => {
     const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
 
     return (
-        <div style={styles.container}>
-            <div className='titleLoading' style={{ ...styles.categoryName, borderRadius: isMobile ? "" : "10px" }}></div>
+        <div style={styles.smallDevice.container}>
+            <div className='titleLoading' style={{ ...styles.smallDevice.categoryName, borderRadius: isMobile ? "" : "10px" }}></div>
         </div >
     )
 }
@@ -14,16 +14,29 @@ const CategoryNameSkeleton = () => {
 export default CategoryNameSkeleton
 
 const styles = {
-    container: {
-        width: "100%",
-        display: "flex",
-        justifyContent: "left",
-        alignItems: "center",
-        overflow: "hidden",
+    largeDevice: {
+        container: {
+            width: "100%",
+            display: "flex",
+            overflow: "hidden",
+        },
+        categoryName: {
+            width: "192px",
+            height: "48px",
+            borderRadius: "10px"
+        }
     },
-    categoryName: {
-        width: "192px",
-        height: "48px",
-        borderRadius: "10px"
+    smallDevice: {
+        container: {
+            width: "100%",
+            display: "flex",
+            overflow: "hidden",
+        },
+        categoryName: {
+            width: "100%",
+            height: "48px",
+        }
     }
+
+
 }

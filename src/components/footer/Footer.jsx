@@ -35,6 +35,7 @@ const styles = {
         gap: "15px",
         postition: "relative",
         bottom: 0,
+        marginTop: "30px"
     },
     linkBox: {
         display: "flex",

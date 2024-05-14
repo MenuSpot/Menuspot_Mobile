@@ -54,6 +54,5 @@ const styles = {
         justifyContent: "center ",
         width: "900px",
         gap: "25px",
-        padding: "0 16px"
     }
 }

@@ -5,7 +5,6 @@ const AuthInput = (props) => {
     const { type, inputIcon, style, setUserInfo, inputName, placeholder, showPassword, setShowPassword,
         visiblePassword, hiddenPassword, errorMessage } = props;
     const [inputValue, setInputValue] = useState("");
-
     return (
         <div style={componentStyle}>
             <div style={inputIconStyle}>{inputIcon}</div>
