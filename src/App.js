@@ -46,4 +46,6 @@ const styles = {
 }
 
 //TODOS
+//card'ların description'ının maksimum 8 satır yazılabilmesini sağla.
+//navigation sayfasına spinning loading.
 // Readme dosyasının güncellenmesi.

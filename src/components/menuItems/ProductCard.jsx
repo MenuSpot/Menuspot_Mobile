@@ -6,6 +6,7 @@ import { localize } from "../../localization/localize"
 import "./MenuCard.css"
 import { useSelector } from "react-redux"
 import { responsiveStyleCreator } from "../../utils/ResponsiveControl"
+import { truncateText } from "../../utils/HandleTextLength"
 
 
 const ProductCard = ({ item }) => {
@@ -15,7 +16,7 @@ const ProductCard = ({ item }) => {
     const handleToggle = () => {
         setIsFlipped(!isFlipped)
     }
-    
+
     return (
         <div className='container'
             style={{
@@ -28,7 +29,7 @@ const ProductCard = ({ item }) => {
                         <MSText
                             style={responsiveStyleCreator(windowSize, styles.largeDevice.headerText, styles.smallDevice.headerText)}
                         >
-                            {localize(item.name)}
+                            {truncateText(item.name, 18)}
                         </MSText>
                     </div>
                     <img
@@ -52,7 +53,7 @@ const ProductCard = ({ item }) => {
                     <MSText
                         style={responsiveStyleCreator(windowSize, styles.largeDevice.description, styles.smallDevice.description)}
                     >
-                        {localize(item.description)}
+                        {truncateText(item.description, 90)}
                     </MSText>
                 </div>
             </div>
@@ -119,7 +120,11 @@ const styles = {
             borderRadius: "8px"
         },
         description: {
-            padding: 15
+            padding: 15,
+            maxWidth: " 100%",
+            overflow: "hidden",
+            whiteSpace: "wrap",
+            textOverflow: "ellipsis"
         }
     },
     smallDevice: {
