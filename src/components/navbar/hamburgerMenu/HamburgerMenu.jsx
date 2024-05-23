@@ -6,21 +6,23 @@ import { navbarRouteMapper, setActiveLinkforHamburger } from '../utils'
 import { localize } from '../../../localization/localize'
 import { useDispatch, useSelector } from 'react-redux'
 import { openHamburgerMenu } from '../../../store/slices/innerWidthSlice'
-import { HamburgerLinkStyle, HamburgerMenuStyle } from './HamburgerMenuStyles'
+import { HamburgerLinkStyle, HamburgerMenuStyle, linkContainer } from './HamburgerMenuStyles'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
 import { Paths } from '../../../enums/Paths'
+import Navbar from '../navbarOverlay/Navbar'
 
 const HamburgerMenu = () => {
     const { isHamburgerOpen: hamburgerMenu } = useSelector((state) => state.innerWidthSlice)
     const { onSignOut } = useContext(AuthContext)
     const [pathname, setPathname] = useState("");
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const url = window.location.pathname;
+
     useEffect(() => {
-        const url = window.location.pathname
         setPathname(navbarRouteMapper(url))
-    }, [])
+    }, [url])
 
     const handleLogOut = () => {
         onSignOut()
@@ -29,24 +31,25 @@ const HamburgerMenu = () => {
 
     return (
         <MSContainer style={{ ...HamburgerMenuStyle, display: hamburgerMenu ? "flex" : "none" }}>
-            {
-                Object.keys(NavbarRoutes).map(route => (
-                    <MSLink
-                        key={route}
-                        to={NavbarRoutes[route]}
-                        style={setActiveLinkforHamburger(route, pathname)}
-                        onClick={() => {
-                            setPathname(navbarRouteMapper(route))
-                            dispatch(openHamburgerMenu())
-                        }}
-                    >
-                        {localize(navbarRouteMapper(route))}
-                    </MSLink>
-                ))
-            }
-            <MSLink style={HamburgerLinkStyle}>Options</MSLink>
-            <MSContainer style={HamburgerLinkStyle} onClick={handleLogOut}>
-                <SVGLogOut />
+            <Navbar />
+            <MSContainer style={linkContainer}>
+                {
+                    Object.keys(NavbarRoutes).map(route => (
+                        <MSLink
+                            key={route}
+                            to={NavbarRoutes[route]}
+                            style={setActiveLinkforHamburger(route, pathname)}
+                            onClick={() => {
+                                dispatch(openHamburgerMenu())
+                            }}
+                        >
+                            {localize(navbarRouteMapper(route))}
+                        </MSLink>
+                    ))
+                }
+                <MSContainer style={HamburgerLinkStyle} onClick={handleLogOut}>
+                    <SVGLogOut />
+                </MSContainer>
             </MSContainer>
         </MSContainer >
     )

@@ -17,20 +17,20 @@ export const employeeData = [
         image: ID2,
         title: "UI/UX DESIGNER",
         name: "İsa Kaan Dinçer",
-        description: "I am responsible for the Interface and User Experience design of this project. I have been developing my skills in this field for about a year now. I create my designs using Figma and I am proficient in some of the Adobe design programs. As the process continues, I aim to work with different software programs as well. Through the MenuSpot project, I intend to further improve myself and establish a presence within the industry through various projects and internship programs."
+        description: "I am responsible for the Interface and User Experience design of this project. As I approach my second year in this field, my passion for design continues to grow. I create my designs using Figma and am proficient in several Adobe design programs. I have also had the opportunity to work on specific projects that have further honed my skills. As the process continues, I aim to work with different design programs to expand my expertise. Through the MenuSpot project, I have developed myself further and aim to establish a presence within the industry as a UI/UX Designer through various projects."
     },
     {
         id: 3,
         image: ID3,
         title: "FRONTEND DEVELOPER",
         name: "Muhammed Mustafa Zırhlı",
-        description: "I am the Front-end Developer of Menuspot. I've been in this career for a little more than 1 year. Important side of being in this project is Menuspot project is just like a bootcamp period. So i can improve all of my developer skills along the project and i can remember which skills i forgot. I am planning to had for a long distance about my skills till the end of the project."
+        description: "I am the Frontend Developer at Menuspot. For the past 2 years, I have been improving myself in this field and aim to become an expert developer in this area and beyond. In this project, I implemented our user-friendly designs using React technology and also integrated our backend system for user interactions. Through this project, I gained a deep understanding of clean code principles and how to structure a project for future improvements. I also gained valuable experience working as part of a software team, effectively communicating with backend developers and UI/UX designers, and serving as a bridge in the project in my role as a Frontend Developer."
     },
     {
         id: 4,
         image: ID4,
         title: "BACKEND DEVELOPER",
         name: "Sinan Can",
-        description: "I am a backend developer in the software section of the MenuSpot project.I have been using C# programming language and ASP.NET Core technology for about 1 year and I am improving myself on these subjects. By developing various projects in the processes ahead I aim to improve myself in web programming and to come to good places in the sector."
+        description: "I am responsible for the backend of the MenuSpot project. For nearly 2 years, I have been using the C# programming language and ASP.NET Core technology to improve my skills in these areas. In this project, I have experienced working with the team and taking on responsibilities.In the coming period, I aim to reach an important place in the industry by further specializing in web programming and developing various projects."
     }
 ]

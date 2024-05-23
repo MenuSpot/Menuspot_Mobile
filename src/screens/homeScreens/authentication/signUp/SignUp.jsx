@@ -14,7 +14,6 @@ import { brandContainer, brandName, componentMobileStyle, componentStyle, errorM
 import { responsiveStyleCreator } from '../../../../utils/ResponsiveControl'
 import { buttonStyleCreator } from '../utils'
 import { authErrors } from '../../../../constants/ErrorMessages'
-import { MSColorPalette } from '../../../../assets/ui'
 import { showErrorMessage } from '../../../../store/slices/errorMessageSlice'
 
 
@@ -28,6 +27,17 @@ export const SignUp = () => {
     const [rePasswordError, setRePasswordError] = useState("")
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setUserInfo({ email: "", userName: "", password: "", rePassword: "" });
+    }, [])
+
+    useEffect(() => {
+        if (userInfo.userName === "" || userInfo.password === "" || userInfo.email === "" || userInfo.rePassword === "") {
+            setIsDisabled(true)
+        } else setIsDisabled(false)
+    }, [userInfo])
 
     const userData = {
         email: userInfo.email,
@@ -35,7 +45,6 @@ export const SignUp = () => {
         password: userInfo.password,
         rePassword: userInfo.rePassword
     }
-    const navigate = useNavigate()
 
     const controlValidation = () => {
         if (userData.userName.length < 5) {
@@ -62,7 +71,6 @@ export const SignUp = () => {
         }
     }
 
-
     const handleSubmit = async () => {
         const response = await post(Endpoints.CUSTOMER_REGISTER, userData);
         const token = response.data?.accessToken
@@ -78,11 +86,6 @@ export const SignUp = () => {
         ))
     }
 
-    useEffect(() => {
-        if (userInfo.userName === "" || userInfo.password === "" || userInfo.email === "" || userInfo.rePassword === "") {
-            setIsDisabled(true)
-        } else setIsDisabled(false)
-    }, [userInfo])
 
     return (
         <MSContainer style={responsiveStyleCreator(windowSize, componentStyle, componentMobileStyle)}>

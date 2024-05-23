@@ -44,8 +44,3 @@ const styles = {
     width: "100%",
   }
 }
-
-//TODOS
-//card'ların description'ının maksimum 8 satır yazılabilmesini sağla.
-//navigation sayfasına spinning loading.
-// Readme dosyasının güncellenmesi.

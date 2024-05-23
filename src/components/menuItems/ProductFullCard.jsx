@@ -45,13 +45,14 @@ const styles = {
     largeScreen: {
         cardStyleView2: {
             display: "flex",
+            minHeight: "170px",
             borderRadius: "8px",
             padding: "12px",
             backgroundColor: MSColorPalette.secondary500,
             gap: "24px",
             alignItems: "center",
             justifyContent: "center",
-            width:"100%",
+            width: "100%",
 
         },
         cardImageView2: {
@@ -113,7 +114,7 @@ const styles = {
             flexDirection: "column",
             justifyContent: "space-around",
             width: "100%",
-            height:"100%"
+            height: "100%"
         },
         cardHeaderStyleView2: {
             fontFamily: MSFonts.MerriweatherRegular50.fontFamily,

@@ -114,13 +114,14 @@ export const titleMobileStyle = {
     display: "none"
 }
 export const inputMobileStyle = {
-    width: "382px",
+    minWidth: "360px",
+    maxWidth: "382px",
     height: "44px",
     color: ColorPalette.white,
     fontFamily: Fonts.MerriweatherRegular200.fontFamily,
     fontSize: Fonts.MerriweatherRegular200.fontSize,
     fontWeight: Fonts.MerriweatherRegular200.fontWeight,
-    padding: "12.977px 52px",
+    padding: "12.977px 45px",
     border: `1px solid ${ColorPalette.white}`,
     borderRadius: "76.565px",
     backgroundColor: "transparent",
@@ -128,9 +129,10 @@ export const inputMobileStyle = {
 }
 export const buttonMobileStyle = {
     display: "flex",
-    width: "382px",
+    minWidth: "360px",
+    maxWidth: "382px",
     height: "56px",
-    padding: " 8px 12px",
+    padding: " 8px 45px",
     borderRadius: "31.145px",
     justifyContent: "center",
     alignItems: "center",
