@@ -39,7 +39,7 @@ const styles = {
         productColumn: {
             display: "flex",
             flexDirection: "column",
-            marginTop: "20px",
+            // marginTop: "20px",
             marginBottom: "20px",
             width: "100%",
         },
@@ -53,10 +53,10 @@ const styles = {
         categoryBox: {
             width: "100%",
             height: "48px",
+            padding: "8px 10px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: "8px",
             backgroundColor: MSColorPalette.primary500,
         },
         categoryName: {

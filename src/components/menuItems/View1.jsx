@@ -7,7 +7,6 @@ import ProductCard from "./ProductCard"
 
 
 const View1 = ({ categories }) => {
-
     const { isMobileDevice: isMobile, screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
     return (
         <MSContainer style={styles.largeDevice.productRow}>
