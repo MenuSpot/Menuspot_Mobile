@@ -39,7 +39,6 @@ const styles = {
         productColumn: {
             display: "flex",
             flexDirection: "column",
-            // marginTop: "20px",
             marginBottom: "20px",
             width: "100%",
         },
