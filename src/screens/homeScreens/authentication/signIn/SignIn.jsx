@@ -21,10 +21,26 @@ export const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
 
+    useEffect(() => {
+        setUserInfo({ email: "", userName: "", password: "", rePassword: "" });
+    }, [])
+
+    useEffect(() => {
+        const checkIsDisabled = () => {
+            const passwordDisabled = userInfo.password === ""
+            const userNameDisabled = userInfo.userName === ""
+            if (passwordDisabled || userNameDisabled) {
+                setIsDisabled(true)
+            } else setIsDisabled(false)
+        }
+        checkIsDisabled()
+    }, [userInfo])
+
     const userData = {
         userName: userInfo.userName,
         password: userInfo.password
     }
+
     const handleSubmit = async () => {
         const response = await post(Endpoints.AUTH_LOGIN, userData);
         if (!response.data) {
@@ -35,13 +51,7 @@ export const SignIn = () => {
             onSignIn(token)
         }
     }
-
-    useEffect(() => {
-        if (userInfo.password === "" || userInfo.userName === "") {
-            setIsDisabled(true)
-        } else setIsDisabled(false)
-    }, [userInfo])
-
+    
     return (
         <MSContainer style={responsiveStyleCreator(windowSize, componentStyle, componentMobileStyle)}>
             {

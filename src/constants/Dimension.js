@@ -1,3 +1,2 @@
 export const SMALL_DEVICE_TRESHOLD = 890;
-export const MEDIUM_DEVICE_TRESHOLD = 1500
-
+export const MEDIUM_DEVICE_TRESHOLD = 1025;

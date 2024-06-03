@@ -1,6 +1,6 @@
 import { NavbarRoutes } from "../../enums/NavbarRoutes";
 import { HamburgerLinkStyle, currentLinkForHamburger } from "./hamburgerMenu/HamburgerMenuStyles";
-import { currentLink, linkStyle, onHover } from "./NavbarStyles";
+import { currentLink, linkStyle, onHover } from "./navbarOverlay/NavbarStyles";
 
 export const navbarRouteMapper = (route) => {
     if (NavbarRoutes[route] === NavbarRoutes.ABOUT_US || route === "/AboutUs") {

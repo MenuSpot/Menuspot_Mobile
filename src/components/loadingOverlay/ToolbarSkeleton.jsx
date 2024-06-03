@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ToolbarSkeleton = () => {
+const ToolbarSkeleton = ({ isMobile }) => {
     return (
-        <div style={styles.toolbar} className='cardLoading'>
+        <div style={{ ...styles.toolbar, borderRadius: isMobile ? "" : "8px" }} className='cardLoading'>
             <div style={styles.restaurantName} className='imageLoading'></div>
             <div style={styles.filter}>
                 <div style={styles.chosenView}></div>
@@ -22,7 +22,6 @@ const styles = {
         width: "100%",
         height: "62px",
         padding: "0 16px",
-        borderRadius: "8px"
     },
     restaurantName: {
         width: "20%",
