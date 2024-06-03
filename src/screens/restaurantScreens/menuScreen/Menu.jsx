@@ -70,6 +70,7 @@ const styles = {
             width: "900px",
             display: "flex",
             alignItems: "center",
+            justifyContent: "center",
             gap: 30,
             flexWrap: "wrap",
         },
