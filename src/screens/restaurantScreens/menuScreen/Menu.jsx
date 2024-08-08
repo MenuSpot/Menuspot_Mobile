@@ -61,7 +61,6 @@ const styles = {
             minHeight: "100%",
             width: "100%",
             height: "auto",
-            marginTop: "24px",
             display: "flex",
             justifyContent: "center",
             backgroundColor: MSColorPalette.restaurantBgColor,
