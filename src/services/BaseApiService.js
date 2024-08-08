@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { errorCodes } from '../constants/ErrorMessages';
 
-const API_BASE_URL = process.env.BACKEND_URL
+const API_BASE_URL = "https://menuspot.com.tr/api"
 
 let api = axios.create({
     baseURL: API_BASE_URL,
