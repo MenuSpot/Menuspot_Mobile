@@ -10,7 +10,6 @@ import { HamburgerLinkStyle, HamburgerMenuStyle, linkContainer } from './Hamburg
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
 import { Paths } from '../../../enums/Paths'
-import Navbar from '../navbarOverlay/Navbar'
 
 const HamburgerMenu = () => {
     const { isHamburgerOpen: hamburgerMenu } = useSelector((state) => state.innerWidthSlice)
@@ -31,7 +30,6 @@ const HamburgerMenu = () => {
 
     return (
         <MSContainer style={{ ...HamburgerMenuStyle, display: hamburgerMenu ? "flex" : "none" }}>
-            <Navbar />
             <MSContainer style={linkContainer}>
                 {
                     Object.keys(NavbarRoutes).map(route => (

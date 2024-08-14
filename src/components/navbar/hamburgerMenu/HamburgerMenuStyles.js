@@ -10,6 +10,7 @@ export const HamburgerMenuStyle = {
     gap: "24px",
     backdropFilter: "blur(20px)",
     zIndex: 10,
+    padding: 10
 }
 export const linkContainer = {
     display: "flex",

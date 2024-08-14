@@ -4,7 +4,7 @@ import { MEDIUM_DEVICE_TRESHOLD } from "../../constants/Dimension";
 const initialState = {
     screenSize: window.innerWidth,
     isMobileDevice: (window.innerWidth <= MEDIUM_DEVICE_TRESHOLD),
-    isHamburgerOpen: undefined,
+    isHamburgerOpen: false,
     currentStyle: ""
 }
 const innerWidthSlice = createSlice({

@@ -12,8 +12,8 @@ const Authenticated = () => {
 
     return (
         <>
-            {isHamburgerOpen ? <HamburgerMenu /> : <Navbar />}
-            <HamburgerMenu />
+            <Navbar />
+            {isHamburgerOpen && <HamburgerMenu />}
             <Routes>
                 <Route path={Paths.DEFAULT} element={<RestaurantListScreen />} />
                 <Route path={`${Paths.MENU}/:id/:name`} element={<MenuScreen />} />
