@@ -131,7 +131,7 @@ const styles = {
         container: {
             width: "160px",
             height: "240px",
-            margin:"0 16px"
+            margin:"0 12px"
         },
         card: {
             borderRadius: "8px",
@@ -184,77 +184,4 @@ const styles = {
             padding: 15
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // card: {
-    //     borderRadius: "8px",
-    // },
-    // cardHeaderStyleView1: {
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignIitems: "center",
-    //     width: "100%",
-    //     height: "40px",
-    //     padding: "8px 12px",
-    //     backgroundColor: MSColorPalette.secondary300,
-    //     fontFamily: MSFonts.MerriweatherLight100.fontFamily,
-    //     fontSize: MSFonts.MerriweatherLight100.fontSize,
-    //     fontWeight: MSFonts.MerriweatherLight100.fontWeight,
-    // },
-    // cardImageView1: {
-    //     width: "100%",
-    //     height: "170px",
-    // },
-    // cardFooterStyleView1: {
-    //     display: "flex",
-    //     width: "100%",
-    //     height: "30px",
-    //     padding: "8px 12px",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     backgroundColor: MSColorPalette.secondary300,
-    // },
-    // carHeaderBackFace: {
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignIitems: "center",
-    //     padding: "8px 12px",
-    //     backgroundColor: MSColorPalette.primary500,
-    //     color: ColorPalette.secondary200,
-    //     fontFamily: MSFonts.MerriweatherLight100.fontFamily,
-    //     fontSize: MSFonts.MerriweatherLight100.fontSize,
-    //     fontWeight: MSFonts.MerriweatherLight100.fontWeight,
-    //     marginBottom: 10,
-    // },
-    // cardbackFace: {
-    //     paddingTop: 10,
-    //     padding: 20,
-    //     backgroundColor: ColorPalette.secondary500,
-    // }
 }

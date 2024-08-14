@@ -6,8 +6,10 @@ import { Endpoints } from '../../../constants/Endpoints'
 import { Paths } from '../../../enums/Paths'
 import { MSColorPalette } from '../../../assets/ui'
 import { renderSkeletonCard } from '../../../utils/loadingRenderer'
+import { useSelector } from 'react-redux'
 
 export const RestaurantList = () => {
+    const { isMobileDevice: isMobile } = useSelector((state) => state.innerWidthSlice)
     const [restaurantData, setRestaurantData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -22,7 +24,7 @@ export const RestaurantList = () => {
 
     return (
         <MSContainer style={styles.component}>
-            <MSContainer style={styles.container}>
+            <MSContainer style={{ ...styles.container, padding: !isMobile && "0 310px", justifyContent: isMobile && "center" }}>
                 {
                     isLoading ? renderSkeletonCard(20, "restaurant") :
                         <>
@@ -51,8 +53,7 @@ const styles = {
         marginTop: "24px",
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center",
-        width: "900px",
-        gap: "60px",
+        justifyContent: "space-between",
+        gap: "24px",
     }
 }
