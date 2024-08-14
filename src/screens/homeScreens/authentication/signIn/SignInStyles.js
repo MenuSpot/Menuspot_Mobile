@@ -120,6 +120,7 @@ export const titleMobileStyle = {
     display: "none"
 }
 export const inputMobileStyle = {
+    width: "90%",
     height: "44px",
     color: MSColorPalette.white,
     fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
@@ -134,6 +135,7 @@ export const inputMobileStyle = {
 export const buttonMobileStyle = {
     display: "flex",
     height: "56px",
+    width: "90%",
     padding: "8px 45px",
     borderRadius: "31.145px",
     justifyContent: "center",
@@ -149,8 +151,7 @@ export const buttonMobileStyle = {
 }
 export const disabledButtonMobileStyle = {
     display: "flex",
-    minWidth: "360px",
-    maxWidth: "382px",
+    width: "90%",
     height: "56px",
     padding: "8px 45px",
     borderRadius: "31.145px",

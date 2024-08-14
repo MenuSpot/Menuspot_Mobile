@@ -1,4 +1,4 @@
-import { MSColorPalette } from "../../../../assets/ui"
+import { MSColorPalette, MSFonts } from "../../../../assets/ui"
 import { ColorPalette } from "../../../../assets/ui/ColorPalette"
 import { Fonts } from "../../../../assets/ui/Fonts"
 
@@ -114,36 +114,33 @@ export const titleMobileStyle = {
     display: "none"
 }
 export const inputMobileStyle = {
-    minWidth: "360px",
-    maxWidth: "382px",
+    width: "90%",
     height: "44px",
-    color: ColorPalette.white,
-    fontFamily: Fonts.MerriweatherRegular200.fontFamily,
-    fontSize: Fonts.MerriweatherRegular200.fontSize,
-    fontWeight: Fonts.MerriweatherRegular200.fontWeight,
-    padding: "12.977px 45px",
-    border: `1px solid ${ColorPalette.white}`,
+    color: MSColorPalette.white,
+    fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
+    fontSize: MSFonts.MerriweatherRegular200.fontSize,
+    fontWeight: MSFonts.MerriweatherRegular200.fontWeight,
+    padding: "8px 45px",
+    border: `1px solid ${MSColorPalette.white}`,
     borderRadius: "76.565px",
     backgroundColor: "transparent",
-    outline: "none"
+    outline: "none",
 }
 export const buttonMobileStyle = {
     display: "flex",
-    minWidth: "360px",
-    maxWidth: "382px",
     height: "56px",
-    padding: " 8px 45px",
+    width: "90%",
+    padding: "8px 45px",
     borderRadius: "31.145px",
     justifyContent: "center",
     alignItems: "center",
     gap: "5.191px",
+    backgroundColor: MSColorPalette.primary500,
+    border: `1px solid ${MSColorPalette.primary500}`,
+    color: MSColorPalette.buttonTextColor,
+    fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
+    fontSize: MSFonts.MerriweatherRegular200.fontSize,
+    fontWeight: MSFonts.MerriweatherRegular200.fontWeight,
     cursor: "pointer",
-    marginTop: "22px",
-    backgroundColor: ColorPalette.primary500,
-    border: `1px solid ${ColorPalette.primary500}`,
-    color: ColorPalette.buttonTextColor,
-    fontFamily: Fonts.MerriweatherRegular200.fontFamily,
-    fontSize: Fonts.MerriweatherRegular200.fontSize,
-    fontWeight: Fonts.MerriweatherRegular200.fontWeight
 }
 //#endregion
