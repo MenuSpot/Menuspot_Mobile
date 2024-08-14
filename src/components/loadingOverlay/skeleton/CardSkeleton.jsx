@@ -30,6 +30,7 @@ const styles = {
         textDecoration: "none",
         borderRadius: "8px",
         overflow: "hidden",
+        marginTop: 20
 
     },
     resImage: {
@@ -45,7 +46,8 @@ const styles = {
         cursor: "pointer",
         textDecoration: "none",
         borderRadius: "8px",
-        overflow: "hidden"
+        overflow: "hidden",
+        margin: 10,
     },
     productImage: {
         width: "100%",

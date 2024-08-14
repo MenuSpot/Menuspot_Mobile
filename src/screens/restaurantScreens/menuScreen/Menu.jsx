@@ -8,9 +8,9 @@ import View1 from '../../../components/menuItems/View1';
 import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
 import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
-import ToolbarSkeleton from '../../../components/loadingOverlay/ToolbarSkeleton';
 import { useSelector } from 'react-redux';
 import { responsiveStyleCreator } from '../../../utils/ResponsiveControl';
+import ToolbarSkeleton from '../../../components/loadingOverlay/skeleton/ToolbarSkeleton';
 
 export const Menu = () => {
     const { isMobileDevice: isMobile, screenSize: windowSize } = useSelector((state) => state.innerWidthSlice)
@@ -20,6 +20,7 @@ export const Menu = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const handleMenu = async () => {
+        console.log("deneme")
         const response = await get(`${Endpoints.MENU_DATA}/${id}`)
         setData(response.data.categories)
         setIsLoading(false)
@@ -27,6 +28,8 @@ export const Menu = () => {
     useEffect(() => {
         handleMenu()
     }, [])
+
+
     return (
         <MSContainer style={styles.largeDevice.componentStyle}>
             <MSContainer
@@ -40,11 +43,12 @@ export const Menu = () => {
                 }
                 {
                     isLoading && isRow ?
-                            renderSkeletonCard(20, "menu")
+                        renderSkeletonCard(20, "menu")
                         :
                         isLoading && !isRow ?
                             renderRectangleSkeleton(20)
                             :
+
                             data.map(categories => (
                                 isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
                                     <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
@@ -70,7 +74,6 @@ const styles = {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            // gap: 30,
             flexWrap: "wrap",
         },
         containerCol: {
@@ -96,7 +99,6 @@ const styles = {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // gap: 24,
             flexWrap: "wrap",
         },
         containerCol: {

@@ -1,6 +1,6 @@
-import CardSkeleton from "../components/loadingOverlay/CardSkeleton"
-import CategoryNameSkeleton from "../components/loadingOverlay/CategoryNameSkeleton"
-import RectangleSkeleton from "../components/loadingOverlay/RectangleSkeleton"
+import CardSkeleton from "../components/loadingOverlay/skeleton/CardSkeleton"
+import CategoryNameSkeleton from "../components/loadingOverlay/skeleton/CategoryNameSkeleton"
+import RectangleSkeleton from "../components/loadingOverlay/skeleton/RectangleSkeleton"
 
 export const renderSkeletonCard = (count, type) => {
     const skeletonCards = []
