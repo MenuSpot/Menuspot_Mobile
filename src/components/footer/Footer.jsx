@@ -6,18 +6,7 @@ import { SVGInstagram, SVGLinkedn, SVGTwitter } from '../../assets/svg'
 const Footer = () => {
     return (
         <MSContainer style={styles.container}>
-            <MSContainer style={styles.linkBox}>
-                <SVGInstagram />
-                <MSText>Instagram</MSText>
-            </MSContainer>
-            <MSContainer style={styles.linkBox}>
-                <SVGLinkedn />
-                <MSText>Linkedn</MSText>
-            </MSContainer>
-            <MSContainer style={styles.linkBox}>
-                <SVGTwitter />
-                <MSText>Twitter</MSText>
-            </MSContainer>
+            <MSText style={styles.footerText}>ALL RIGHTS RESERVED</MSText>
         </MSContainer>
     )
 }
@@ -32,20 +21,18 @@ const styles = {
         display: "flex",
         justifyContent: "center",
         aligItems: "center",
-        gap: "15px",
         postition: "relative",
         bottom: 0,
         marginTop: "30px"
     },
-    linkBox: {
+    footerText: {
         display: "flex",
         justifyContent: "center",
-        aligItems: "center",
-        gap: "5px",
+        alignItems: "center",
+        textAlign:"center",        
         color: MSColorPalette.secondary500,
         fontFamily: MSFonts.MerriweatherRegular50.fontFamily,
         fontSize: MSFonts.MerriweatherRegular50.fontSize,
         fontWeight: MSFonts.MerriweatherRegular50.fontWeight,
-        cursor: "pointer"
     }
 }

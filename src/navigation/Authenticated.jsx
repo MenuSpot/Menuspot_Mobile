@@ -5,6 +5,7 @@ import { AboutUsScreen } from "../screens/homeScreens"
 import Navbar from "../components/navbar/navbarOverlay/Navbar"
 import HamburgerMenu from "../components/navbar/hamburgerMenu/HamburgerMenu"
 import { useSelector } from "react-redux"
+import Footer from "../components/footer/Footer"
 
 const Authenticated = () => {
     const { isHamburgerOpen } = useSelector(state => state.innerWidthSlice)
@@ -18,6 +19,7 @@ const Authenticated = () => {
                 <Route path={`${Paths.MENU}/:id/:name`} element={<MenuScreen />} />
                 <Route path={Paths.ABOUT_US} element={<AboutUsScreen />} />
             </Routes>
+            <Footer />
         </>
     )
 }

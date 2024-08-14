@@ -79,17 +79,12 @@ export const navbarMobile = {
     width: "100%",
     backgroundColor: MSColorPalette.primary500,
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "10px",
-    cursor: "pointer"
-}
-export const navItemsMobile = {
-    display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
+    padding: "10px 10px",
+    cursor: "pointer"
 }
+
 export const brandAreaMobile = {
     display: "flex",
     justifyContent: "space-between",

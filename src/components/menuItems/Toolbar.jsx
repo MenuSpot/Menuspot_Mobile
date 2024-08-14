@@ -37,6 +37,7 @@ const styles = {
         width: "100%",
         height: "62px",
         padding: "0 16px",
+        marginTop:24
     },
     restaurantName: {
         color: MSColorPalette.text500,

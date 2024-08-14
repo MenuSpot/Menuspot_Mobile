@@ -17,6 +17,7 @@ export const descriptionText = {
     fontSize: MSFonts.MerriweatherRegular200.fontSize,
     lineHeight: "40px",
     width: "100%",
+    textAlign:"justify"
 }
 export const team = {
     display: "flex",
@@ -111,7 +112,8 @@ export const personalInfoCardMobile = {
     gap: "8px"
 }
 export const descriptionMobileText = {
-    paddingTop: "20px"
+    paddingTop: "20px",
+    textAlign:"justify"
 }
 export const listMobile = {
     display: "flex",
