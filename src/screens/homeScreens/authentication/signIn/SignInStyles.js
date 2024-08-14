@@ -126,7 +126,7 @@ export const inputMobileStyle = {
     fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
     fontSize: MSFonts.MerriweatherRegular200.fontSize,
     fontWeight: MSFonts.MerriweatherRegular200.fontWeight,
-    padding: "12.977px 45px",
+    padding: "8px 45px",
     border: `1px solid ${MSColorPalette.white}`,
     borderRadius: "76.565px",
     backgroundColor: "transparent",
