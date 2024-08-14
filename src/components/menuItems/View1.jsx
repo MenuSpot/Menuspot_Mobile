@@ -43,8 +43,8 @@ const styles = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 40,
-            marginBottom: 40,
+            marginTop: 30,
+            marginBottom: 30,
             backgroundColor: MSColorPalette.primary500,
         }
         ,
@@ -78,6 +78,7 @@ const styles = {
             width: "100%",
             flexWrap: "wrap",
             justifyContent: "center",
+            gap:24
         }
     },
 

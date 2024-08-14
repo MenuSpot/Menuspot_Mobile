@@ -23,8 +23,8 @@ export const RestaurantList = () => {
     }, [])
 
     return (
-        <MSContainer style={styles.component}>
-            <MSContainer style={{ ...styles.container, padding: !isMobile && "0 310px", justifyContent: isMobile && "center" }}>
+        <MSContainer style={{ ...styles.component, padding: !isMobile && "0 310px" }}>
+            <MSContainer style={{ ...styles.container, justifyContent: isMobile ? "center" : "space-between", gap: isMobile ? "24px" : "0" }}>
                 {
                     isLoading ? renderSkeletonCard(20, "restaurant") :
                         <>
@@ -45,15 +45,12 @@ const styles = {
     component: {
         minHeight: "100%",
         height: "auto",
-        display: "flex",
-        justifyContent: "center",
         backgroundColor: MSColorPalette.restaurantBgColor,
     },
     container: {
+        width: "100%",
         marginTop: "24px",
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "space-between",
-        gap: "24px",
     }
 }

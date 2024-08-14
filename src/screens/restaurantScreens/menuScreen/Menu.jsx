@@ -70,7 +70,7 @@ const styles = {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: 30,
+            // gap: 30,
             flexWrap: "wrap",
         },
         containerCol: {
@@ -96,7 +96,7 @@ const styles = {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 24,
+            // gap: 24,
             flexWrap: "wrap",
         },
         containerCol: {

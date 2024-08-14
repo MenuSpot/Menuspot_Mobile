@@ -1,6 +1,8 @@
 const SpinningLoading = () => {
     return (
-        <p>Loading</p>
+        <p>
+            
+        </p>
     )
 }
 
