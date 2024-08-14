@@ -37,6 +37,7 @@
 }
 
 @media screen and (width>1500px) {
+
     .container:hover>.card {
         cursor: pointer;
         transform: rotateY(180deg)

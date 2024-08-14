@@ -51,8 +51,8 @@ const styles = {
         marginTop: "24px",
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center ",
+        justifyContent: "center",
         width: "900px",
-        gap: "25px",
+        gap: "60px",
     }
 }

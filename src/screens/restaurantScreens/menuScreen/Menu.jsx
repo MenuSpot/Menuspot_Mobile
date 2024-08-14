@@ -40,7 +40,7 @@ export const Menu = () => {
                 }
                 {
                     isLoading && isRow ?
-                        renderSkeletonCard(20, "menu")
+                            renderSkeletonCard(20, "menu")
                         :
                         isLoading && !isRow ?
                             renderRectangleSkeleton(20)
@@ -69,7 +69,7 @@ const styles = {
             width: "900px",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
             gap: 30,
             flexWrap: "wrap",
         },

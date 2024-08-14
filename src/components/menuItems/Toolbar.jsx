@@ -5,7 +5,7 @@ import { MSColorPalette, MSFonts } from "../../assets/ui"
 
 const Toolbar = ({ isRow, setIsRow, name, isMobile }) => {
     return (
-        <MSContainer style={{ ...styles.toolbar, borderRadius: isMobile ? "" : "8px" }}>
+        <MSContainer style={{ ...styles.toolbar, borderRadius: isMobile ? "" : "8px", marginTop: !isMobile && "40px" }}>
             <MSText style={styles.restaurantName}>
                 {name}
             </MSText>
@@ -37,7 +37,6 @@ const styles = {
         width: "100%",
         height: "62px",
         padding: "0 16px",
-        marginTop:24
     },
     restaurantName: {
         color: MSColorPalette.text500,

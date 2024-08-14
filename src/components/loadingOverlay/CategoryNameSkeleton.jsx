@@ -16,7 +16,6 @@ export default CategoryNameSkeleton
 const styles = {
     largeDevice: {
         container: {
-            width: "100%",
             display: "flex",
             overflow: "hidden",
         },

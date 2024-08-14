@@ -131,6 +131,7 @@ const styles = {
         container: {
             width: "160px",
             height: "240px",
+            margin:"0 16px"
         },
         card: {
             borderRadius: "8px",

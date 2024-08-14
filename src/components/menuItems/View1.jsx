@@ -43,6 +43,8 @@ const styles = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: 40,
+            marginBottom: 40,
             backgroundColor: MSColorPalette.primary500,
         }
         ,
@@ -55,7 +57,6 @@ const styles = {
         productRow: {
             display: "flex",
             flexDirection: "column",
-            gap: "24px",
             flexWrap: "wrap",
             width: "100%",
         },
@@ -75,7 +76,6 @@ const styles = {
         cardsContainer: {
             display: "flex",
             width: "100%",
-            gap: "30px",
             flexWrap: "wrap",
             justifyContent: "center",
         }

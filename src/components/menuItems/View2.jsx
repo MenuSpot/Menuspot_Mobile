@@ -39,15 +39,12 @@ const styles = {
         productColumn: {
             display: "flex",
             flexDirection: "column",
-            marginBottom: "20px",
             width: "100%",
         },
         cardContainer: {
             display: "flex",
             flexDirection: "column",
             gap: "24px",
-            marginTop: "20px",
-            marginBottom: "20px",
         },
         categoryBox: {
             width: "100%",
@@ -56,6 +53,8 @@ const styles = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: 40,
+            marginBottom: 40,
             backgroundColor: MSColorPalette.primary500,
         },
         categoryName: {
@@ -70,32 +69,14 @@ const styles = {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            marginBottom: "20px",
             width: "100%",
         },
         cardContainer: {
             display: "flex",
             flexDirection: "column",
             gap: "24px",
-            marginTop: "20px",
-            marginBottom: "20px",
             padding: "0 12px",
         },
-        categoryBox: {
-            width: "100%",
-            height: "48px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "8px",
-            backgroundColor: MSColorPalette.primary500,
-        },
-        categoryName: {
-            color: MSColorPalette.white,
-            fontFamily: MSFonts.MerriweatherRegular200.fontFamily,
-            fontWeight: MSFonts.MerriweatherRegular200.fontWeight,
-            fontSize: MSFonts.MerriweatherRegular200.fontSize,
-        }
     }
 
 }

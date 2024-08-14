@@ -3,7 +3,7 @@ import { MSColorPalette, MSFonts } from "../../../assets/ui"
 //#region large device styles
 export const navbar = {
     width: "100%",
-    padding: "10px 190px",
+    padding: "10px 310px",
     backgroundColor: MSColorPalette.primary500,
     display: "flex",
     justifyContent: "center",
