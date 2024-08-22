@@ -105,7 +105,7 @@ const styles = {
             width: "100%",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space",
+            justifyContent: "center",
             flexWrap: "wrap",
         },
         containerCol: {

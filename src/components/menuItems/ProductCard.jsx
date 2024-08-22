@@ -138,15 +138,14 @@ const styles = {
         cardHeaderStyle: {
             backgroundColor: MSColorPalette.secondary300,
             display: "flex",
-            textAlign: "center",
-            justifyContent: "center",
-            alignIitems: "center",
             borderTopLeftRadius: "8px",
             borderTopRightRadius: "8px",
             width: "100%",
             padding: "12px",
         },
         headerText: {
+            width:"100%",
+            textAlign: "center",
             fontFamily: MSFonts.MerriweatherLight100.fontFamily,
             fontSize: MSFonts.MerriweatherLight100.fontSize,
             fontWeight: MSFonts.MerriweatherLight100.fontWeight,
