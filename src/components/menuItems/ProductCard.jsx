@@ -16,7 +16,7 @@ const ProductCard = ({ item }) => {
     const handleToggle = () => {
         setIsFlipped(!isFlipped)
     }
-    
+
     return (
         <div className='container'
             style={{
@@ -45,11 +45,13 @@ const ProductCard = ({ item }) => {
                 <div className="back"
                     style={responsiveStyleCreator(windowSize, styles.largeDevice.cardbackFace, styles.smallDevice.cardbackFace)}
                 >
-                    <MSText
-                        style={responsiveStyleCreator(windowSize, styles.largeDevice.cardHeaderStyle, styles.smallDevice.cardHeaderStyle)}
-                    >
-                        {localize(item.name)}
-                    </MSText>
+                    <div style={responsiveStyleCreator(windowSize, styles.largeDevice.cardHeaderStyle, styles.smallDevice.cardHeaderStyle)}>
+                        <MSText
+                            style={responsiveStyleCreator(windowSize, styles.largeDevice.headerText, styles.smallDevice.headerText)}
+                        >
+                            {truncateText(item.name, 18)}
+                        </MSText>
+                    </div>
                     <MSText
                         style={responsiveStyleCreator(windowSize, styles.largeDevice.description, styles.smallDevice.description)}
                     >
@@ -144,7 +146,7 @@ const styles = {
             padding: "12px",
         },
         headerText: {
-            width:"100%",
+            width: "100%",
             textAlign: "center",
             fontFamily: MSFonts.MerriweatherLight100.fontFamily,
             fontSize: MSFonts.MerriweatherLight100.fontSize,
