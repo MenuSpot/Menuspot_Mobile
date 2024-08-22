@@ -66,7 +66,7 @@ const styles = {
         },
         cardsContainer: {
             display: "flex",
-            gap: "60px",
+            gap: "59px",
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
@@ -78,7 +78,7 @@ const styles = {
             width: "100%",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap:24
+            gap: 24
         }
     },
 

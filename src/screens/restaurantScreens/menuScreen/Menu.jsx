@@ -30,6 +30,27 @@ export const Menu = () => {
     }, [])
 
 
+    if (isLoading) return (
+        <MSContainer
+            style={responsiveStyleCreator(windowSize, styles.largeDevice.containerRow, styles.smallDevice.containerRow)}
+        >
+            <ToolbarSkeleton isMobile={isMobile} />
+            {
+                isLoading && isRow ?
+                    renderSkeletonCard(20, "menu")
+                    :
+                    isLoading && !isRow ?
+                        renderRectangleSkeleton(20)
+                        :
+                        data.map(categories => (
+                            isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
+                                <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
+                        ))
+            }
+
+        </MSContainer>
+    )
+
     return (
         <MSContainer style={styles.largeDevice.componentStyle}>
             <MSContainer
@@ -37,22 +58,12 @@ export const Menu = () => {
                     :
                     responsiveStyleCreator(windowSize, styles.largeDevice.containerCol, styles.smallDevice.containerCol)}
             >
+                <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} isMobile={isMobile} />
                 {
-                    isLoading ? <ToolbarSkeleton isMobile={isMobile} /> :
-                        <Toolbar isRow={isRow} setIsRow={setIsRow} name={name} isMobile={isMobile} />
-                }
-                {
-                    isLoading && isRow ?
-                        renderSkeletonCard(20, "menu")
-                        :
-                        isLoading && !isRow ?
-                            renderRectangleSkeleton(20)
-                            :
-
-                            data.map(categories => (
-                                isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
-                                    <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
-                            ))
+                    data.map(categories => (
+                        isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
+                            <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
+                    ))
                 }
             </MSContainer>
         </MSContainer >
@@ -70,7 +81,8 @@ const styles = {
             backgroundColor: MSColorPalette.restaurantBgColor,
         },
         containerRow: {
-            width: "900px",
+            width: "100%",
+            padding: "0 310px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -95,10 +107,10 @@ const styles = {
             gap: "24px"
         },
         containerRow: {
-            width: "900px",
+            width: "100%",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space",
             flexWrap: "wrap",
         },
         containerCol: {

@@ -22,22 +22,22 @@ export const RestaurantList = () => {
         handleRestaurants()
     }, [])
 
+    if (isLoading) return (
+        <MSContainer style={{ ...styles.container, justifyContent: isMobile ? "center" : "space-between", gap: isMobile ? "24px" : "0", padding: !isMobile && "0 310px" }}>
+            {renderSkeletonCard(20, "restaurant")}
+        </MSContainer>
+    )
+
 
     return (
         <MSContainer style={{ ...styles.component, padding: !isMobile && "0 310px" }}>
             <MSContainer style={{ ...styles.container, justifyContent: isMobile ? "center" : "space-between", gap: isMobile ? "24px" : "0" }}>
                 {
-                    isLoading ? renderSkeletonCard(20, "restaurant") :
-                        <>
-                            {
-                                restaurantData.map(item => (
-                                    <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />
-                                ))
-                            }
-                        </>
+                    restaurantData.map(item => (
+                        <CardRestaurant to={`${Paths.MENU}/${item.id}/${item.name}`} item={item} key={item.id} />
+                    ))
                 }
             </MSContainer>
-
         </MSContainer>
     )
 }
