@@ -1,7 +1,6 @@
 import React from 'react'
 import { MSColorPalette, MSFonts } from '../../assets/ui'
 import { MSContainer, MSText } from '..'
-import { SVGInstagram, SVGLinkedn, SVGTwitter } from '../../assets/svg'
 
 const Footer = () => {
     return (

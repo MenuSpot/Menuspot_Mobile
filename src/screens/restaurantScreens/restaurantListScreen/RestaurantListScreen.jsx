@@ -28,7 +28,6 @@ export const RestaurantList = () => {
         </MSContainer>
     )
 
-
     return (
         <MSContainer style={{ ...styles.component, padding: !isMobile && "0 310px" }}>
             <MSContainer style={{ ...styles.container, justifyContent: isMobile ? "center" : "space-between", gap: isMobile ? "24px" : "0" }}>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
 import Authenticated from "./Authenticated"
 import Unauthenticated from "./Unauthenticated"
+import { Router } from "react-router-dom"
 
 const AuthScreens = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -17,7 +18,7 @@ const AuthScreens = () => {
         isLoading ?
             <></> :
             !!context.token ?
-                <Authenticated />
+                    <Authenticated />
                 :
                 <Unauthenticated />
     )

@@ -7,7 +7,7 @@ import { MSColorPalette } from '../../../assets/ui';
 import View1 from '../../../components/menuItems/View1';
 import View2 from '../../../components/menuItems/View2';
 import Toolbar from '../../../components/menuItems/Toolbar';
-import { renderRectangleSkeleton, renderSkeletonCard } from '../../../utils/loadingRenderer';
+import { renderSkeletonCard } from '../../../utils/loadingRenderer';
 import { useSelector } from 'react-redux';
 import { responsiveStyleCreator } from '../../../utils/ResponsiveControl';
 import ToolbarSkeleton from '../../../components/loadingOverlay/skeleton/ToolbarSkeleton';
@@ -20,7 +20,6 @@ export const Menu = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const handleMenu = async () => {
-        console.log("deneme")
         const response = await get(`${Endpoints.MENU_DATA}/${id}`)
         setData(response.data.categories)
         setIsLoading(false)
@@ -30,27 +29,23 @@ export const Menu = () => {
     }, [])
 
 
-    if (isLoading) return (
-        <MSContainer
-            style={responsiveStyleCreator(windowSize, styles.largeDevice.containerRow, styles.smallDevice.containerRow)}
-        >
-            <ToolbarSkeleton isMobile={isMobile} />
-            {
-                isLoading && isRow ?
-                    renderSkeletonCard(20, "menu")
-                    :
-                    isLoading && !isRow ?
-                        renderRectangleSkeleton(20)
-                        :
+    if (isLoading) {
+        return (
+            <MSContainer
+                style={responsiveStyleCreator(windowSize, styles.largeDevice.containerRow, styles.smallDevice.containerRow)}
+            >
+                <ToolbarSkeleton isMobile={isMobile} />
+                {
+                    isLoading && isRow ?
+                        renderSkeletonCard(20, "menu") :
                         data.map(categories => (
                             isRow ? <View1 categories={categories} isMobile={isMobile} key={categories.categoryId} /> :
                                 <View2 categories={categories} isMobile={isMobile} key={categories.categoryId} />
                         ))
-            }
-
-        </MSContainer>
-    )
-
+                }
+            </MSContainer>
+        )
+    }
     return (
         <MSContainer style={styles.largeDevice.componentStyle}>
             <MSContainer
