@@ -74,8 +74,10 @@ const styles = {
         cardContainer: {
             display: "flex",
             flexDirection: "column",
+            justifyContent:"center",
+            alignItems:"center",
             gap: "24px",
-            padding: "0 12px",
+            padding: "0 12px"
         },
     }
 

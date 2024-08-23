@@ -25,6 +25,7 @@ const HamburgerMenu = () => {
 
     const handleLogOut = () => {
         onSignOut()
+        dispatch(openHamburgerMenu())
         navigate(Paths.DEFAULT)
     }
 

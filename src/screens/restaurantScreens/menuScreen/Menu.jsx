@@ -84,12 +84,12 @@ const styles = {
             flexWrap: "wrap",
         },
         containerCol: {
-            width: "900px",
+            width: "100%",
+            padding: "0 310px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
-            gap: 30,
             flexWrap: "wrap",
         },
     },
@@ -109,12 +109,11 @@ const styles = {
             flexWrap: "wrap",
         },
         containerCol: {
-            width: "900px",
+            width: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
-            gap: 24,
             flexWrap: "wrap",
         },
         toolbarMobile: {

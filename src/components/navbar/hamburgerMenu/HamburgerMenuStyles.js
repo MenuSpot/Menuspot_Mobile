@@ -1,4 +1,5 @@
 import { MSColorPalette } from "../../../assets/ui"
+import { ColorPalette } from "../../../assets/ui/ColorPalette"
 
 export const HamburgerMenuStyle = {
     display: "flex",
@@ -8,7 +9,7 @@ export const HamburgerMenuStyle = {
     width: "100vw",
     height: "100vh",
     gap: "24px",
-    backdropFilter: "blur(20px)",
+    backgroundColor: ColorPalette.secondary100,
     zIndex: 10,
     padding: 10
 }

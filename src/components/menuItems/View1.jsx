@@ -43,8 +43,8 @@ const styles = {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 30,
-            marginBottom: 30,
+            marginTop: 40,
+            marginBottom: 40,
             backgroundColor: MSColorPalette.primary500,
         }
         ,

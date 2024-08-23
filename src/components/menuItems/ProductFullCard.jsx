@@ -94,7 +94,7 @@ const styles = {
     },
     smallScreen: {
         cardStyleView2: {
-            minWidth: "350px",
+            minWidth: "330px",
             minHeight: "147px",
             display: "flex",
             borderRadius: "8px",
