@@ -11,7 +11,7 @@ export const HamburgerMenuStyle = {
     gap: "24px",
     backgroundColor: ColorPalette.secondary100,
     zIndex: 10,
-    padding: 10
+    padding: 20
 }
 export const linkContainer = {
     display: "flex",
@@ -19,7 +19,7 @@ export const linkContainer = {
     height: "100%",
     flexDirection: "column",
     alignItems: "center",
-    padding: "0 20",
+    padding: "0 2px",
     gap: 20,
 }
 export const HamburgerLinkStyle = {

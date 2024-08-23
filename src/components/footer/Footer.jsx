@@ -22,7 +22,6 @@ const styles = {
         aligItems: "center",
         postition: "relative",
         bottom: 0,
-        marginTop: "40px"
     },
     footerText: {
         display: "flex",

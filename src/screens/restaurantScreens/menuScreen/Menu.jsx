@@ -74,6 +74,7 @@ const styles = {
             display: "flex",
             justifyContent: "center",
             backgroundColor: MSColorPalette.restaurantBgColor,
+            marginBottom: "40px"
         },
         containerRow: {
             width: "100%",
